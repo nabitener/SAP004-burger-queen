@@ -1,4 +1,35 @@
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+# Burger Queen
+
+## Índice
+
+- [1. Preâmbulo](#1-preâmbulo)
+- [2. Resumo do projeto](#2-resumo-do-projeto)
+- [3. Objetivos de aprendizagem](#3-objetivos-de-aprendizagem)
+- [4. Considerações gerais](#4-considerações-gerais)
+- [5. Critérios de aceitação mínimos do
+  projeto](#5-critérios-de-aceitação-mínimos-do-projeto)
+- [6. Hacker Edition](#6-hacker-edition)
+- [7. Dicas e leituras complementares](#7-dicas-e-leituras-complementares)
+
+---
+
+## 1. Preâmbulo
+
+[React](https://reactjs.org/), [Angular](https://angular.io/) e
+[Vue](https://vuejs.org/) são alguns dos _frameworks_ e _bibliotecas_ de
+JavaScript mais usados na área de desenvolvimento ao redor do mundo e existe uma
+razão para isso. No contexto do navegador, [_manter a interface sincronizada com
+o estado é difícil_](https://medium.com/dailyjs/the-deepest-reason-why-modern-javascript-frameworks-exist-933b86ebc445).
+
+Ao eleger um _framework_ ou _biblioteca_ para nossa interface, nos apoiamos em
+uma série de convenções e implementações _testadas_ e _documentadas_ para
+resolver um problema comum a toda interface web. Isto nos permite concentrar
+melhor (dedicar mais tempo) nas características _específicas_ de nossa
+aplicação.
+
 
 ## Available Scripts
 
