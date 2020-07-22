@@ -1,12 +1,14 @@
 import React from 'react';
 import './App.css';
-//import register from './register';
 
 
-function App() {
+
+const App = () => {
    
   return (
-    <register />
+    <div>
+      Oi
+    </div>
   );
 }
 export default App;

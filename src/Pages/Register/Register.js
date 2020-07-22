@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import './style.css';
 import '../../reset.css';
-import Input from '../../Components/Inputs/index'
+import { urls } from '../../urlsUtils';
+import Input from '../../Components/Inputs/index';
 import Button from '../../Components/Buttons/index';
 import { firebaseAuth } from '../../firebaseUtils';
 import { firebaseStore } from '../../firebaseUtils';
@@ -12,8 +14,9 @@ const Register = () => {
   const [name, setName] = useState('');
   const [service, setService] = useState('');
 
-  useEffect(() => {
-  }, [name, email, password, service]);
+  const history = useHistory();
+
+  useEffect(() => {}, [name, email, password, service, history]);
 
   const prevent = (event) => {
     event.preventDefault();
@@ -35,13 +38,20 @@ const Register = () => {
             userId: firebaseAuth.currentUser.uid,
           });
       })
+      .then(() => {
+        if (service === 'Cozinha') {
+          history.push(urls.kitchen.path);
+        } else {
+          history.push(urls.hall.path);
+        }
+      })
       .catch((error) => {
         alert(error.message);
       });
   };
 
   return (
-    <form className='form-register'>
+    <form className="form-register">
       <Input
         type="text"
         id="input-name"
@@ -67,24 +77,24 @@ const Register = () => {
         required
       />
       <div>
-      <label htmlFor="input-area-cozinha">Cozinha</label>
-      <Input
-        type="radio"
-        id="input-area-cozinha"
-        name="area"
-        value="Cozinha"
-        onChange={(e) => setService(e.currentTarget.value)}
-        required
-      />
-      <label htmlFor="input-area-salao">Salão</label>
-      <Input
-        type="radio"
-        id="input-area-salao"
-        name="area"
-        value="Salão"
-        onChange={(e) => setService(e.currentTarget.value)}
-        required
-      />
+        <label htmlFor="input-area-cozinha">Cozinha</label>
+        <Input
+          type="radio"
+          id="input-area-cozinha"
+          name="area"
+          value="Cozinha"
+          onChange={(e) => setService(e.currentTarget.value)}
+          required
+        />
+        <label htmlFor="input-area-salao">Salão</label>
+        <Input
+          type="radio"
+          id="input-area-salao"
+          name="area"
+          value="Salão"
+          onChange={(e) => setService(e.currentTarget.value)}
+          required
+        />
       </div>
       <Button onClick={prevent} name="Cadastrar" type="submit" />
     </form>
