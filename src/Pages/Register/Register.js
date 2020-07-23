@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import './style.css';
 import '../../reset.css';
 import { urls } from '../../urlsUtils';
@@ -51,53 +51,63 @@ const Register = () => {
   };
 
   return (
-    <form className="form-register">
-      <Input
-        type="text"
-        id="input-name"
-        placeholder="Digite seu Nome"
-        value={name}
-        onChange={(e) => setName(e.currentTarget.value)}
-        required
-      />
-      <Input
-        type="email"
-        id="input-email"
-        placeholder="Digite o e-mail"
-        value={email}
-        onChange={(e) => setEmail(e.currentTarget.value)}
-        required
-      />
-      <Input
-        type="password"
-        id="input-password"
-        placeholder="Digite uma senha"
-        value={password}
-        onChange={(e) => setPassword(e.currentTarget.value)}
-        required
-      />
-      <div>
-        <label htmlFor="input-area-cozinha">Cozinha</label>
+      <form className="form-register">
+        <p className="p-cadastro">Cadastro</p>
         <Input
-          type="radio"
-          id="input-area-cozinha"
-          name="area"
-          value="Cozinha"
-          onChange={(e) => setService(e.currentTarget.value)}
+          type="text"
+          id="input-name"
+          placeholder="Digite seu Nome"
+          className="input-register"
+          value={name}
+          onChange={(e) => setName(e.currentTarget.value)}
           required
         />
-        <label htmlFor="input-area-salao">Salão</label>
         <Input
-          type="radio"
-          id="input-area-salao"
-          name="area"
-          value="Salão"
-          onChange={(e) => setService(e.currentTarget.value)}
+          type="email"
+          id="input-email"
+          placeholder="Digite o e-mail"
+          className="input-register"
+          value={email}
+          onChange={(e) => setEmail(e.currentTarget.value)}
           required
         />
-      </div>
-      <Button onClick={prevent} name="Cadastrar" type="submit" />
-    </form>
+        <Input
+          type="password"
+          id="input-password"
+          placeholder="Digite uma senha"
+          className="input-register"
+          value={password}
+          onChange={(e) => setPassword(e.currentTarget.value)}
+          required
+        />
+        <div className="div-input">
+          <label htmlFor="input-area-cozinha">Cozinha</label>
+          <Input
+            type="radio"
+            className="input-register-radio"
+            id="input-area-cozinha"
+            name="area"
+            value="Cozinha"
+            onChange={(e) => setService(e.currentTarget.value)}
+            required
+          />
+          <label htmlFor="input-area-salao">Salão</label>
+          <Input
+            type="radio"
+            id="input-area-salao"
+            className="input-register-radio"
+            name="area"
+            value="Salão"
+            onChange={(e) => setService(e.currentTarget.value)}
+            required
+          />
+        </div>
+        <Button onClick={prevent} name="Cadastrar" className="btn-register" type="submit" />
+        <br></br>
+        <p>
+          Já possui cadastro? <Link to={urls.login.path}>Login</Link>
+        </p>
+      </form>
   );
 };
 
