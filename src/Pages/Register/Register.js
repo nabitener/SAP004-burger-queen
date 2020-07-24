@@ -104,7 +104,7 @@ const Register = () => {
         </div>
         <Button onClick={prevent} name="Cadastrar" className="btn-register" type="submit" />
         <br></br>
-        <p>
+        <p className="p-voltar-login">
           Já possui cadastro? <Link to={urls.login.path}>Login</Link>
         </p>
       </form>
