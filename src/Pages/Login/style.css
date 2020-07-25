@@ -1,0 +1,70 @@
+body {
+  background-color: #153243;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.form-login {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 1px solid red;
+  background-color:	rgb(255, 99, 71);
+  border-radius: 5%;
+  width: 300px;
+  height: 380px;
+}
+
+.form-login:hover {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 1px solid red;
+  background-color:	rgb(255, 99, 71);
+}
+
+.welcome-container-login {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: -25px;
+  padding-top: 5%;
+  padding-bottom: -20px;
+}
+
+.welcome-message {
+  font-size: 1.3em;
+  font-family: "Prata", serif;
+  color: rgb(255, 240, 240);
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.529);
+  margin-bottom: 15px;
+}
+
+.title-login {
+  margin-bottom: 0;
+  color: rgb(255, 240, 240);
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.529);
+  font-size: 1.5em;
+}
+
+.container-button-message {
+  display: flex;
+  flex-direction: column;
+  padding: 5%;
+  margin-top: -30px;
+}
+
+.login-message {
+  margin-top: 10px;
+  font-family: "Prata", serif;
+  color: rgb(255, 240, 240);
+}
