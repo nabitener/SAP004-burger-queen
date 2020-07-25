@@ -51,8 +51,9 @@ const Register = () => {
   };
 
   return (
-      <form className="form-register">
-        <p className="p-cadastro">Cadastro</p>
+    <form className="form-register">
+      <p className="p-cadastro">Cadastro</p>
+      <section className="section-input">
         <Input
           type="text"
           id="input-name"
@@ -102,12 +103,18 @@ const Register = () => {
             required
           />
         </div>
-        <Button onClick={prevent} name="Cadastrar" className="btn-register" type="submit" />
-        <br></br>
-        <p className="p-voltar-login">
-          Já possui cadastro? <Link to={urls.login.path}>Login</Link>
-        </p>
-      </form>
+      </section>
+      <Button
+        onClick={prevent}
+        name="Cadastrar"
+        className="btn-register"
+        type="submit"
+      />
+      <br></br>
+      <p className="p-voltar-login">
+        Já possui cadastro? <Link to={urls.login.path}>Login</Link>
+      </p>
+    </form>
   );
 };
 
