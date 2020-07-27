@@ -8,6 +8,7 @@ import { urls } from '../../urlsUtils';
 import './style.css';
 import '../../reset.css';
 
+
 function Login() {
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
@@ -18,13 +19,11 @@ function Login() {
 
   firebaseAuth.onAuthStateChanged(function (user) {
     if (user) {
-      // User is signed in.
       setUserName(user.displayName);
       setUserId(user.uid);
       console.log(userId);
       console.log(userName);
     } else {
-      // User is signed out.
       setUserName('');
       setUserId('');
     }
@@ -70,6 +69,8 @@ function Login() {
   }
 
   return (
+    <>
+    <img src="../../Image/Burger_Queen01.png" alt="Logo"></img>
     <form className="form-login">
       <div className="welcome-container-login">
         <h2 className="welcome-message">Bem Vindo à Burger Queen!</h2>
@@ -101,6 +102,7 @@ function Login() {
         </p>
       </div>
     </form>
+    </>
   );
 }
 
