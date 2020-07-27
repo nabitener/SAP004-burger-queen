@@ -51,6 +51,8 @@ const Register = () => {
   };
 
   return (
+    <>
+    <img src="../../Image/Burger_Queen01.png" alt='Logo'></img>
     <form className="form-register">
       <p className="p-cadastro">Cadastro</p>
       <section className="section-input">
@@ -115,6 +117,7 @@ const Register = () => {
         Já possui cadastro? <Link to={urls.login.path}>Login</Link>
       </p>
     </form>
+    </>
   );
 };
 
