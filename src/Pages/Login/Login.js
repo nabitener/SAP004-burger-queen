@@ -12,22 +12,8 @@ import '../../reset.css';
 function Login() {
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
-  const [userName, setUserName] = useState('');
-  const [userId, setUserId] = useState('');
-
+  
   const history = useHistory();
-
-  firebaseAuth.onAuthStateChanged(function (user) {
-    if (user) {
-      setUserName(user.displayName);
-      setUserId(user.uid);
-      console.log(userId);
-      console.log(userName);
-    } else {
-      setUserName('');
-      setUserId('');
-    }
-  });
 
   function userStatus() {
     const userId = firebaseAuth.currentUser.uid;
@@ -36,7 +22,6 @@ function Login() {
       .doc(userId)
       .get()
       .then((doc) => {
-        console.log(doc.data().serviceArea);
         if (doc.data().serviceArea === 'Salão') {
           history.push(urls.hall.path);
         } else {
@@ -44,7 +29,7 @@ function Login() {
         }
       })
       .catch((error) => {
-        console.log(error.message);
+        alert(error.message);
       });
   }
 
@@ -60,10 +45,7 @@ function Login() {
         userStatus();
       })
       .catch((error) => {
-        let errorCode = error.code;
-        let errorMessage = error.message;
-        console.log(errorCode);
-        console.log(errorMessage);
+        alert(error.message);
       });
   }
 

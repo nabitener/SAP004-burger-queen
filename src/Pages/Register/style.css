@@ -7,7 +7,7 @@
   flex-direction: column;
 }
 .p-cadastro {
-  font-size: 1.5em;
+  font-size: 1.2em;
   font-weight: bold;
   color: white;
   margin-bottom: 30px;
@@ -35,8 +35,8 @@
 }
 
 .form-register:hover {
-    border: 3px solid black;
-  }
+  border: 3px solid black;
+}
 
 .section-input {
   width: 100%;
@@ -53,12 +53,13 @@
   width: 100%;
   align-items: center;
   justify-content: center;
-  font-size: 1.2em;
+  font-size: 1.1em;
   color: white;
 }
 .input-register-radio {
-  width: 25px;
+  width: 20px;
 }
+
 .btn-register {
   width: 100%;
   height: 40px;
@@ -67,14 +68,19 @@
   margin-bottom: 20px;
 }
 .p-voltar-login {
-  font-size: 20px;
+  font-size: 1em;
   margin-bottom: 10px;
   color: white;
 }
 
 .link-login {
   color: white;
+  font-size: 1.1em;
   text-decoration-line: underline;
+}
+
+.link-login:hover{
+  font-weight: bold;
 }
 
 @media screen and (min-width: 1025px) {
@@ -85,12 +91,12 @@
   }
   .main-register {
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
   }
-.figure-register{
+  .figure-register {
     width: 40%;
-}
-.logo-register{
+  }
+  .logo-register {
     width: 70%;
-}
+  }
 }

@@ -5,8 +5,7 @@ import '../../reset.css';
 import { urls } from '../../urlsUtils';
 import Input from '../../Components/Inputs/index';
 import Button from '../../Components/Buttons/index';
-import { firebaseAuth } from '../../firebaseUtils';
-import { firebaseStore } from '../../firebaseUtils';
+import { firebaseAuth, firebaseStore } from '../../firebaseUtils';
 import Burger_Queen01 from '../../Image/Burger_Queen01.png';
 
 const Register = () => {
@@ -57,7 +56,7 @@ const Register = () => {
         <img src={Burger_Queen01} alt="Logo" className="logo-register"></img>
       </figure>
       <form className="form-register">
-        <p className="p-cadastro">Cadastro</p>
+        <p className="p-cadastro">Registre-se</p>
         <section className="section-input">
           <Input
             type="text"
