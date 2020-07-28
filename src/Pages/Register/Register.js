@@ -7,6 +7,7 @@ import Input from '../../Components/Inputs/index';
 import Button from '../../Components/Buttons/index';
 import { firebaseAuth } from '../../firebaseUtils';
 import { firebaseStore } from '../../firebaseUtils';
+import Burger_Queen01 from '../../Image/Burger_Queen01.png';
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -51,73 +52,78 @@ const Register = () => {
   };
 
   return (
-    <>
-    <img src="../../Image/Burger_Queen01.png" alt='Logo'></img>
-    <form className="form-register">
-      <p className="p-cadastro">Cadastro</p>
-      <section className="section-input">
-        <Input
-          type="text"
-          id="input-name"
-          placeholder="Digite seu Nome"
-          className="input-register"
-          value={name}
-          onChange={(e) => setName(e.currentTarget.value)}
-          required
-        />
-        <Input
-          type="email"
-          id="input-email"
-          placeholder="Digite o e-mail"
-          className="input-register"
-          value={email}
-          onChange={(e) => setEmail(e.currentTarget.value)}
-          required
-        />
-        <Input
-          type="password"
-          id="input-password"
-          placeholder="Digite uma senha"
-          className="input-register"
-          value={password}
-          onChange={(e) => setPassword(e.currentTarget.value)}
-          required
-        />
-        <div className="div-input">
-          <label htmlFor="input-area-cozinha">Cozinha</label>
+    <main className="main-register">
+      <figure className="figure-register">
+        <img src={Burger_Queen01} alt="Logo" className="logo-register"></img>
+      </figure>
+      <form className="form-register">
+        <p className="p-cadastro">Cadastro</p>
+        <section className="section-input">
           <Input
-            type="radio"
-            className="input-register-radio"
-            id="input-area-cozinha"
-            name="area"
-            value="Cozinha"
-            onChange={(e) => setService(e.currentTarget.value)}
+            type="text"
+            id="input-name"
+            placeholder="Digite seu Nome"
+            className="input-register"
+            value={name}
+            onChange={(e) => setName(e.currentTarget.value)}
             required
           />
-          <label htmlFor="input-area-salao">Salão</label>
           <Input
-            type="radio"
-            id="input-area-salao"
-            className="input-register-radio"
-            name="area"
-            value="Salão"
-            onChange={(e) => setService(e.currentTarget.value)}
+            type="email"
+            id="input-email"
+            placeholder="Digite o e-mail"
+            className="input-register"
+            value={email}
+            onChange={(e) => setEmail(e.currentTarget.value)}
             required
           />
-        </div>
-      </section>
-      <Button
-        onClick={prevent}
-        name="Cadastrar"
-        className="btn-register"
-        type="submit"
-      />
-      <br></br>
-      <p className="p-voltar-login">
-        Já possui cadastro? <Link to={urls.login.path}>Login</Link>
-      </p>
-    </form>
-    </>
+          <Input
+            type="password"
+            id="input-password"
+            placeholder="Digite uma senha"
+            className="input-register"
+            value={password}
+            onChange={(e) => setPassword(e.currentTarget.value)}
+            required
+          />
+          <div className="div-input">
+            <label htmlFor="input-area-cozinha">Cozinha</label>
+            <Input
+              type="radio"
+              className="input-register-radio"
+              id="input-area-cozinha"
+              name="area"
+              value="Cozinha"
+              onChange={(e) => setService(e.currentTarget.value)}
+              required
+            />
+            <label htmlFor="input-area-salao">Salão</label>
+            <Input
+              type="radio"
+              id="input-area-salao"
+              className="input-register-radio"
+              name="area"
+              value="Salão"
+              onChange={(e) => setService(e.currentTarget.value)}
+              required
+            />
+          </div>
+        </section>
+        <Button
+          onClick={prevent}
+          name="Cadastrar"
+          className="btn-register"
+          type="submit"
+        />
+        <br></br>
+        <p className="p-voltar-login">
+          Já possui cadastro?{' '}
+          <Link to={urls.login.path} className="link-login">
+            Login
+          </Link>
+        </p>
+      </form>
+    </main>
   );
 };
 
