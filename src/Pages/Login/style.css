@@ -1,34 +1,56 @@
-body {
-  background-color: #153243;
-}
-
-#root {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-}
-
 .form-login {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  border: 1px solid red;
-  background-color:	rgb(255, 99, 71);
+  background-color: #660000;
   border-radius: 5%;
-  width: 300px;
-  height: 380px;
+  width: 70%;
+  height: 100%;
+  margin-bottom: 30px;
 }
 
 .form-login:hover {
+  border: 3px solid black;
+}
+
+.figure-login {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-login {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: center;
-  border: 1px solid red;
-  background-color:	rgb(255, 99, 71);
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+
+.div-input-login {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-login {
+  width: 90%;
+}
+
+.btn-login {
+  width: 90%;
+  height: 40px;
+  font-size: 20px;
+}
+
+.link-register {
+  font-size: 20px;
+  color: white;
+  text-decoration-line: underline;
 }
 
 .welcome-container-login {
@@ -42,29 +64,35 @@ body {
 }
 
 .welcome-message {
-  font-size: 1.3em;
-  font-family: "Prata", serif;
+  font-size: 1.2em;
   color: rgb(255, 240, 240);
-  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.529);
   margin-bottom: 15px;
 }
 
 .title-login {
   margin-bottom: 0;
   color: rgb(255, 240, 240);
-  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.529);
   font-size: 1.5em;
-}
-
-.container-button-message {
-  display: flex;
-  flex-direction: column;
-  padding: 5%;
-  margin-top: -30px;
 }
 
 .login-message {
   margin-top: 10px;
-  font-family: "Prata", serif;
   color: rgb(255, 240, 240);
+}
+
+@media screen and (min-width: 1025px) {
+  .main-login {
+    flex-direction: row;
+  }
+  .logo-login{
+    width: 70%;
+  }
+  .form-login {
+    height: 70%;
+    width: 40%;
+    margin-right: 30px;
+  }
+  .figure-login{
+    width: 40%;
+  }
 }

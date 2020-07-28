@@ -5,9 +5,9 @@ import { firebaseAuth } from '../../firebaseUtils';
 import { firebaseStore } from '../../firebaseUtils';
 import { useHistory, Link } from 'react-router-dom';
 import { urls } from '../../urlsUtils';
+import Burger_Queen01 from '../../Image/Burger_Queen01.png';
 import './style.css';
 import '../../reset.css';
-
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -58,7 +58,6 @@ function Login() {
       .signInWithEmailAndPassword(email, pass)
       .then(() => {
         userStatus();
-        console.log('OK');
       })
       .catch((error) => {
         let errorCode = error.code;
@@ -69,40 +68,45 @@ function Login() {
   }
 
   return (
-    <>
-    <img src="../../Image/Burger_Queen01.png" alt="Logo"></img>
-    <form className="form-login">
-      <div className="welcome-container-login">
-        <h2 className="welcome-message">Bem Vindo à Burger Queen!</h2>
-        <h2 className="welcome-message">Login</h2>
-      </div>
-      <Input
-        type="text"
-        id="input-email"
-        className={'input-login'}
-        placeholder="Digite seu e-mail"
-        value={email}
-        onChange={(e) => setEmail(e.currentTarget.value)}
-        required
-      />
-
-      <Input
-        type="password"
-        id="input-password"
-        className={'input-login'}
-        placeholder="Digite sua senha"
-        value={pass}
-        onChange={(e) => setPass(e.currentTarget.value)}
-        required
-      />
-      <div className="container-button-message">
-        <Button id="submit-button" onClick={loginCall} name="Entrar" />
+    <main className="main-login">
+      <figure className="figure-login">
+      <img src={Burger_Queen01} alt="Logo" className="logo-login"></img>
+      </figure>
+      <form className="form-login">
+        <div className="welcome-container-login">
+          <h2 className="welcome-message">Bem Vindo à Burger Queen!</h2>
+        </div>
+        <div className='div-input-login'>
+        <Input
+          type="text"
+          id="input-email"
+          className={'input-login'}
+          placeholder="Digite seu e-mail"
+          value={email}
+          onChange={(e) => setEmail(e.currentTarget.value)}
+          required
+        />
+        <Input
+          type="password"
+          id="input-password"
+          className={'input-login'}
+          placeholder="Digite sua senha"
+          value={pass}
+          onChange={(e) => setPass(e.currentTarget.value)}
+          required
+        />
+        </div>
+        <Button
+          id="submit-button"
+          onClick={loginCall}
+          name="Entrar"
+          className="btn-login"
+        />
         <p className="login-message">
-          Não tem registro? <Link to={urls.register.path}>Registre-se!</Link>
+          Não tem registro? <Link to={urls.register.path} className='link-register'>Registre-se!</Link>
         </p>
-      </div>
-    </form>
-    </>
+      </form>
+    </main>
   );
 }
 
