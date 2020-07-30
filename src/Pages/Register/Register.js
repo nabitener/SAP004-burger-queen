@@ -5,8 +5,7 @@ import '../../reset.css';
 import { urls } from '../../urlsUtils';
 import Input from '../../Components/Inputs/index';
 import Button from '../../Components/Buttons/index';
-import { firebaseAuth } from '../../firebaseUtils';
-import { firebaseStore } from '../../firebaseUtils';
+import { firebaseAuth, firebaseStore } from '../../firebaseUtils';
 import Burger_Queen01 from '../../Image/Burger_Queen01.png';
 
 const Register = () => {
@@ -51,13 +50,22 @@ const Register = () => {
       });
   };
 
+  const showPass = () => {
+    let tipo = document.querySelector('#input-password');
+    if (tipo.type === 'password') {
+      tipo.type = 'text';
+    } else {
+      tipo.type = 'password';
+    }
+  };
+
   return (
     <main className="main-register">
       <figure className="figure-register">
         <img src={Burger_Queen01} alt="Logo" className="logo-register"></img>
       </figure>
       <form className="form-register">
-        <p className="p-cadastro">Cadastro</p>
+        <p className="p-cadastro">Registre-se</p>
         <section className="section-input">
           <Input
             type="text"
@@ -77,15 +85,23 @@ const Register = () => {
             onChange={(e) => setEmail(e.currentTarget.value)}
             required
           />
-          <Input
-            type="password"
-            id="input-password"
-            placeholder="Digite uma senha"
-            className="input-register"
-            value={password}
-            onChange={(e) => setPassword(e.currentTarget.value)}
-            required
-          />
+          <div className="div-password">
+            <Input
+              type="password"
+              id="input-password"
+              placeholder="Digite uma senha"
+              className="input-register"
+              value={password}
+              onChange={(e) => setPassword(e.currentTarget.value)}
+              required
+            />
+            <img
+              src="http://i.stack.imgur.com/H9Sb2.png"
+              className="eyes"
+              alt="Olho"
+              onClick={showPass}
+            ></img>
+          </div>
           <div className="div-input">
             <label htmlFor="input-area-cozinha">Cozinha</label>
             <Input

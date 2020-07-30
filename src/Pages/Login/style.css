@@ -47,22 +47,6 @@
   font-size: 20px;
 }
 
-.link-register {
-  font-size: 20px;
-  color: white;
-  text-decoration-line: underline;
-}
-
-.welcome-container-login {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  margin-bottom: -25px;
-  padding-top: 5%;
-  padding-bottom: -20px;
-}
-
 .welcome-message {
   font-size: 1.2em;
   color: rgb(255, 240, 240);
@@ -76,13 +60,38 @@
 }
 
 .login-message {
+  font-size: 1em;
   margin-top: 10px;
   color: rgb(255, 240, 240);
+}
+
+.link-register {
+  font-size: 1.1em;
+  color: white;
+  text-decoration-line: underline;
+}
+
+.link-register:hover{
+  font-weight: bold;
+}
+.div-password{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+.eyes{
+  cursor: pointer;
+  position: absolute;
+  right: 5%;
+  width: 7%;
 }
 
 @media screen and (min-width: 1025px) {
   .main-login {
     flex-direction: row;
+    justify-content: center;
   }
   .logo-login{
     width: 70%;
