@@ -1,25 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import Button from '../../Components/Buttons/index';
-import Logout from '../Login/Logout';
-import { urls } from '../../urlsUtils';
-import { useHistory } from 'react-router-dom';
 import Pedidos from '../../Pedidos';
 import { firebaseAuth, firebaseStore } from '../../firebaseUtils';
-import Burger_Queen01 from '../../Image/Burger_Queen01.png';
 import './style.css';
 import '../../reset.css';
+import Header from '../../Components/Header/Header';
+import Input from '../../Components/Inputs';
 
 const Hall = () => {
-  let [name, setName] = useState('nome');
+  const [name, setName] = useState('nome');
+  const [cafe, setCafe] = useState(true);
+  const [tarde, setTarde] = useState(false);
 
   useEffect(() => {}, [name]);
-
-  const history = useHistory();
-
-  const exit = () => {
-    Logout();
-    history.push(urls.login.path);
-  };
 
   firebaseAuth.onAuthStateChanged((user) => {
     if (user != null) {
@@ -36,12 +28,33 @@ const Hall = () => {
   });
 
   return (
-    <main className="main-hall-kitchen">
-      <header className="header-hall-kitchen">
-        <img src={Burger_Queen01} className="img-logo-hall-kitchen" alt="Logo"></img>
-        <Button onClick={exit} type="submit" name="Sair" className="btn-logout-hall-kitchen" />
-      </header>
+    <main className="main-hall">
+      <Header />
       <p>Olá {name}</p>
+      <div className="tabs-container">
+        <Input
+          type="radio"
+          name="menu"
+          className="tabs"
+          id="tab1"
+          value="cafe"
+          checked={(cafe === true)}
+          onChange={() => setCafe(!cafe)}
+        />
+        <label htmlFor="tab1">Café da Manhã</label>
+        <div>Café da Manhã</div>
+        <Input
+          type="radio"
+          name="menu"
+          className="tabs"
+          id="tab2"
+          value="tarde"
+          checked={(tarde === true)}
+          onChange={() => setTarde(!tarde)}
+        />
+        <label htmlFor="tab2">Almoço e Jantar</label>
+        <div>Almoço e Jantar</div>
+      </div>
       <Pedidos />
     </main>
   );

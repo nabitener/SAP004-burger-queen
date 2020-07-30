@@ -74,6 +74,19 @@
 .link-register:hover{
   font-weight: bold;
 }
+.div-password{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+.eyes{
+  cursor: pointer;
+  position: absolute;
+  right: 5%;
+  width: 7%;
+}
 
 @media screen and (min-width: 1025px) {
   .main-login {

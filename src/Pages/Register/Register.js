@@ -50,6 +50,15 @@ const Register = () => {
       });
   };
 
+  const showPass = () => {
+    let tipo = document.querySelector('#input-password');
+    if (tipo.type === 'password') {
+      tipo.type = 'text';
+    } else {
+      tipo.type = 'password';
+    }
+  };
+
   return (
     <main className="main-register">
       <figure className="figure-register">
@@ -76,15 +85,23 @@ const Register = () => {
             onChange={(e) => setEmail(e.currentTarget.value)}
             required
           />
-          <Input
-            type="password"
-            id="input-password"
-            placeholder="Digite uma senha"
-            className="input-register"
-            value={password}
-            onChange={(e) => setPassword(e.currentTarget.value)}
-            required
-          />
+          <div className="div-password">
+            <Input
+              type="password"
+              id="input-password"
+              placeholder="Digite uma senha"
+              className="input-register"
+              value={password}
+              onChange={(e) => setPassword(e.currentTarget.value)}
+              required
+            />
+            <img
+              src="http://i.stack.imgur.com/H9Sb2.png"
+              className="eyes"
+              alt="Olho"
+              onClick={showPass}
+            ></img>
+          </div>
           <div className="div-input">
             <label htmlFor="input-area-cozinha">Cozinha</label>
             <Input

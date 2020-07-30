@@ -4,7 +4,7 @@ import Input from '../src/Components/Inputs/index';
 import { firebaseStore } from './firebaseUtils';
 
 const Pedidos = () => {
-  let [pedido, setPedido] = useState('0000');
+  const [pedido, setPedido] = useState('0000');
   const [mesa, setMesa] = useState('');
   const [cliente, setCliente] = useState('');
   //const [total, setTotal] = useState('');
@@ -31,7 +31,7 @@ const Pedidos = () => {
         status: 'Aberto',
         mesa: mesa,
         cliente: cliente,
-        //atendente: name,
+        //funcionário: name,
         timestamps: firebaseStore.Timestamp.fromDate(new Date())
           .toDate()
           .toLocaleString('pt-BR'),
@@ -50,11 +50,11 @@ const Pedidos = () => {
       .collection('menu')
       .doc('suco de fruta')
       .onSnapshot((doc) =>
-        doc.forEach((element) => {
+        doc.forEach((element, indice) => {
           itens.push(
             <tr>
-              <th>{element.data().item}</th>
-              <th>{element.data().price}</th>
+              <th key={`${element.data().item}${indice}`}>{element.data().item}</th>
+              <th key={`${element.data().price}${indice}`}>{element.data().price}</th>
             </tr>
           );
         })
