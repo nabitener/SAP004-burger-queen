@@ -6,7 +6,8 @@
 }
 
 .btn:hover{
-    background-color: #a08040;
+    background-color: #f8a809;
+    border: 1px solid black;
     cursor: pointer;
     transition: 0.5s;
 }

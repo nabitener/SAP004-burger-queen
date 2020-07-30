@@ -1,22 +1,33 @@
-import React from 'react';
-import Button from '../../Components/Buttons/index';
-import Logout from '../Login/Logout';
-import { urls } from '../../urlsUtils';
-import { useHistory } from 'react-router-dom';
+import React, {useEffect, useState } from 'react';
+import Header from '../../Components/Header/Header';
+import { firebaseAuth, firebaseStore } from '../../firebaseUtils';
+import './style.css';
+import '../../reset.css';
 
 const Kitchen = () => {
-  const history = useHistory();
+  const [name, setName] = useState('nome');
 
-  const exit = () => {
-    Logout();
-    history.push(urls.login.path);
-  };
+  useEffect(() => {}, [name]);
+
+  firebaseAuth.onAuthStateChanged((user) => {
+    if (user != null) {
+      const userId = firebaseAuth.currentUser.uid;
+      firebaseStore
+        .collection('users')
+        .doc(userId)
+        .get()
+        .then((doc) => {
+          const nomeFuncionario = doc.data().displayName;
+          return setName(nomeFuncionario);
+        });
+    }
+  });
 
   return (
-    <div>
-      <p>Olá cozinha!</p>
-      <Button onClick={exit} type="submit" name="Logout" />
-    </div>
+    <main className="main-kitchen">
+      <Header />
+      <p>Olá {name}!</p>
+    </main>
   );
 };
 

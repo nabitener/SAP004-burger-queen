@@ -12,22 +12,8 @@ import '../../reset.css';
 function Login() {
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
-  const [userName, setUserName] = useState('');
-  const [userId, setUserId] = useState('');
 
   const history = useHistory();
-
-  firebaseAuth.onAuthStateChanged(function (user) {
-    if (user) {
-      setUserName(user.displayName);
-      setUserId(user.uid);
-      console.log(userId);
-      console.log(userName);
-    } else {
-      setUserName('');
-      setUserId('');
-    }
-  });
 
   function userStatus() {
     const userId = firebaseAuth.currentUser.uid;
@@ -36,7 +22,6 @@ function Login() {
       .doc(userId)
       .get()
       .then((doc) => {
-        console.log(doc.data().serviceArea);
         if (doc.data().serviceArea === 'Salão') {
           history.push(urls.hall.path);
         } else {
@@ -44,7 +29,7 @@ function Login() {
         }
       })
       .catch((error) => {
-        console.log(error.message);
+        alert(error.message);
       });
   }
 
@@ -60,41 +45,55 @@ function Login() {
         userStatus();
       })
       .catch((error) => {
-        let errorCode = error.code;
-        let errorMessage = error.message;
-        console.log(errorCode);
-        console.log(errorMessage);
+        alert(error.message);
       });
   }
+
+  const showPass = () => {
+    let tipo = document.querySelector('#input-password');
+    if (tipo.type === 'password') {
+      tipo.type = 'text';
+    } else {
+      tipo.type = 'password';
+    }
+  };
 
   return (
     <main className="main-login">
       <figure className="figure-login">
-      <img src={Burger_Queen01} alt="Logo" className="logo-login"></img>
+        <img src={Burger_Queen01} alt="Logo" className="logo-login"></img>
       </figure>
-      <form className="form-login">
+      <form className="form-login" method="POST">
         <div className="welcome-container-login">
           <h2 className="welcome-message">Bem Vindo à Burger Queen!</h2>
         </div>
-        <div className='div-input-login'>
-        <Input
-          type="text"
-          id="input-email"
-          className={'input-login'}
-          placeholder="Digite seu e-mail"
-          value={email}
-          onChange={(e) => setEmail(e.currentTarget.value)}
-          required
-        />
-        <Input
-          type="password"
-          id="input-password"
-          className={'input-login'}
-          placeholder="Digite sua senha"
-          value={pass}
-          onChange={(e) => setPass(e.currentTarget.value)}
-          required
-        />
+        <div className="div-input-login">
+          <Input
+            type="text"
+            id="input-email"
+            className={'input-login'}
+            placeholder="Digite seu e-mail"
+            value={email}
+            onChange={(e) => setEmail(e.currentTarget.value)}
+            required
+          />
+          <div className="div-password">
+            <Input
+              type="password"
+              id="input-password"
+              className={'input-login'}
+              placeholder="Digite sua senha"
+              value={pass}
+              onChange={(e) => setPass(e.currentTarget.value)}
+              required
+            />
+              <img
+                src="http://i.stack.imgur.com/H9Sb2.png"
+                className="eyes"
+                alt="Olho"
+                onClick={showPass}
+              ></img>
+           </div>
         </div>
         <Button
           id="submit-button"
@@ -103,7 +102,10 @@ function Login() {
           className="btn-login"
         />
         <p className="login-message">
-          Não tem registro? <Link to={urls.register.path} className='link-register'>Registre-se!</Link>
+          Não tem registro?{' '}
+          <Link to={urls.register.path} className="link-register">
+            Registre-se!
+          </Link>
         </p>
       </form>
     </main>

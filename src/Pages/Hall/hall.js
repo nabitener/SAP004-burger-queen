@@ -1,22 +1,62 @@
-import React from 'react';
-import Button from '../../Components/Buttons/index';
-import Logout from '../Login/Logout';
-import { urls } from '../../urlsUtils';
-import { useHistory } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import Pedidos from '../../Pedidos';
+import { firebaseAuth, firebaseStore } from '../../firebaseUtils';
+import './style.css';
+import '../../reset.css';
+import Header from '../../Components/Header/Header';
+import Input from '../../Components/Inputs';
 
 const Hall = () => {
-  const history = useHistory();
+  const [name, setName] = useState('nome');
+  const [cafe, setCafe] = useState(true);
+  const [tarde, setTarde] = useState(false);
 
-  const exit = () => {
-    Logout();
-    history.push(urls.login.path);
-  };
+  useEffect(() => {}, [name]);
+
+  firebaseAuth.onAuthStateChanged((user) => {
+    if (user != null) {
+      const userId = firebaseAuth.currentUser.uid;
+      firebaseStore
+        .collection('users')
+        .doc(userId)
+        .get()
+        .then((doc) => {
+          const nomeFuncionario = doc.data().displayName;
+          return setName(nomeFuncionario);
+        });
+    }
+  });
 
   return (
-    <div>
-      <p>Olá Hall</p>
-      <Button onClick={exit} type="submit" name="Logout" />
-    </div>
+    <main className="main-hall">
+      <Header />
+      <p>Olá {name}</p>
+      <div className="tabs-container">
+        <Input
+          type="radio"
+          name="menu"
+          className="tabs"
+          id="tab1"
+          value="cafe"
+          checked={(cafe === true)}
+          onChange={() => setCafe(!cafe)}
+        />
+        <label htmlFor="tab1">Café da Manhã</label>
+        <div>Café da Manhã</div>
+        <Input
+          type="radio"
+          name="menu"
+          className="tabs"
+          id="tab2"
+          value="tarde"
+          checked={(tarde === true)}
+          onChange={() => setTarde(!tarde)}
+        />
+        <label htmlFor="tab2">Almoço e Jantar</label>
+        <div>Almoço e Jantar</div>
+      </div>
+      <Pedidos />
+    </main>
   );
 };
 

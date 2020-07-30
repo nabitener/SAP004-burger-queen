@@ -6,7 +6,7 @@ const Logout = () => {
     firebaseAuth
     .signOut()
     .then(() => {
-    console.log('saiu')
+    alert('Volte Sempre')
   })
   )
 };
