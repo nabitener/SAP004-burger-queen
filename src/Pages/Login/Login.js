@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import Button from '../../Components/Buttons/index.js';
 import Input from '../../Components/Inputs/index.js';
+import Logo from '../../Components/Logo/Logo';
 import { firebaseAuth } from '../../firebaseUtils';
 import { firebaseStore } from '../../firebaseUtils';
 import { useHistory, Link } from 'react-router-dom';
 import { urls } from '../../urlsUtils';
-import Burger_Queen01 from '../../Image/Burger_Queen01.png';
 import './style.css';
 import '../../reset.css';
 
@@ -60,9 +60,7 @@ function Login() {
 
   return (
     <main className="main-login">
-      <figure className="figure-login">
-        <img src={Burger_Queen01} alt="Logo" className="logo-login"></img>
-      </figure>
+      <Logo />
       <form className="form-login" method="POST">
         <div className="welcome-container-login">
           <h2 className="welcome-message">Bem Vindo à Burger Queen!</h2>

@@ -6,7 +6,7 @@ import { urls } from '../../urlsUtils';
 import Input from '../../Components/Inputs/index';
 import Button from '../../Components/Buttons/index';
 import { firebaseAuth, firebaseStore } from '../../firebaseUtils';
-import Burger_Queen01 from '../../Image/Burger_Queen01.png';
+import Logo from '../../Components/Logo/Logo';
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -61,9 +61,7 @@ const Register = () => {
 
   return (
     <main className="main-register">
-      <figure className="figure-register">
-        <img src={Burger_Queen01} alt="Logo" className="logo-register"></img>
-      </figure>
+      <Logo/>
       <form className="form-register">
         <p className="p-cadastro">Registre-se</p>
         <section className="section-input">
