@@ -1,36 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Pedidos from '../../Pedidos';
-import { firebaseAuth, firebaseStore } from '../../firebaseUtils';
 import './style.css';
 import '../../reset.css';
 import Header from '../../Components/Header/Header';
 import Input from '../../Components/Inputs';
 
 const Hall = () => {
-  const [name, setName] = useState('nome');
   const [cafe, setCafe] = useState(true);
   const [tarde, setTarde] = useState(false);
 
-  useEffect(() => {}, [name]);
-
-  firebaseAuth.onAuthStateChanged((user) => {
-    if (user != null) {
-      const userId = firebaseAuth.currentUser.uid;
-      firebaseStore
-        .collection('users')
-        .doc(userId)
-        .get()
-        .then((doc) => {
-          const nomeFuncionario = doc.data().displayName;
-          return setName(nomeFuncionario);
-        });
-    }
-  });
-
+  
   return (
     <main className="main-hall">
       <Header />
-      <p>Olá {name}</p>
       <div className="tabs-container">
         <Input
           type="radio"

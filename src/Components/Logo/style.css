@@ -1,0 +1,15 @@
+.figure-login {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (min-width: 1025px) {
+    .logo-login{
+        width: 70%;
+    }
+    .figure-login{
+        width: 40%;
+    }
+}

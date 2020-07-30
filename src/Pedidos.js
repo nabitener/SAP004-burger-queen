@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Button from '../src/Components/Buttons/index';
 import Input from '../src/Components/Inputs/index';
 import { firebaseStore } from './firebaseUtils';
+import './reset.css';
+import './stylePedidos.css'
 
 const Pedidos = () => {
   const [pedido, setPedido] = useState('0000');
@@ -44,23 +46,6 @@ const Pedidos = () => {
       });
   };
 
-  const item = () => {
-    let itens = [];
-    firebaseStore
-      .collection('menu')
-      .doc('suco de fruta')
-      .onSnapshot((doc) =>
-        doc.forEach((element, indice) => {
-          itens.push(
-            <tr>
-              <th key={`${element.data().item}${indice}`}>{element.data().item}</th>
-              <th key={`${element.data().price}${indice}`}>{element.data().price}</th>
-            </tr>
-          );
-        })
-      );
-  };
-
   return (
     <form className="form-pedidos">
       <p>Pedido n°: {pedido}</p>
@@ -87,11 +72,11 @@ const Pedidos = () => {
         <thead>
           <tr>
             <th>Item</th>
+            <th>Quantidade</th>
             <th>Preço</th>
           </tr>
         </thead>
         <tbody>
-          {item}
           <tr>
             <th>Total</th>
             <th>R$ </th>
