@@ -48,8 +48,9 @@ const Pedidos = () => {
 
   return (
     <form className="form-pedidos">
-      <p>Pedido n°: {pedido}</p>
-      <label>
+      <p className="p-pedidos">Pedido n°: {pedido}</p>
+      <div className="div-input">
+      <label className="label-input">
         Mesa:
         <Input
           className="input-pedido"
@@ -59,15 +60,16 @@ const Pedidos = () => {
           onChange={(e) => setMesa(e.currentTarget.value)}
         />
       </label>
-      <label>
+      <label className="label-input">
         Cliente:
         <Input
-          className="input-pedido"
+          className="input-pedido cliente"
           type="text"
           value={cliente}
           onChange={(e) => setCliente(e.currentTarget.value)}
         />
       </label>
+      </div>
       <table>
         <thead>
           <tr>
