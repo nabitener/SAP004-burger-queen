@@ -4,10 +4,14 @@ import './style.css';
 import '../../reset.css';
 import Header from '../../Components/Header/Header';
 import Input from '../../Components/Inputs';
+import MenuCards from './MenuCards.jsx';
 
 const Hall = () => {
   const [cafe, setCafe] = useState(true);
   const [tarde, setTarde] = useState(false);
+
+
+  MenuCards().then((x) => console.log(x))
 
   return (
     <main className="main-hall">
@@ -24,7 +28,10 @@ const Hall = () => {
             onChange={() => setCafe(!cafe)}
           />
           <label className="label" htmlFor="tab1">Café da Manhã</label>
-          <div className="div-conteudo">Café da Manhã</div>
+          <div className="div-conteudo">Café da Manhã
+            {/* {MenuCards('Café da Manhã').then((x) => x)} */}
+            {/* {MenuCards()} */}
+          </div>
           <Input
             type="radio"
             name="menu"
@@ -35,7 +42,10 @@ const Hall = () => {
             onChange={() => setTarde(!tarde)}
           />
           <label className="label" htmlFor="tab2">Almoço e Jantar</label>
-          <div className="div-conteudo">Almoço e Jantar</div>
+          <div className="div-conteudo">Almoço e Jantar
+            {/* {MenuCards('Almoço e Jantar').then((x) => x)} */}
+            {/* {MenuCards()} */}
+          </div>
         </div>
         <Pedidos />
       </div>
