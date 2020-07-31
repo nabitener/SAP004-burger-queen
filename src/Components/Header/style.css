@@ -8,10 +8,17 @@
   }
   
   .img-logo-hall-kitchen{
-    width: 5%;
+    width: 10%;
   }
   
   .btn-logout-hall-kitchen{
     height: 30px;
+    width: 5%;
     margin-right: 15px;
+  }
+
+  .name{
+    font-weight: bold;
+    color: #ffffff;
+    margin-left: 5px;
   }

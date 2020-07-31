@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Button from '../src/Components/Buttons/index';
 import Input from '../src/Components/Inputs/index';
 import { firebaseStore } from './firebaseUtils';
+import './reset.css';
+import './stylePedidos.css'
 
 const Pedidos = () => {
   const [pedido, setPedido] = useState('0000');
@@ -44,27 +46,11 @@ const Pedidos = () => {
       });
   };
 
-  const item = () => {
-    let itens = [];
-    firebaseStore
-      .collection('menu')
-      .doc('suco de fruta')
-      .onSnapshot((doc) =>
-        doc.forEach((element, indice) => {
-          itens.push(
-            <tr>
-              <th key={`${element.data().item}${indice}`}>{element.data().item}</th>
-              <th key={`${element.data().price}${indice}`}>{element.data().price}</th>
-            </tr>
-          );
-        })
-      );
-  };
-
   return (
     <form className="form-pedidos">
-      <p>Pedido n°: {pedido}</p>
-      <label>
+      <p className="p-pedidos">Pedido n°: {pedido}</p>
+      <div className="div-input">
+      <label className="label-input">
         Mesa:
         <Input
           className="input-pedido"
@@ -74,24 +60,25 @@ const Pedidos = () => {
           onChange={(e) => setMesa(e.currentTarget.value)}
         />
       </label>
-      <label>
+      <label className="label-input">
         Cliente:
         <Input
-          className="input-pedido"
+          className="input-pedido cliente"
           type="text"
           value={cliente}
           onChange={(e) => setCliente(e.currentTarget.value)}
         />
       </label>
+      </div>
       <table>
         <thead>
           <tr>
             <th>Item</th>
+            <th>Quantidade</th>
             <th>Preço</th>
           </tr>
         </thead>
         <tbody>
-          {item}
           <tr>
             <th>Total</th>
             <th>R$ </th>

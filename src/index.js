@@ -7,22 +7,17 @@ import Register from './Pages/Register/Register.js';
 import Kitchen from './Pages/Kitchen/kitchen.js';
 import Hall from './Pages/Hall/hall.js';
 import Login from './Pages/Login/Login.js';
-import { AuthProvider } from '../src/Pages/Login/Auth';
 import PrivateRoute from '../src/Pages/Login/PrivateRoute';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <AuthProvider>
-      <Router>
-        <Switch>
-          <Route exact path={urls.login.path} component={Login} />
-          <Route path={urls.register.path} component={Register} />
-          <PrivateRoute path={urls.kitchen.path} component={Kitchen} />
-          <PrivateRoute path={urls.hall.path} component={Hall} />
-        </Switch>
-      </Router>
-    </AuthProvider>
-  </React.StrictMode>,
+  <Router>
+    <Switch>
+      <Route exact path={urls.login.path} component={Login} />
+      <Route path={urls.register.path} component={Register} />
+      <PrivateRoute path={urls.kitchen.path} component={Kitchen} />
+      <PrivateRoute path={urls.hall.path} component={Hall} />
+    </Switch>
+  </Router>,
   document.getElementById('root')
 );
 
