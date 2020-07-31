@@ -9,7 +9,7 @@
 .p-cadastro {
   font-size: 1.2em;
   font-weight: bold;
-  color: white;
+  color: rgb(255, 240, 240);
   margin-bottom: 30px;
   margin-top: 10px;
 }
@@ -47,7 +47,7 @@
   align-items: center;
   justify-content: center;
   font-size: 1.1em;
-  color: white;
+  color: rgb(255, 240, 240);
 }
 .input-register-radio {
   width: 20px;
@@ -63,11 +63,11 @@
 .p-voltar-login {
   font-size: 1em;
   margin-bottom: 10px;
-  color: white;
+  color: rgb(255, 240, 240);
 }
 
 .link-login {
-  color: white;
+  color: rgb(255, 240, 240);
   font-size: 1.1em;
   text-decoration-line: underline;
 }
