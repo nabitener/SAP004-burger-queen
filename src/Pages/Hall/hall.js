@@ -5,14 +5,39 @@ import '../../reset.css';
 import Header from '../../Components/Header/Header';
 import Input from '../../Components/Inputs';
 import MenuCards from './MenuCards.jsx';
-import firebaseStore from '../../firebaseUtils';
+import firebaseStore from '../../firebaseUtils.js';
 
 const Hall = () => {
   const [cafe, setCafe] = useState(true);
   const [tarde, setTarde] = useState(false);
 
 
- // MenuCards().then((x) => console.log(x))
+  const [menu, setMenu] = useState(null);
+  const [menuCafe, setMenuCafe] = useState(null);
+  const [menuDia, setMenuDia] = useState(null);
+
+  const createMenuCafe = e => {
+    e.preventDefault();
+    setMenu('createMenuCafe');
+    firebaseStore.collection('menu').get()
+    .then(querySnapshot => {
+      querySnapshot.forEach(doc => setMenuCafe(doc.data()));
+    });
+  }
+
+  const createMenuDia = e => {
+    e.preventDefault();
+    setMenu('createMenuDia');
+    firebaseStore.collection('menu').get()
+    .then(querySnapshot => {
+      querySnapshot.forEach(doc => setMenuDia(doc.data()));
+    });
+  }
+
+  console.log(createMenuCafe());
+  console.log(createMenuDia());
+
+  // MenuCards().then((x) => console.log(x))
 
   return (
     <main className="main-hall">
