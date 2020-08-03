@@ -5,13 +5,14 @@ import '../../reset.css';
 import Header from '../../Components/Header/Header';
 import Input from '../../Components/Inputs';
 import MenuCards from './MenuCards.jsx';
+import firebaseStore from '../../firebaseUtils';
 
 const Hall = () => {
   const [cafe, setCafe] = useState(true);
   const [tarde, setTarde] = useState(false);
 
 
-  MenuCards().then((x) => console.log(x))
+ // MenuCards().then((x) => console.log(x))
 
   return (
     <main className="main-hall">
@@ -30,7 +31,7 @@ const Hall = () => {
           <label className="label" htmlFor="tab1">Café da Manhã</label>
           <div className="div-conteudo">Café da Manhã
             {/* {MenuCards('Café da Manhã').then((x) => x)} */}
-            {/* {MenuCards()} */}
+            {console.log(MenuCards())}
           </div>
           <Input
             type="radio"
