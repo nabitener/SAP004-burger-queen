@@ -3,7 +3,7 @@ import './style.css';
 
 const Card  = (props) => {
   return (
-  
+
   <div id={props.idCard} className="classCard">
     <div className="container-icon-item">
       <figure className="container-icons">

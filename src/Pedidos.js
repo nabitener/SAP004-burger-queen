@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Button from '../src/Components/Buttons/index';
 import Input from '../src/Components/Inputs/index';
 import { firebaseStore } from './firebaseUtils';
+import Table from '../src/Components/Table/Table.js'
 import './reset.css';
 import './stylePedidos.css'
 
@@ -70,21 +71,7 @@ const Pedidos = () => {
         />
       </label>
       </div>
-      <table>
-        <thead>
-          <tr>
-            <th>Item</th>
-            <th>Quantidade</th>
-            <th>Preço</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th>Total</th>
-            <th>R$ </th>
-          </tr>
-        </tbody>
-      </table>
+      <Table />
       <Button className="btn-pedido" name="Enviar" onClick={prevent} />
     </form>
   );
