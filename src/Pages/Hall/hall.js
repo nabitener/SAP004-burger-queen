@@ -1,43 +1,59 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Pedidos from '../../Pedidos';
 import './style.css';
 import '../../reset.css';
 import Header from '../../Components/Header/Header';
 import Input from '../../Components/Inputs';
-import MenuCards from './MenuCards.jsx';
-import firebaseStore from '../../firebaseUtils.js';
+import Card from '../../Components/Cards/Cards';
+import { firebaseStore } from '../../firebaseUtils';
+
 
 const Hall = () => {
   const [cafe, setCafe] = useState(true);
   const [tarde, setTarde] = useState(false);
+  const [menuCafe, setMenuCafe] = useState([]);
+  const [menuTarde, setMenuTarde] = useState([]);
 
+  useEffect(() => {
+    console.log(menuCafe)
+    console.log(menuTarde)
+  }, [menuCafe, menuTarde]);
 
-  const [menu, setMenu] = useState(null);
-  const [menuCafe, setMenuCafe] = useState(null);
-  const [menuDia, setMenuDia] = useState(null);
+  
+  const createMenuCafe = () => {
+    firebaseStore
+      .collection('menu')
+      .where('time', '==', 'Café da Manhã')
+      .get()
+      .then((querySnapshot) => {
+       const newArray = querySnapshot.docs.map((doc) => (doc.data()));
+       setMenuCafe(newArray);
+      } 
+      );
+  };
 
-  const createMenuCafe = e => {
-    e.preventDefault();
-    setMenu('createMenuCafe');
-    firebaseStore.collection('menu').get()
-    .then(querySnapshot => {
-      querySnapshot.forEach(doc => setMenuCafe(doc.data()));
-    });
+  const createMenuTarde = () => {
+    firebaseStore
+      .collection('menu')
+      .where('time', '==', 'Almoço e Jantar')
+      .get()
+      .then((querySnapshot) => {
+        const newArray = querySnapshot.docs.map((doc) => (doc.data()));
+        setMenuTarde(newArray);
+      }
+      
+      );
+  };
+
+  const callCafe = () => {
+    setCafe(!cafe);
+    createMenuCafe();
   }
 
-  const createMenuDia = e => {
-    e.preventDefault();
-    setMenu('createMenuDia');
-    firebaseStore.collection('menu').get()
-    .then(querySnapshot => {
-      querySnapshot.forEach(doc => setMenuDia(doc.data()));
-    });
+  const callTarde = () => {
+    setTarde(!tarde);
+    createMenuTarde();
   }
-
-  console.log(createMenuCafe());
-  console.log(createMenuDia());
-
-  // MenuCards().then((x) => console.log(x))
 
   return (
     <main className="main-hall">
@@ -51,13 +67,21 @@ const Hall = () => {
             id="tab1"
             value="cafe"
             checked={cafe === true}
-            onChange={() => setCafe(!cafe)}
+            onChange={() => callCafe()}
           />
-          <label className="label" htmlFor="tab1">Café da Manhã</label>
-          <div className="div-conteudo">Café da Manhã
-            {/* {MenuCards('Café da Manhã').then((x) => x)} */}
-            {console.log(MenuCards())}
-          </div>
+          <label className="label" htmlFor="tab1">
+            Café da Manhã
+          </label>
+          <div className="div-conteudo">
+          {menuCafe.map(element => (
+              <Card
+              key={element.item+element.time}
+              idCard={'div-container'}
+              item_name={element.item}
+              price={element.price}
+              />
+            ))}
+            </div>
           <Input
             type="radio"
             name="menu"
@@ -65,12 +89,20 @@ const Hall = () => {
             id="tab2"
             value="tarde"
             checked={tarde === true}
-            onChange={() => setTarde(!tarde)}
+            onChange={() => callTarde()}
           />
-          <label className="label" htmlFor="tab2">Almoço e Jantar</label>
-          <div className="div-conteudo">Almoço e Jantar
-            {/* {MenuCards('Almoço e Jantar').then((x) => x)} */}
-            {/* {MenuCards()} */}
+          <label className="label" htmlFor="tab2">
+          Almoço e Jantar
+          </label>
+          <div className="div-conteudo">
+            {menuTarde.map(element => (
+              <Card
+              key={element.item+element.time}
+              idCard={'div-container'}
+              item_name={element.item}
+              price={element.price}
+              />
+            ))}
           </div>
         </div>
         <Pedidos />
