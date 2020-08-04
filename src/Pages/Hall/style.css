@@ -19,7 +19,7 @@ body::-webkit-scrollbar-thumb {
 .tabs-container {
     position: relative;
     height: 80%;
-    width: 50%;
+    width: 60%;
     margin: 10px;
 }
 .tabs-container p {

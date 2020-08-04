@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import Button from '../src/Components/Buttons/index';
 import Input from '../src/Components/Inputs/index';
 import { firebaseStore } from './firebaseUtils';
-import Table from '../src/Components/Table/Table.js'
+import Table from '../src/Components/Table/Table.js';
 import './reset.css';
-import './stylePedidos.css'
+import './stylePedidos.css';
 
-const Pedidos = () => {
+const Pedidos = (props) => {
   const [pedido, setPedido] = useState('0000');
   const [mesa, setMesa] = useState('');
   const [cliente, setCliente] = useState('');
@@ -51,27 +51,43 @@ const Pedidos = () => {
     <form className="form-pedidos">
       <p className="p-pedidos">Pedido n°: {pedido}</p>
       <div className="div-input">
-      <label className="label-input">
-        Mesa:
-        <Input
-          className="input-pedido"
-          type="number"
-          name={mesa}
-          required
-          onChange={(e) => setMesa(e.currentTarget.value)}
-        />
-      </label>
-      <label className="label-input">
-        Cliente:
-        <Input
-          className="input-pedido cliente"
-          type="text"
-          value={cliente}
-          onChange={(e) => setCliente(e.currentTarget.value)}
-        />
-      </label>
+        <label className="label-input">
+          Mesa:
+          <Input
+            className="input-pedido"
+            type="number"
+            name={mesa}
+            required
+            onChange={(e) => setMesa(e.currentTarget.value)}
+          />
+        </label>
+        <label className="label-input">
+          Cliente:
+          <Input
+            className="input-pedido cliente"
+            type="text"
+            value={cliente}
+            onChange={(e) => setCliente(e.currentTarget.value)}
+          />
+        </label>
       </div>
-      <Table />
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Quantidade</th>
+            <th>Preço</th>
+          </tr>
+        </thead>
+        <tbody>
+          <Table/>
+          <tr>
+            <th>Total</th>
+            <th>R$ </th>
+          </tr>
+        </tbody>
+      </table>
+
       <Button className="btn-pedido" name="Enviar" onClick={prevent} />
     </form>
   );
