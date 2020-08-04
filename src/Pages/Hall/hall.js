@@ -7,7 +7,6 @@ import Input from '../../Components/Inputs';
 import Card from '../../Components/Cards/Cards';
 import { firebaseStore } from '../../firebaseUtils';
 
-
 const Hall = () => {
   const [cafe, setCafe] = useState(true);
   const [tarde, setTarde] = useState(false);
@@ -15,21 +14,19 @@ const Hall = () => {
   const [menuTarde, setMenuTarde] = useState([]);
 
   useEffect(() => {
-    console.log(menuCafe)
-    console.log(menuTarde)
+    console.log(menuCafe);
+    console.log(menuTarde);
   }, [menuCafe, menuTarde]);
 
-  
   const createMenuCafe = () => {
     firebaseStore
       .collection('menu')
       .where('time', '==', 'Café da Manhã')
       .get()
       .then((querySnapshot) => {
-       const newArray = querySnapshot.docs.map((doc) => (doc.data()));
-       setMenuCafe(newArray);
-      } 
-      );
+        const newArray = querySnapshot.docs.map((doc) => doc.data());
+        setMenuCafe(newArray);
+      });
   };
 
   const createMenuTarde = () => {
@@ -38,22 +35,23 @@ const Hall = () => {
       .where('time', '==', 'Almoço e Jantar')
       .get()
       .then((querySnapshot) => {
-        const newArray = querySnapshot.docs.map((doc) => (doc.data()));
+        const newArray = querySnapshot.docs.map((doc) => doc.data());
         setMenuTarde(newArray);
-      }
-      
-      );
+      });
   };
 
+ 
   const callCafe = () => {
     setCafe(!cafe);
+    setTarde(!tarde);
     createMenuCafe();
-  }
+  };
 
   const callTarde = () => {
     setTarde(!tarde);
+    setCafe(!cafe);
     createMenuTarde();
-  }
+  };
 
   return (
     <main className="main-hall">
@@ -73,15 +71,15 @@ const Hall = () => {
             Café da Manhã
           </label>
           <div className="div-conteudo">
-          {menuCafe.map(element => (
+            {menuCafe.map((element) => (
               <Card
-              key={element.item+element.time}
-              idCard={'div-container'}
-              item_name={element.item}
-              price={element.price}
+                key={element.item + element.time}
+                idCard={'div-container'}
+                item_name={element.item}
+                price={element.price}
               />
             ))}
-            </div>
+          </div>
           <Input
             type="radio"
             name="menu"
@@ -92,15 +90,15 @@ const Hall = () => {
             onChange={() => callTarde()}
           />
           <label className="label" htmlFor="tab2">
-          Almoço e Jantar
+            Almoço e Jantar
           </label>
           <div className="div-conteudo">
-            {menuTarde.map(element => (
+            {menuTarde.map((element) => (
               <Card
-              key={element.item+element.time}
-              idCard={'div-container'}
-              item_name={element.item}
-              price={element.price}
+                key={element.item + element.time}
+                idCard={'div-container'}
+                item_name={element.item}
+                price={element.price}
               />
             ))}
           </div>

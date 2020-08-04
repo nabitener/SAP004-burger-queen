@@ -9,6 +9,7 @@
   border-radius: 15px;
   width: 50%;
   background-color: rgba(253, 252, 252, 0.411);
+  z-index: -1;
 }
 .p-pedidos {
   align-self: center;

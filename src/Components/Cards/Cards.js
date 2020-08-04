@@ -1,4 +1,5 @@
 import React from 'react';
+import Input from '../Inputs/index'
 import './style.css';
 
 const Card  = (props) => {
@@ -10,17 +11,16 @@ const Card  = (props) => {
         <img id={props.imgId} alt="icon-item"></img>
       </figure>
       <span className="class-item">{props.item_name}</span>
+      <span className="price">R${props.price}</span>
     </div>
     
-    <div className="container-options-price">
-      <select id={props.idOptions} className="options">
-        <option value="default" selected disabled id={props.flavors}>Opções</option>
-        <option id={props.idSabores}>{props.flavors}</option>
-        <option id={props.idSabores}>{props.flavors}</option>
-        <option id={props.idSabores}>{props.flavors}</option>
-        <option id={props.idSabores}>{props.flavors}</option>
-      </select>
-      <span className="price">R${props.price}</span>
+    <a href="#abrirModal">Opções</a>
+    <div id="abrirModal" className="modal">
+      <div>
+      <a href="#fechar" title="Fechar" className="fechar">X</a>
+      <Input type="radio" id={props.idSabores} name="options" value={props.idSabores}/>
+      <label htmlFor={props.idSabores}></label>
+      </div>
     </div>
 
   </div>
