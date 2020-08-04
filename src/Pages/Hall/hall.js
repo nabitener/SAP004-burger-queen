@@ -12,6 +12,7 @@ const Hall = () => {
   const [tarde, setTarde] = useState(false);
   const [menuCafe, setMenuCafe] = useState([]);
   const [menuTarde, setMenuTarde] = useState([]);
+  const [pedidos, setPedidos] = useState([]);
 
   useEffect(() => {
     console.log(menuCafe);
@@ -53,6 +54,10 @@ const Hall = () => {
     createMenuTarde();
   };
 
+  const formarPedido = (e) => {
+    console.log(e.target.id)
+  }
+
   return (
     <main className="main-hall">
       <Header />
@@ -73,10 +78,12 @@ const Hall = () => {
           <div className="div-conteudo">
             {menuCafe.map((element) => (
               <Card
-                key={element.item + element.time}
-                idCard={'div-container'}
+                key={element.item + element.price}
+                idCard={element.item}
+                name={element.price}
                 item_name={element.item}
                 price={element.price}
+                handleclick={formarPedido}
               />
             ))}
           </div>
@@ -95,15 +102,17 @@ const Hall = () => {
           <div className="div-conteudo">
             {menuTarde.map((element) => (
               <Card
-                key={element.item + element.time}
-                idCard={'div-container'}
+                key={element.item + element.price}
+                idCard={element.item}
+                name={element.price}
                 item_name={element.item}
                 price={element.price}
+                handleclick={formarPedido}
               />
             ))}
           </div>
         </div>
-        <Pedidos />
+        <Pedidos newPedidos={pedidos}/>
       </div>
     </main>
   );

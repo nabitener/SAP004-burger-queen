@@ -1,30 +1,39 @@
 import React from 'react';
-import Input from '../Inputs/index'
+import Input from '../Inputs/index';
 import './style.css';
 
-const Card  = (props) => {
+const Card = (props) => {
   return (
+    <div
+      id={props.idCard}
+      className="classCard"
+      name={props.name}
+      onClick={props.handleclick}
+    >
+      <div className="container-icon-item">
+        <figure className="container-icons">
+          <img id={props.imgId} alt="icon-item"></img>
+        </figure>
+        <span className="class-item">{props.item_name}</span>
+        <span className="price">R${props.price}</span>
+      </div>
 
-  <div id={props.idCard} className="classCard">
-    <div className="container-icon-item">
-      <figure className="container-icons">
-        <img id={props.imgId} alt="icon-item"></img>
-      </figure>
-      <span className="class-item">{props.item_name}</span>
-      <span className="price">R${props.price}</span>
-    </div>
-    
-    <a href="#abrirModal">Opções</a>
-    <div id="abrirModal" className="modal">
-      <div>
-      <a href="#fechar" title="Fechar" className="fechar">X</a>
-      <Input type="radio" id={props.idSabores} name="options" value={props.idSabores}/>
-      <label htmlFor={props.idSabores}></label>
+      <label className="highlights-button" htmlFor="modal-menu">Opções</label>
+      <Input type="checkbox" id="modal-menu" />
+      <div className="modal">
+        <div className="modal-content">
+          <Input
+            type="radio"
+            id={props.idSabores}
+            name="options"
+            value={props.idSabores}
+          />
+          <label htmlFor={props.idSabores}></label>
+        </div>
+        <label className="modal-close" htmlFor="modal-menu"></label>
       </div>
     </div>
-
-  </div>
-  )
+  );
 };
 
 export default Card;

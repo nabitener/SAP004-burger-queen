@@ -1,37 +1,25 @@
 import React from 'react';
-
+import './style.css';
+import Menos from '../../Image/menos.png';
+import Mais from '../../Image/mais.png';
 
 const Td = (props) => {
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Item</th>
-          <th>Quantidade</th>
-          <th>Preço</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th key={props.key} item={props.item}>
-            {props.item}
-          </th>
-          <th key={props.key} quantidade={props.quantidade}>
-       
-            {props.quantidade}
-       
-          </th>
-          <th key={props.key} price={props.price}>
-            {props.price}
-          </th>
-       
-        </tr>
-        <tr>
-          <th>Total</th>
-          <th>R$ </th>
-        </tr>
-      </tbody>
-    </table>
+    <>
+      <tr>
+        <td key={props.key} item={props.item}>
+          {props.item}
+        </td>
+        <td key={props.key} quantidade={props.quantidade}>
+            <img src={Menos} className="img-menos btn-quant" alt="img-menos" handleclick={props.img}></img>
+          {props.quantidade}
+            <img src={Mais} className="img-mais btn-quant" alt="img-mais" handleclick={props.img}></img>
+        </td>
+        <td key={props.key} value={props.price} className="price">
+          {props.price}
+        </td>
+      </tr>
+    </>
   );
 };
 
