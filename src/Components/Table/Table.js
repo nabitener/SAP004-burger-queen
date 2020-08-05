@@ -6,17 +6,23 @@ import Mais from '../../Image/mais.png';
 const Td = (props) => {
   return (
     <>
-      <tr>
-        <td key={props.key} item={props.item}>
+      <tr className="linha">
+        <td className="celula-tabela">
           {props.item}
         </td>
-        <td key={props.key} quantidade={props.quantidade}>
-            <img src={Menos} className="img-menos btn-quant" alt="img-menos" handleclick={props.img}></img>
-          {props.quantidade}
-            <img src={Mais} className="img-mais btn-quant" alt="img-mais" handleclick={props.img}></img>
+        <td className="celula-tabela">
+          {props.adicional}
         </td>
-        <td key={props.key} value={props.price} className="price">
-          {props.price}
+        <td className="celula-tabela">
+            <img src={Menos} className="img-menos btn-quant" alt="img-menos" onClick={props.handleClickMenos}></img>
+          { props.quantidade }
+            <img src={Mais} className="img-mais btn-quant" alt="img-mais" onClick={props.handleClickMais}></img>
+        </td>
+        <td className="price celula-tabela"> R$ 
+          { props.price}
+        </td>
+        <td className="celula-tabela" onClick={props.handleClickDelete}>
+          ❌
         </td>
       </tr>
     </>

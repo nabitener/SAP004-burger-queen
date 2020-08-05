@@ -15,9 +15,8 @@ const Hall = () => {
   const [pedidos, setPedidos] = useState([]);
 
   useEffect(() => {
-    console.log(menuCafe);
-    console.log(menuTarde);
-  }, [menuCafe, menuTarde]);
+    console.log(pedidos)
+  }, [menuCafe, menuTarde, pedidos]);
 
   const createMenuCafe = () => {
     firebaseStore
@@ -40,7 +39,6 @@ const Hall = () => {
         setMenuTarde(newArray);
       });
   };
-
  
   const callCafe = () => {
     setCafe(!cafe);
@@ -54,8 +52,14 @@ const Hall = () => {
     createMenuTarde();
   };
 
+  
   const formarPedido = (e) => {
-    console.log(e.target.id)
+    e.preventDefault();
+    let arrayItem = {
+      nameItem: e.currentTarget.name,
+      priceItem: e.currentTarget.value,
+    };
+    setPedidos([...pedidos, arrayItem]);
   }
 
   return (
@@ -78,12 +82,12 @@ const Hall = () => {
           <div className="div-conteudo">
             {menuCafe.map((element) => (
               <Card
-                key={element.item + element.price}
-                idCard={element.item}
-                name={element.price}
-                item_name={element.item}
-                price={element.price}
-                handleclick={formarPedido}
+              idCard={element.item}
+              name={element.item}
+              value={element.priceItem}
+              item_name={element.item}
+              price={element.price}
+              handleclick={formarPedido}
               />
             ))}
           </div>
@@ -102,9 +106,9 @@ const Hall = () => {
           <div className="div-conteudo">
             {menuTarde.map((element) => (
               <Card
-                key={element.item + element.price}
                 idCard={element.item}
-                name={element.price}
+                name={element.item}
+                value={element.priceItem}
                 item_name={element.item}
                 price={element.price}
                 handleclick={formarPedido}
@@ -112,7 +116,7 @@ const Hall = () => {
             ))}
           </div>
         </div>
-        <Pedidos newPedidos={pedidos}/>
+        <Pedidos newPedido={pedidos}/>
       </div>
     </main>
   );
