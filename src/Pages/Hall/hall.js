@@ -18,6 +18,12 @@ const Hall = () => {
     console.log(pedidos)
   }, [menuCafe, menuTarde, pedidos]);
 
+  useEffect(() => {
+    createMenuCafe();
+    createMenuTarde();
+  }, []);
+
+
   const createMenuCafe = () => {
     firebaseStore
       .collection('menu')
@@ -43,13 +49,11 @@ const Hall = () => {
   const callCafe = () => {
     setCafe(!cafe);
     setTarde(!tarde);
-    createMenuCafe();
   };
 
   const callTarde = () => {
     setTarde(!tarde);
     setCafe(!cafe);
-    createMenuTarde();
   };
 
   

@@ -12,15 +12,31 @@ const Card = (props) => {
       value={props.price}
       onClick={props.handleclick}
     >
-      <div className="container-icon-item">
+      <div className="container-item">
+        
         <figure className="container-icons">
-          <img id={props.imgId} alt="icon-item"></img>
+          <img className='class-icon' src={require('../../Image/Menu_Icons/'+ props.item_name +'.png')} alt="icon-item"></img>
+          {/* <img className='class-icon' src={require('../../Image/Menu_Icons/' + props.item_name + '.png')} alt="icon-item"></img> */}
         </figure>
-        <span className="class-item">{props.item_name}</span>
-        <span className="price">R${props.price}</span>
+
+        <div className='container-item-price-options'>
+          
+          <div className='container-item-price'>
+            <span className='class-item'>{props.item_name}</span>
+            <span className='price'>R$ {props.price}</span>
+          </div> 
+
+          <div className='container-options-value'>
+            <label className="highlights-button" htmlFor="modal-menu">Opções</label>
+            <label className="options-description" > XXXXXX</label>
+          </div>
+
+        </div>
+
       </div>
 
-      <label className="highlights-button" htmlFor="modal-menu">Opções</label>
+
+
       <Input type="checkbox" id="modal-menu" />
       <div className="modal">
         <div className="modal-content">
@@ -33,6 +49,7 @@ const Card = (props) => {
           <label htmlFor={props.idSabores}></label>
         </div>
         <label className="modal-close" htmlFor="modal-menu"></label>
+        
       </div>
     </button>
   );
