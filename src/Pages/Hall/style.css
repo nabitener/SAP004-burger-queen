@@ -52,6 +52,14 @@ input.tabs + .label + .div-conteudo {
     z-index: -1;
     transition: opacity ease-in-out .3s;
 }
+
+.div-conteudo {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
 input.tabs:checked + .label + .div-conteudo {
     opacity: 1;
     z-index: 1000;
