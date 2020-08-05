@@ -10,9 +10,11 @@ const Pedidos = (props) => {
   const [pedido, setPedido] = useState('0000');
   const [mesa, setMesa] = useState('');
   const [cliente, setCliente] = useState('');
-  //const [total, setTotal] = useState('');
+  const [quant, setQuant] = useState('1');
+  //const [listItens, setListItens] = useState([]);
+  const [total, setTotal] = useState("0");
 
-  useEffect(() => {}, [pedido, mesa, cliente]);
+  useEffect(() => {}, [pedido, mesa, cliente, total]);
 
   const enviado = (pedido) => {
     let numeroPedido = parseInt(pedido + 1);
@@ -47,6 +49,29 @@ const Pedidos = (props) => {
       });
   };
 
+  const menos = () => {
+    let sub = parseInt(quant)-parseInt(1);
+    if( sub < 0) {
+      setQuant(0)
+    }else{
+      setQuant(sub);
+    }    
+  }
+
+  const mais = () => {
+    setQuant(parseInt(quant)+parseInt(1))
+  };
+
+  const excluir = () => {
+    
+  };
+
+  const resultadoTotal = () => {
+    let result = parseInt(quant)*parseInt(props.newPedido.priceItem);
+    setTotal(result);
+  }
+  
+
   return (
     <form className="form-pedidos">
       <p className="p-pedidos">Pedido n°: {pedido}</p>
@@ -75,15 +100,24 @@ const Pedidos = (props) => {
         <thead>
           <tr>
             <th>Item</th>
+            <th>Adicional</th>
             <th>Quantidade</th>
             <th>Preço</th>
           </tr>
         </thead>
         <tbody>
-          <Table/>
+          {props.newPedido.map((element) => (
+            <Table
+              item={element.nameItem}
+              quantidade={quant}
+              handleClickMenos={menos}
+              handleClickMais={mais}
+              handleClickDelete={excluir}
+              price={element.priceItem}
+            />
+          ))}
           <tr>
-            <th>Total</th>
-            <th>R$ </th>
+          <th>Total R$ {total}</th>
           </tr>
         </tbody>
       </table>

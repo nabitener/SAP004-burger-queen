@@ -2,12 +2,14 @@ import React from 'react';
 import Input from '../Inputs/index';
 import './style.css';
 
+
 const Card = (props) => {
   return (
-    <div
+    <button
       id={props.idCard}
       className="classCard"
       name={props.name}
+      value={props.price}
       onClick={props.handleclick}
     >
       <div className="container-item">
@@ -49,7 +51,7 @@ const Card = (props) => {
         <label className="modal-close" htmlFor="modal-menu"></label>
         
       </div>
-    </div>
+    </button>
   );
 };
 
