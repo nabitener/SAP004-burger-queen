@@ -10,11 +10,14 @@ const Pedidos = (props) => {
   const [pedido, setPedido] = useState('0000');
   const [mesa, setMesa] = useState('');
   const [cliente, setCliente] = useState('');
-  const [quant, setQuant] = useState('1');
-  //const [listItens, setListItens] = useState([]);
-  const [total, setTotal] = useState("0");
+  //const [order, setOrder] = useState([]);
+  const [total, setTotal] = useState("");
 
-  useEffect(() => {}, [pedido, mesa, cliente, total]);
+  useEffect(() => {console.log(total)}, [pedido, mesa, cliente, total]);
+  useEffect(() => {
+    console.log(props.newPedido)
+    resultadoTotal(props.newPedido)
+  }, [props.newPedido]);
 
   const enviado = (pedido) => {
     let numeroPedido = parseInt(pedido + 1);
@@ -32,7 +35,7 @@ const Pedidos = (props) => {
       .collection('pedidos')
       .doc(pedido)
       .set({
-        pedido: pedido,
+        order: props.newPedido,
         status: 'Aberto',
         mesa: mesa,
         cliente: cliente,
@@ -49,29 +52,37 @@ const Pedidos = (props) => {
       });
   };
 
-  const menos = () => {
-    let sub = parseInt(quant)-parseInt(1);
-    if( sub < 0) {
-      setQuant(0)
+  const menos = (item, index) => {
+    if( item[index].quantidade > 0) {
+      item[index].quantidade --;
+      console.log(item[index])  
     }else{
-      setQuant(sub);
-    }    
+      item[index].quantidade = 0;
+      excluir(item, index)
+    } 
   }
 
-  const mais = () => {
-    setQuant(parseInt(quant)+parseInt(1))
+  const mais = (item, index) => {
+    item[index].quantidade ++;
+    console.log(item[index]);
   };
 
-  const excluir = () => {
-    
+  const excluir = (item, index) => {
+    console.log("deletar")
+    console.log(item.splice(index, 1))
+    item.splice(index, 1)
   };
 
-  const resultadoTotal = () => {
-    let result = parseInt(quant)*parseInt(props.newPedido.priceItem);
-    setTotal(result);
+  const resultadoTotal = (order) => {
+    let totalPedido = parseInt(0);
+    order.map((element) => {
+    return totalPedido += parseInt(element.priceItem)
+    })
+    setTotal(totalPedido)
   }
   
-
+  
+  
   return (
     <form className="form-pedidos">
       <p className="p-pedidos">Pedido n°: {pedido}</p>
@@ -106,14 +117,15 @@ const Pedidos = (props) => {
           </tr>
         </thead>
         <tbody>
-          {props.newPedido.map((element) => (
+          {props.newPedido.map((element, index) => (
             <Table
+              key={element.nameItem + index}
               item={element.nameItem}
-              quantidade={quant}
-              handleClickMenos={menos}
-              handleClickMais={mais}
-              handleClickDelete={excluir}
-              price={element.priceItem}
+              quantidade={(element.quantidade)}
+              handleClickMenos={() => {menos(props.newPedido, index)}}
+              handleClickMais={() => {mais(props.newPedido, index)}}
+              handleClickDelete={() => {excluir(props.newPedido, index)}}
+              price={(element.priceItem) * element.quantidade}
             />
           ))}
           <tr>

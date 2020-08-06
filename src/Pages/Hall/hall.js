@@ -15,7 +15,6 @@ const Hall = () => {
   const [pedidos, setPedidos] = useState([]);
 
   useEffect(() => {
-    console.log(pedidos)
   }, [menuCafe, menuTarde, pedidos]);
 
   useEffect(() => {
@@ -60,8 +59,9 @@ const Hall = () => {
   const formarPedido = (e) => {
     e.preventDefault();
     let arrayItem = {
-      nameItem: e.currentTarget.name,
-      priceItem: e.currentTarget.value,
+      nameItem: e.currentTarget.id,
+      priceItem: parseInt(e.currentTarget.value),
+      quantidade: 1,
     };
     setPedidos([...pedidos, arrayItem]);
   }
@@ -110,6 +110,7 @@ const Hall = () => {
           <div className="div-conteudo">
             {menuTarde.map((element) => (
               <Card
+                key={element.item}
                 idCard={element.item}
                 name={element.item}
                 value={element.priceItem}
