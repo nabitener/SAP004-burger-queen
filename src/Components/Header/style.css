@@ -1,0 +1,25 @@
+.header-hall-kitchen{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 35px;
+    background-color: #8C001A;
+  }
+  
+  .img-logo-hall-kitchen{
+    width: 10%;
+    cursor: pointer;
+  }
+  
+  .btn-logout-hall-kitchen{
+    height: 30px;
+    width: 5%;
+    margin-right: 15px;
+  }
+
+  .name{
+    font-weight: bold;
+    color: #ffffff;
+    margin-left: 5px;
+  }

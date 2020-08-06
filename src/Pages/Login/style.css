@@ -1,0 +1,94 @@
+.form-login {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #660000;
+  border-radius: 5%;
+  width: 70%;
+  height: 100%;
+  margin-bottom: 30px;
+}
+
+.form-login:hover {
+  border: 3px solid black;
+}
+
+.main-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+
+.div-input-login {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-login {
+  width: 90%;
+}
+
+.btn-login {
+  width: 90%;
+  height: 40px;
+  font-size: 20px;
+}
+
+.welcome-message {
+  font-size: 1.2em;
+  color: rgb(255, 240, 240);
+  margin-bottom: 15px;
+}
+
+.title-login {
+  margin-bottom: 0;
+  color: rgb(255, 240, 240);
+  font-size: 1.5em;
+}
+
+.login-message {
+  font-size: 1em;
+  margin-top: 10px;
+  color: rgb(255, 240, 240);
+}
+
+.link-register {
+  font-size: 1.1em;
+  color: white;
+  text-decoration-line: underline;
+}
+
+.link-register:hover{
+  font-weight: bold;
+}
+.div-password{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+.eyes{
+  cursor: pointer;
+  position: absolute;
+  right: 5%;
+  width: 7%;
+}
+
+@media screen and (min-width: 1025px) {
+  .main-login {
+    flex-direction: row;
+    justify-content: center;
+  } 
+  .form-login {
+    height: 70%;
+    width: 40%;
+    margin-right: 30px;
+  }  
+}

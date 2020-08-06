@@ -1,0 +1,33 @@
+.form-pedidos {
+  border: 1px solid black;
+  margin: 20px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin-top: 50px;
+  border-radius: 15px;
+  width: 40%;
+  background-color: rgba(253, 252, 252, 0.411);
+  z-index: -1;
+}
+.p-pedidos {
+  align-self: center;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+.input-pedido {
+  width: 25%;
+  height: 30px;
+}
+.label-input{
+    color: black;
+    font-weight: bold;
+}
+.cliente {
+  width: 60%;
+}
+.div-input {
+  display: flex;
+  justify-content: space-between;
+}

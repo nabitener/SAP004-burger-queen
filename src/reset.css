@@ -1,0 +1,30 @@
+html,
+body, #root {
+  height: 100%;
+  width: 100%;
+}
+
+body{
+  background-color: #224a64;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+* {
+  font-family: 'Prata', serif;
+  margin: 0;
+  padding: 0;
+  border: none;
+  text-decoration: none;
+  list-style: none;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  z-index: 0;
+  outline: none;
+}
+
+

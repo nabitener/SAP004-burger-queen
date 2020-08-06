@@ -1,0 +1,94 @@
+body::-webkit-scrollbar {
+    width: 0.6em;
+}
+    
+body::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+    
+body::-webkit-scrollbar-thumb {
+    background-color: rgba(136, 158, 211, 0.25);
+    outline: 1px solid slategrey;
+  }
+
+.main-hall{
+    width: 100%;
+    height: 100%;
+}
+
+.tabs-container {
+    position: relative;
+    height: 80%;
+    width: 60%;
+    margin: 10px;
+}
+.tabs-container p {
+    margin: 0;
+    padding: 0;
+}
+.tabs-container:after {
+    content: '.';
+    display: block;
+    clear: both;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    visibility: none;
+}
+
+input.tabs {
+    display: none;
+}
+input.tabs + .label + .div-conteudo {
+    width: 100%;
+    opacity: 0;
+    position: absolute;
+    background: #8c0010;
+    border-radius: 0 15px 15px 15px;
+    top: 40px;
+    left: 0;
+    height: 100%;
+    padding: 10px;
+    z-index: -1;
+    transition: opacity ease-in-out .3s;
+}
+
+.div-conteudo {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: auto;
+    border: 1px solid yellow;
+}
+
+input.tabs:checked + .label + .div-conteudo {
+    opacity: 1;
+    z-index: 1000;
+}
+
+input.tabs + .label {
+    line-height: 40px;
+    padding: 0 20px;
+    float: left;
+    background: #153243;
+    color: #fff;
+    cursor: pointer;
+    transition: background .2s;
+}
+input.tabs:checked + .label {
+    color: #ffffff;
+    font-weight: bold;
+    background: #8c0010;
+}
+.label{
+    border-radius: 15px 15px 0 0 ;
+}
+.div-hall{
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+    position: absolute;
+}

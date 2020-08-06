@@ -1,0 +1,102 @@
+.main-register {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.p-cadastro {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: rgb(255, 240, 240);
+  margin-bottom: 30px;
+  margin-top: 10px;
+}
+
+.form-register {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 15px;
+  border-radius: 5%;
+  width: 70%;
+  height: 100%;
+  background-color: #660000;
+  margin-bottom: 30px;
+}
+
+.form-register:hover {
+  border: 3px solid black;
+}
+
+.section-input {
+  width: 110%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-register {
+  width: 90%;
+}
+.div-input {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1em;
+  color: rgb(255, 240, 240);
+}
+.input-register-radio {
+  width: 20px;
+}
+
+.btn-register {
+  width: 100%;
+  height: 40px;
+  font-size: 1.2em;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.p-voltar-login {
+  font-size: 1em;
+  margin-bottom: 10px;
+  color: rgb(255, 240, 240);
+}
+
+.link-login {
+  color: rgb(255, 240, 240);
+  font-size: 1.1em;
+  text-decoration-line: underline;
+}
+
+.link-login:hover{
+  font-weight: bold;
+}
+.div-password{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+.eyes{
+  cursor: pointer;
+  position: absolute;
+  right: 5%;
+  width: 7%;
+}
+
+@media screen and (min-width: 1025px) {
+  .form-register {
+    width: 40%;
+    height: 70%;
+    margin-right: 30px;
+  }
+  .main-register {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
