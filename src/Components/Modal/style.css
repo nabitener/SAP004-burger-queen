@@ -1,0 +1,95 @@
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 8ed0cda0669dbc045b61de628aff6e406cf67494
+.modal{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.8);
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: all 0.2s 0.2s ease-in-out;
+    transition: all 0.2s 0.2s ease-in-out;
+  }
+  .modal-content{
+    padding: 10px;
+    width: 40%;
+    height: auto;
+    overflow: auto;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    z-index: 2;
+    opacity: 0;
+    border-radius: 10px;
+    background: #ffffff;
+    -webkit-transition: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+  .modal-close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.5);
+  }
+  .modal-close:after{
+    content: "X";
+    float: right;
+    margin: 5px 5px 0 0;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+    background-color: #ffc857;
+    color: #000;
+    font-weight: bolder;
+    font-size: 20px;
+    border-radius: 20px;
+  }
+  input[id="modal-menu"] {
+    position: fixed;
+    left: -9999px;
+    top: 50%;
+    opacity: 0;
+  }
+  
+  input[id="modal-menu"]:checked + div.modal {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition-delay: 0s;
+    -ms-transition-delay: 0s;
+    transition-delay: 0s;
+  }
+  
+  input[id="modal-menu"]:checked + div.modal .modal-content {
+    opacity: 1;
+    -webkit-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    -webkit-transition-delay: 0.2s;
+    -ms-transition-delay: 0.2s;
+    transition-delay: 0.2s;
+  }
+  .highlights-button {
+    display: inline-block;
+    padding: 2px;
+    cursor: pointer;
+    border-radius: 3px;
+    background-color: #ffc857;
+    color: #000;
+    font-weight: bold;
+  }
+  
