@@ -7,7 +7,7 @@ import './reset.css';
 import './stylePedidos.css';
 
 const Pedidos = (props) => {
-  const [pedido, setPedido] = useState('0000');
+  const [pedido, setPedido] = useState(100);
   const [mesa, setMesa] = useState('');
   const [cliente, setCliente] = useState('');
   //const [order, setOrder] = useState([]);
@@ -29,6 +29,19 @@ const Pedidos = (props) => {
     novoPedido(pedido, mesa, cliente);
     enviado(pedido);
   };
+
+  function registrarPedido(){
+    firebaseStore.collection('configurações').doc('último pedido').get()
+    .then((resp) => { 
+      setPedido(resp.data().número +1)
+      firebaseStore.collection('configurações').doc('último pedido').update({
+        'número': pedido
+      })
+      // .then(novoPedido(pedido, mesa,cliente))
+    })
+  }
+
+  // registrarPedido();
 
   const novoPedido = (pedido, mesa, cliente) => {
     firebaseStore

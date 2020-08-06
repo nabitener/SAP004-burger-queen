@@ -21,17 +21,25 @@ const Card = (props) => {
             <span className="class-item">{props.item_name}</span>
             <span className="price">R$ {props.price}</span>
           </div>
-          <div className="container-options-value">
-          <Button
-            name="Adicionar"
-            id={props.name}
-            value={props.price}
-            onClick={props.handleclick}
-          />
-            <label className="highlights-button" htmlFor="modal-menu">
-              Opções
-            </label>
-            <label className="options-description"> XXXXXX</label>
+          
+          <div className="container-options-value-button">
+            
+            <div className='container-options-value'>
+              <label className="highlights-button" htmlFor="modal-menu">
+                Opções
+              </label>
+              {/* <label className="options-description"> Vegetariano</label> */}
+            </div>
+
+            <div className='add-button'>
+              <Button
+                name="+"
+                id={props.name}
+                value={props.price}
+                onClick={props.handleclick}
+            />
+            </div>
+
           </div>
         </div>
       </div>
