@@ -60,6 +60,7 @@
   width: 100%;
 }
 
+<<<<<<< HEAD
 .container-options-value-button {
   display: flex;
   flex-direction: row;
@@ -86,3 +87,5 @@
   cursor: pointer;
 }
 
+=======
+>>>>>>> 8ed0cda0669dbc045b61de628aff6e406cf67494

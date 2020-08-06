@@ -3,7 +3,12 @@
     background-color: #ffc857;
     width: 30px;
     cursor: pointer;
+    margin: 0 10px;
 }
 .deletar{
     cursor: pointer;
+}
+.celula-tabela{
+    width: 25%;
+    text-align: center;
 }
