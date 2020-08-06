@@ -1,0 +1,11 @@
+1- A quantidade não está mudando na tela;
+
+2- A função deletar não está atualizando a tela;
+
+3- O total também não atualiza depois de deletar;
+
+4- Modal com as opções;
+
+5- Limpar os campos do pedido ele for enviado;
+
+6- O campo mesa deve ser obrigatório;

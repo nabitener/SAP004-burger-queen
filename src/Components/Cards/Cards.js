@@ -1,5 +1,4 @@
 import React from 'react';
-import Input from '../Inputs/index';
 import './style.css';
 import Button from '../Buttons';
 
@@ -42,20 +41,6 @@ const Card = (props) => {
 
           </div>
         </div>
-      </div>
-
-      <Input type="checkbox" id="modal-menu" />
-      <div className="modal">
-        <div className="modal-content">
-          <Input
-            type="radio"
-            id={props.idSabores}
-            name="options"
-            value={props.idSabores}
-          />
-          <label htmlFor={props.idSabores}></label>
-        </div>
-        <label className="modal-close" htmlFor="modal-menu"></label>
       </div>
     </div>
   );
