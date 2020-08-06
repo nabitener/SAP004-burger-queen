@@ -56,8 +56,10 @@ input.tabs + .label + .div-conteudo {
 .div-conteudo {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-evenly;
+    width: auto;
+    border: 1px solid yellow;
 }
 
 input.tabs:checked + .label + .div-conteudo {

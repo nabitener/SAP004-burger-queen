@@ -2,3 +2,28 @@
     width: 100%;
     height: 100%;
 }
+
+.all-area {
+    border: 3px solid green;
+    width: 100%;
+    height: 590px;
+    display: flex;
+    flex-direction: row;
+}
+
+.list-orders {
+    border: 1px solid yellow;
+
+}
+
+.opened-order {
+    border: 1px solid pink;
+}
+
+.sub-header {
+    border: 1px solid green;
+}
+
+.order {
+    border: 1px solid blue;
+}
