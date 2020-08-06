@@ -1,91 +1,78 @@
 import React, { useState, useEffect } from 'react';
-import Button from '../src/Components/Buttons/index';
-import Input from '../src/Components/Inputs/index';
-import { firebaseStore } from './firebaseUtils';
-import Table from '../src/Components/Table/Table.js';
-import './reset.css';
-import './stylePedidos.css';
+import Button from '../Buttons/index';
+import Input from '../Inputs/index';
+import { firebaseStore } from '../../firebaseUtils';
+import Table from '../Table/Table';
+import '../../reset.css';
+import './style.css';
 
 const Pedidos = (props) => {
-  const [pedido, setPedido] = useState('0000');
   const [mesa, setMesa] = useState('');
   const [cliente, setCliente] = useState('');
-  //const [order, setOrder] = useState([]);
-  const [total, setTotal] = useState("");
+  const [total, setTotal] = useState('');
 
-  useEffect(() => {console.log(total)}, [pedido, mesa, cliente, total]);
   useEffect(() => {
-    console.log(props.newPedido)
-    resultadoTotal(props.newPedido)
+  }, [mesa, cliente, total]);
+  useEffect(() => {
+    console.log(props.newPedido);
+    resultadoTotal(props.newPedido);
   }, [props.newPedido]);
-
-  const enviado = (pedido) => {
-    let numeroPedido = parseInt(pedido + 1);
-    return setPedido(numeroPedido);
-  };
 
   const prevent = (event) => {
     event.preventDefault();
-    novoPedido(pedido, mesa, cliente);
-    enviado(pedido);
+    novoPedido(mesa, cliente);
   };
 
-  const novoPedido = (pedido, mesa, cliente) => {
+  const novoPedido = (mesa, cliente) => {
     firebaseStore
       .collection('pedidos')
-      .doc(pedido)
-      .set({
+      .add({
         order: props.newPedido,
         status: 'Aberto',
         mesa: mesa,
         cliente: cliente,
-        //funcionário: name,
-        timestamps: firebaseStore.Timestamp.fromDate(new Date())
-          .toDate()
-          .toLocaleString('pt-BR'),
+        timestamp: new Date().toLocaleTimeString(),
       })
       .then(() => {
         alert('Pedido enviado com sucesso');
       })
       .catch((error) => {
-        alert(error.message);
+          alert(error.message)
       });
   };
 
   const menos = (item, index) => {
-    if( item[index].quantidade > 0) {
-      item[index].quantidade --;
-      console.log(item[index])  
-    }else{
+    if (item[index].quantidade > 0) {
+      item[index].quantidade--;
+      console.log(item[index]);
+    } else {
       item[index].quantidade = 0;
-      excluir(item, index)
-    } 
-  }
+      excluir(item, index);
+    }
+  };
 
   const mais = (item, index) => {
-    item[index].quantidade ++;
+    item[index].quantidade++;
     console.log(item[index]);
   };
 
   const excluir = (item, index) => {
-    console.log("deletar")
-    console.log(item.splice(index, 1))
-    item.splice(index, 1)
+    console.log('deletar');
+    console.log(item.splice(index, 1));
+    item.splice(index, 1);
   };
 
   const resultadoTotal = (order) => {
     let totalPedido = parseInt(0);
     order.map((element) => {
-    return totalPedido += parseInt(element.priceItem)
-    })
-    setTotal(totalPedido)
-  }
-  
-  
-  
+      return (totalPedido += parseInt(element.priceItem));
+    });
+    setTotal(totalPedido);
+  };
+
   return (
     <form className="form-pedidos">
-      <p className="p-pedidos">Pedido n°: {pedido}</p>
+      <p className="p-pedidos">Pedido</p>
       <div className="div-input">
         <label className="label-input">
           Mesa:
@@ -93,8 +80,10 @@ const Pedidos = (props) => {
             className="input-pedido"
             type="number"
             name={mesa}
-            required
             onChange={(e) => setMesa(e.currentTarget.value)}
+            min="0"
+            max="1000"
+            required={mesa === true}
           />
         </label>
         <label className="label-input">
@@ -107,6 +96,7 @@ const Pedidos = (props) => {
           />
         </label>
       </div>
+      <br></br>
       <table>
         <thead>
           <tr>
@@ -115,25 +105,31 @@ const Pedidos = (props) => {
             <th>Quantidade</th>
             <th>Preço</th>
           </tr>
+          <br></br>
         </thead>
         <tbody>
           {props.newPedido.map((element, index) => (
             <Table
               key={element.nameItem + index}
               item={element.nameItem}
-              quantidade={(element.quantidade)}
-              handleClickMenos={() => {menos(props.newPedido, index)}}
-              handleClickMais={() => {mais(props.newPedido, index)}}
-              handleClickDelete={() => {excluir(props.newPedido, index)}}
-              price={(element.priceItem) * element.quantidade}
+              quantidade={element.quantidade}
+              handleClickMenos={() => {
+                menos(props.newPedido, index);
+              }}
+              handleClickMais={() => {
+                mais(props.newPedido, index);
+              }}
+              handleClickDelete={() => {
+                excluir(props.newPedido, index);
+              }}
+              price={element.priceItem * element.quantidade}
             />
           ))}
-          <tr>
-          <th>Total R$ {total}</th>
-          </tr>
         </tbody>
       </table>
-
+      <br></br>
+      <p className="total">Total  R$ {total}</p>
+      <br></br>
       <Button className="btn-pedido" name="Enviar" onClick={prevent} />
     </form>
   );

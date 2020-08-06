@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Pedidos from '../../Pedidos';
+import Pedidos from '../../Components/Pedidos/Pedidos';
 import './style.css';
 import '../../reset.css';
 import Header from '../../Components/Header/Header';
