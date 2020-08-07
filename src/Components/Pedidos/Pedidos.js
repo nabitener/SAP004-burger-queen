@@ -9,14 +9,9 @@ import './style.css';
 const Pedidos = (props) => {
   const [mesa, setMesa] = useState('');
   const [cliente, setCliente] = useState('');
-  const [total, setTotal] = useState('');
 
   useEffect(() => {
-  }, [mesa, cliente, total]);
-  useEffect(() => {
-    console.log(props.newPedido);
-    resultadoTotal(props.newPedido);
-  }, [props.newPedido]);
+  }, [mesa, cliente, props.newPedido]);
 
   const prevent = (event) => {
     event.preventDefault();
@@ -53,35 +48,6 @@ const Pedidos = (props) => {
    })
  };
 
-  const menos = (item, index) => {
-    if (item[index].quantidade > 0) {
-      item[index].quantidade--;
-      console.log(item[index]);
-    } else {
-      item[index].quantidade = 0;
-      excluir(item, index);
-    }
-  };
-
-  const mais = (item, index) => {
-    item[index].quantidade++;
-    console.log(item[index]);
-  };
-
-  const excluir = (item, index) => {
-    console.log('deletar');
-    console.log(item.splice(index, 1));
-    item.splice(index, 1);
-  };
-
-  const resultadoTotal = (order) => {
-    let totalPedido = parseInt(0);
-    order.map((element) => {
-      return (totalPedido += parseInt(element.priceItem));
-    });
-    setTotal(totalPedido);
-  };
-
   return (
     <form className="form-pedidos">
       <p className="p-pedidos">Pedido</p>
@@ -113,7 +79,6 @@ const Pedidos = (props) => {
         <thead>
           <tr>
             <th>Item</th>
-            <th>Adicional</th>
             <th>Quantidade</th>
             <th>Preço</th>
           </tr>
@@ -126,13 +91,13 @@ const Pedidos = (props) => {
               item={element.nameItem}
               quantidade={element.quantidade}
               handleClickMenos={() => {
-                menos(props.newPedido, index);
+                props.subtrair(props.newPedido, element.nameItem);
               }}
               handleClickMais={() => {
-                mais(props.newPedido, index);
+                props.soma(props.newPedido, element.nameItem);
               }}
               handleClickDelete={() => {
-                excluir(props.newPedido, index);
+                props.delete(props.newPedido, element.nameItem);
               }}
               price={element.priceItem * element.quantidade}
             />
@@ -140,7 +105,7 @@ const Pedidos = (props) => {
         </tbody>
       </table>
       <br></br>
-      <p className="total">Total  R$ {total}</p>
+      <p className="total">Total  R$ {props.total}</p>
       <br></br>
       <Button className="btn-pedido" name="Enviar" onClick={prevent} />
     </form>

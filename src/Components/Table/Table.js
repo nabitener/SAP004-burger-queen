@@ -10,9 +10,6 @@ const Td = (props) => {
         <td className="celula-tabela">
           {props.item}
         </td>
-        <td className="celula-tabela">
-          {props.adicional}
-        </td>
         <td className="celula-tabela quantidade">
             <img src={Menos} className="img-menos btn-quant" alt="img-menos" onClick={props.handleClickMenos}></img>
           { props.quantidade }
