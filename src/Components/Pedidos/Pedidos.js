@@ -7,13 +7,12 @@ import '../../reset.css';
 import './style.css';
 
 const Pedidos = (props) => {
-  const [pedido, setPedido] = useState(100);
   const [mesa, setMesa] = useState('');
   const [cliente, setCliente] = useState('');
   const [total, setTotal] = useState('');
 
   useEffect(() => {
-  }, [mesa, cliente, total, pedido]);
+  }, [mesa, cliente, total]);
   useEffect(() => {
     console.log(props.newPedido);
     resultadoTotal(props.newPedido);
@@ -42,16 +41,17 @@ const Pedidos = (props) => {
           alert(error.message)
       });
   };
-   const registrarPedido = () => {
-    firebaseStore.collection('configurações').doc('último pedido').get()
-    .then((resp) => { 
-      setPedido(resp.data().número +1)
-      firebaseStore.collection('configurações').doc('último pedido').update({
-        'número': pedido
-      })
-      .then(novoPedido(pedido, mesa, cliente))
-    })
-  };
+  const registrarPedido = () => {
+    let pedidoNumero = 100;
+   firebaseStore.collection('configurações').doc('último pedido').get()
+   .then((resp) => { 
+     pedidoNumero = resp.data().número +1
+     firebaseStore.collection('configurações').doc('último pedido').update({
+       'número': pedidoNumero
+     })
+     .then(novoPedido(pedidoNumero, mesa, cliente))
+   })
+ };
 
   const menos = (item, index) => {
     if (item[index].quantidade > 0) {

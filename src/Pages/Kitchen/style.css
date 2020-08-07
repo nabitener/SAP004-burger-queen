@@ -18,6 +18,7 @@
 
 .opened-order {
     border: 1px solid pink;
+    width: 50%;
 }
 
 .sub-header {
