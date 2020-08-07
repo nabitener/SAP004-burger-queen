@@ -13,15 +13,14 @@ const Hall = () => {
   const [menuCafe, setMenuCafe] = useState([]);
   const [menuTarde, setMenuTarde] = useState([]);
   const [pedidos, setPedidos] = useState([]);
+  const [total, setTotal] = useState('');
 
-  useEffect(() => {
-  }, [menuCafe, menuTarde, pedidos]);
+  useEffect(() => {}, [menuCafe, menuTarde, pedidos]);
 
   useEffect(() => {
     createMenuCafe();
     createMenuTarde();
   }, []);
-
 
   const createMenuCafe = () => {
     firebaseStore
@@ -44,7 +43,7 @@ const Hall = () => {
         setMenuTarde(newArray);
       });
   };
- 
+
   const callCafe = () => {
     setCafe(!cafe);
     setTarde(!tarde);
@@ -55,17 +54,49 @@ const Hall = () => {
     setCafe(!cafe);
   };
 
-   
   const formarPedido = (e) => {
     e.preventDefault();
     let arrayItem = {
       nameItem: e.currentTarget.id,
       priceItem: parseInt(e.currentTarget.value),
-      quantidade: 1,
+      quantidade: parseInt(1),
     };
     setPedidos([...pedidos, arrayItem]);
-  }
+    resultadoTotal([...pedidos, arrayItem])
+  };
 
+  const excluir = (item, name) => {
+    setPedidos(item.filter((element) => element.nameItem !== name));
+  };
+
+  const menos = (item, name) => {
+    setPedidos(
+      item.filter((element) => {
+        if (element.nameItem === name && element.quantidade > 0) {
+          return element.quantidade--;
+        } else {
+        return element.quantidade=0 
+        }
+      })
+    );
+  };
+
+  const mais = (item, name) => {
+    setPedidos(
+      item.filter((element) =>
+        element.nameItem === name ? element.quantidade++ : element.quantidade
+      )
+    );
+  };
+
+  const resultadoTotal = (pedidos) => {
+    let totalPedido = parseInt(0);
+    pedidos.map((element) => {
+      return (totalPedido += parseInt(element.priceItem));
+    });
+    setTotal(totalPedido);
+  };
+ 
   return (
     <main className="main-hall">
       <Header />
@@ -86,12 +117,13 @@ const Hall = () => {
           <div className="div-conteudo">
             {menuCafe.map((element) => (
               <Card
-              idCard={element.item}
-              name={element.item}
-              value={element.priceItem}
-              item_name={element.item}
-              price={element.price}
-              handleclick={formarPedido}
+                key={element.item}
+                idCard={element.item}
+                name={element.item}
+                value={element.priceItem}
+                price={element.price}
+                option={element.subItem}
+                handleclick={formarPedido}
               />
             ))}
           </div>
@@ -114,14 +146,20 @@ const Hall = () => {
                 idCard={element.item}
                 name={element.item}
                 value={element.priceItem}
-                item_name={element.item}
                 price={element.price}
+                option={element.subItem}
                 handleclick={formarPedido}
               />
             ))}
           </div>
         </div>
-        <Pedidos newPedido={pedidos}/>
+        <Pedidos
+          delete={excluir}
+          soma={mais}
+          subtrair={menos}
+          total={total}
+          newPedido={pedidos}
+        />
       </div>
     </main>
   );
