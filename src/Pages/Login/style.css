@@ -5,9 +5,9 @@
   align-items: center;
   background-color: #660000;
   border-radius: 5%;
-  width: 70%;
-  height: 100%;
-  margin-bottom: 30px;
+  height: 70%;
+  width: 40%;
+  margin-right: 30px;
 }
 
 .form-login:hover {
@@ -16,9 +16,9 @@
 
 .main-login {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-around;
   align-items: center;
-  justify-content: space-between;
   width: 100%;
   height: 100%;
 }
@@ -64,17 +64,17 @@
   text-decoration-line: underline;
 }
 
-.link-register:hover{
+.link-register:hover {
   font-weight: bold;
 }
-.div-password{
+.div-password {
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   width: 100%;
 }
-.eyes{
+.eyes {
   cursor: pointer;
   position: absolute;
   right: 5%;
@@ -83,12 +83,7 @@
 
 @media screen and (min-width: 1025px) {
   .main-login {
-    flex-direction: row;
     justify-content: center;
-  } 
-  .form-login {
-    height: 70%;
-    width: 40%;
-    margin-right: 30px;
-  }  
+  }
+  
 }

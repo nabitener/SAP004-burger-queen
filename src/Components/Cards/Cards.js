@@ -1,36 +1,9 @@
 import React from 'react';
 import './style.css';
 import Button from '../Buttons';
-//import Input from '../Inputs';
+import Input from '../Inputs';
 
 const Card = (props) => {
-
-/*  const [subItem, setSubItem] = useState('');
-
-  useEffect(() => {
-    console.log(props.option)
-    subElementos(props.option);
-  }, [props.option]);
-
-  useEffect(() => {}, [subItem]);
-
-  const subElementos = (option) => {
-    if (option !== '') {
-      option.map((element) => {
-       return( setSubItem((
-          <Input
-            type="radio"
-            name={props.item_name}
-            value={element}
-            onChange={props.handlechange}
-          />
-        )))
-      });
-    }else{
-      return setSubItem('')
-    }
-  };*/
-
   
   return (
     <div id={props.idCard} className="classCard">
@@ -52,6 +25,12 @@ const Card = (props) => {
 
           <div className="container-options-value-button">
             <div className="container-options-value">
+            <Input
+            type="radio"
+            name={props.item_name}
+            value={props.option}
+            onChange={props.handlechange}
+          />
             </div>
 
             <div className="add-button">

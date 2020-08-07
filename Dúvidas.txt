@@ -1,5 +1,3 @@
-3- O total também não atualiza depois de deletar;
-
 4- Modal com as opções;
 
 5- Limpar os campos do pedido ele for enviado;

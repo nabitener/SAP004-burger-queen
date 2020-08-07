@@ -13,7 +13,7 @@ const Hall = () => {
   const [menuCafe, setMenuCafe] = useState([]);
   const [menuTarde, setMenuTarde] = useState([]);
   const [pedidos, setPedidos] = useState([]);
-  const [total, setTotal] = useState('');
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {}, [menuCafe, menuTarde, pedidos]);
 
@@ -62,11 +62,13 @@ const Hall = () => {
       quantidade: parseInt(1),
     };
     setPedidos([...pedidos, arrayItem]);
-    resultadoTotal([...pedidos, arrayItem])
+    resultadoTotal([...pedidos, arrayItem]);
   };
 
   const excluir = (item, name) => {
-    setPedidos(item.filter((element) => element.nameItem !== name));
+    let dados = item.filter((element) => element.nameItem !== name);
+    setPedidos(dados);
+    resultadoTotal(dados);
   };
 
   const menos = (item, name) => {
@@ -75,10 +77,11 @@ const Hall = () => {
         if (element.nameItem === name && element.quantidade > 0) {
           return element.quantidade--;
         } else {
-        return element.quantidade=0 
+          return (element.quantidade = 0);
         }
       })
     );
+    resultadoTotal(item);
   };
 
   const mais = (item, name) => {
@@ -87,6 +90,7 @@ const Hall = () => {
         element.nameItem === name ? element.quantidade++ : element.quantidade
       )
     );
+    resultadoTotal(item);
   };
 
   const resultadoTotal = (pedidos) => {
@@ -96,7 +100,7 @@ const Hall = () => {
     });
     setTotal(totalPedido);
   };
- 
+
   return (
     <main className="main-hall">
       <Header />
