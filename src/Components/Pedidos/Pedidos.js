@@ -15,7 +15,9 @@ const Pedidos = (props) => {
 
   const prevent = (event) => {
     event.preventDefault();
-    registrarPedido()
+    registrarPedido();
+    setMesa(0);
+    setCliente('');
   };
 
   const novoPedido = (pedido, mesa, cliente) => {
@@ -51,7 +53,7 @@ const Pedidos = (props) => {
   return (
     <form className="form-pedidos">
       <p className="p-pedidos">Pedido</p>
-      <div className="div-input">
+      <div className="div-mesa-cliente">
         <label className="label-input">
           Mesa:
           <Input
@@ -82,7 +84,6 @@ const Pedidos = (props) => {
             <th>Quantidade</th>
             <th>Preço</th>
           </tr>
-          <br></br>
         </thead>
         <tbody>
           {props.newPedido.map((element, index) => (
@@ -97,7 +98,7 @@ const Pedidos = (props) => {
                 props.soma(props.newPedido, element.nameItem);
               }}
               handleClickDelete={() => {
-                props.delete(props.newPedido, element.nameItem);
+                props.delete(props.newPedido, element.nameItem, index);
               }}
               price={element.priceItem * element.quantidade}
             />

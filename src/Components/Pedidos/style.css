@@ -28,7 +28,7 @@
 .cliente {
   width: 60%;
 }
-.div-input {
+.div-mesa-cliente {
   display: flex;
   justify-content: space-between;
 }
