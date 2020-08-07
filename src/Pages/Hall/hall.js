@@ -55,7 +55,7 @@ const Hall = () => {
     setCafe(!cafe);
   };
 
-  
+   
   const formarPedido = (e) => {
     e.preventDefault();
     let arrayItem = {

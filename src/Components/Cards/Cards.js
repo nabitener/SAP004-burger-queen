@@ -1,8 +1,10 @@
 import React from 'react';
 import './style.css';
 import Button from '../Buttons';
+//import Input from '../Inputs';
 
 const Card = (props) => {
+
   return (
     <div key={props.name} id={props.idCard} className="classCard">
       <div className="container-item">
@@ -24,10 +26,14 @@ const Card = (props) => {
           <div className="container-options-value-button">
             
             <div className='container-options-value'>
-              <label className="highlights-button" htmlFor="modal-menu">
-                Opções
-              </label>
-              {/* <label className="options-description"> Vegetariano</label> */}
+              {/*props.options.map((element) => {
+                <Input 
+                type="radio" 
+                name={props.item_name} 
+                value={element.meat}
+                onChange={props.handlechange}
+                />
+              })*/}
             </div>
 
             <div className='add-button'>
