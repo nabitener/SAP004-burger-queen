@@ -100,6 +100,7 @@ const Register = () => {
               onClick={showPass}
             ></img>
           </div>
+          <p className='area'>Selecione sua área de trabalho:</p>
           <div className="div-input">
             <label htmlFor="input-area-cozinha">Cozinha</label>
             <Input
