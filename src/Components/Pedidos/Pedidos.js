@@ -15,10 +15,13 @@ const Pedidos = (props) => {
 
   const prevent = (event) => {
     event.preventDefault();
+    if(mesa === ""){
+      alert("Preencha o número da mesa")
+    }else{
     registrarPedido();
     setMesa(0);
     setCliente('');
-  };
+  }};
 
   const novoPedido = (pedido, mesa, cliente) => {
     firebaseStore

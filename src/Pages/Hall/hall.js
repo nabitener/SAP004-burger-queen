@@ -10,6 +10,7 @@ import { firebaseStore } from '../../firebaseUtils';
 const Hall = () => {
   const [cafe, setCafe] = useState(true);
   const [tarde, setTarde] = useState(false);
+  const [pronto, setPronto] = useState(false);
   const [menuCafe, setMenuCafe] = useState([]);
   const [menuTarde, setMenuTarde] = useState([]);
   const [pedidos, setPedidos] = useState([]);
@@ -44,14 +45,10 @@ const Hall = () => {
       });
   };
 
-  const callCafe = () => {
-    setCafe(!cafe);
-    setTarde(!tarde);
-  };
-
-  const callTarde = () => {
+  const callAba = () => {
     setTarde(!tarde);
     setCafe(!cafe);
+    setPronto(!pronto);
   };
 
   const formarPedido = (e) => {
@@ -101,6 +98,21 @@ const Hall = () => {
     setTotal(totalPedido);
   };
 
+  const opcao = (item,name) => {
+    if (item !== null) {
+      item.forEach((element) => {
+        return `${(
+          <label>
+            {element}
+            <Input type="radio" name={name} value={element} />
+          </label>
+        )}`;
+      });
+    }else{
+      return "";
+    }
+  };
+
   return (
     <main className="main-hall">
       <Header />
@@ -113,7 +125,7 @@ const Hall = () => {
             id="tab1"
             value="cafe"
             checked={cafe === true}
-            onChange={() => callCafe()}
+            onChange={() => callAba()}
           />
           <label className="label" htmlFor="tab1">
             Café da Manhã
@@ -126,7 +138,8 @@ const Hall = () => {
                 name={element.item}
                 value={element.priceItem}
                 price={element.price}
-                option={element.subItem}
+                options={element.subItem}
+                subItens={opcao}
                 handleclick={formarPedido}
               />
             ))}
@@ -138,7 +151,7 @@ const Hall = () => {
             id="tab2"
             value="tarde"
             checked={tarde === true}
-            onChange={() => callTarde()}
+            onChange={() => callAba()}
           />
           <label className="label" htmlFor="tab2">
             Almoço e Jantar
@@ -151,10 +164,26 @@ const Hall = () => {
                 name={element.item}
                 value={element.priceItem}
                 price={element.price}
-                option={element.subItem}
+                options={element.subItem}
+                subItens={opcao}
                 handleclick={formarPedido}
               />
             ))}
+          </div>
+          <Input
+            type="radio"
+            name="menu"
+            className="tabs"
+            id="tab3"
+            value="pronto"
+            checked={pronto === true}
+            onChange={() => callAba()}
+          />
+          <label className="label" htmlFor="tab3">
+            Pedidos Prontos
+          </label>
+          <div className="div-conteudo">
+            Pedidos Prontos
           </div>
         </div>
         <Pedidos
