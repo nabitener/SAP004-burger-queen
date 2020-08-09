@@ -1,30 +1,101 @@
 .main-kitchen{
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-flow: column;
 }
 
 .all-area {
-    border: 3px solid green;
+    /* border: 3px solid green; */
     width: 100%;
-    height: 590px;
     display: flex;
     flex-direction: row;
+    flex: 1;
+    padding: 20px;
 }
 
 .list-orders {
-    border: 1px solid yellow;
+    /* border: 1px solid yellow; */
+    width: 25%;
+    height: 100%;
+}
 
+.sub-header-container {
+    width: 70%;
+    height: 10vh;
+    color: black;
+    background: #ffc857;
+    /* border: 1px solid black; */
+    border-radius: 25px 25px 0px 0px;
+    margin-top: 15px;
+}
+
+.sub-header-list {
+    font-size: 1.4em;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+}
+
+.container-small-cards {
+    border: 1px solid black;
+    background: #660000;
+    border-radius: 0px 15px 15px 15px;
+    font-weight: bold;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: visible;
 }
 
 .opened-order {
-    border: 1px solid pink;
-    width: 50%;
+    /* border: 1px solid pink; */
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    margin-left: 20px;
 }
 
 .sub-header {
-    border: 1px solid green;
+    border-radius: 25px 25px 0px 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 10vh;
+    background: #153243;
+    width: 60%;
+    padding: 15px;
+}
+
+.sub-header-title {
+    color: antiquewhite;
+    font-size: 1.8em;
+    display: flex;
+    align-items: center;
+}
+
+.btn-history {
+    width: 120px;
+    height: 40px;
+    font-size: 1.2em;
 }
 
 .order {
-    border: 1px solid blue;
+    border: 1px solid black;
+    border-radius: 0px 15px 15px 15px;
+    flex-grow: 1;
+    justify-content: center;
+    display: flex;
+    background: #660000;
+}
+
+.container-big-card {
+    /* border: 1px solid orangered; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
 }
