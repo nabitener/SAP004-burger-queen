@@ -1,10 +1,9 @@
 import React from 'react';
 import './style.css';
 import Button from '../Buttons';
-import Input from '../Inputs';
 
 const Card = (props) => {
-  
+
   return (
     <div id={props.idCard} className="classCard">
       <div className="container-item">
@@ -25,12 +24,7 @@ const Card = (props) => {
 
           <div className="container-options-value-button">
             <div className="container-options-value">
-            <Input
-            type="radio"
-            name={props.item_name}
-            value={props.option}
-            onChange={props.handlechange}
-          />
+              {()=>{props.subItem(props.options,props.name)}}
             </div>
 
             <div className="add-button">

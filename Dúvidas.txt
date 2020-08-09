@@ -1,5 +1,4 @@
 4- Modal com as opções;
 
-5- Limpar os campos do pedido ele for enviado;
+5- Limpar os campos do pedido quando ele for enviado;
 
-6- O campo mesa deve ser obrigatório;
