@@ -27,11 +27,12 @@ const Card = (props) => {
               {()=>{props.subItem(props.options,props.name)}}
             </div>
 
-            <div className="add-button">
+            <div className="add-button-container">
               <Button
-                name="+"
+                name="Add"
                 id={props.name}
                 value={props.price}
+                className="add-button"
                 onClick={props.handleclick}
               />
             </div>
