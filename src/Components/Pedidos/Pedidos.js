@@ -66,7 +66,6 @@ const Pedidos = (props) => {
             onChange={(e) => setMesa(e.currentTarget.value)}
             min="0"
             max="1000"
-            required={mesa === true}
           />
         </label>
         <label className="label-input">
@@ -95,10 +94,10 @@ const Pedidos = (props) => {
               item={element.nameItem}
               quantidade={element.quantidade}
               handleClickMenos={() => {
-                props.subtrair(props.newPedido, element.nameItem);
+                props.subtrair(props.newPedido, element.nameItem, index);
               }}
               handleClickMais={() => {
-                props.soma(props.newPedido, element.nameItem);
+                props.soma(props.newPedido, element.nameItem, index);
               }}
               handleClickDelete={() => {
                 props.delete(props.newPedido, element.nameItem, index);
