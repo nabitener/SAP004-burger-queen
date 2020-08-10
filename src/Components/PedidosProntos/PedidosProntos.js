@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { firebaseStore } from '../../firebaseUtils';
 import SmallCard from '../../Components/CardCozinha/SmallCard.js';
+import Button from '../Buttons/index'
 //import CardCozinha from '../../Components/CardCozinha/CardCozinha';
 import '../../reset.css';
 import './style.css';
@@ -33,12 +34,29 @@ const PedidosProntos = () => {
           }
         });
         const pedidosArray = filteredDocs.map((doc) => {
-          return <SmallCard obj={doc}></SmallCard>;
-        });
+          return( 
+          <div className="card-pedido-pronto" key={doc.pedido}>
+          <SmallCard obj={doc} ></SmallCard>
+          <Button name="Finalizar" id={doc.pedido} onClick={prevent}/>
+          </div>
+        )});
         setPedidosProntos(pedidosArray);
       });
     }
 
+    const prevent = (e) => {
+      e.preventDefault();
+      console.log('clicou')
+      const id = e.currentTarget.id.toString();
+      changeStatus(id);
+      importarPedidosProntos();
+    }
+
+    const changeStatus = (id) => {
+      firebaseStore.collection('pedidos').doc(id).update({
+        status: 'Finalizado',
+      });
+    }
     
   /*const mostrarItens = () => {
     let array =[];

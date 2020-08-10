@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './style.css';
 import Button from '../Buttons';
 
+
 const Card = (props) => {
+  const [opcao, setOpcao] = useState('');
 
   return (
     <div id={props.idCard} className="classCard">
@@ -24,13 +26,24 @@ const Card = (props) => {
 
           <div className="container-options-value-button">
             <div className="container-options-value">
-              {()=>{props.subItem(props.options,props.name)}}
+              <select className={['select', props.name].join(' ')} onChange={(e) => setOpcao(e.currentTarget.value)}>
+              <option value="">Opções</option>
+              {props.options &&
+                props.options.map((element) => (
+                    <option
+                      value={element}
+                      key={props.name + element}
+                    >
+                      {element}
+                    </option>
+                ))}
+                </select>
             </div>
 
             <div className="add-button-container">
               <Button
                 name="Add"
-                id={props.name}
+                id={`${props.name} - ${opcao}`}
                 value={props.price}
                 className="add-button"
                 onClick={props.handleclick}
