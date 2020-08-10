@@ -23,16 +23,18 @@ const Pedidos = (props) => {
     setCliente('');
   }};
 
-  const novoPedido = (pedido, mesa, cliente) => {
+  const novoPedido = (pedidoNumero, mesa, cliente) => {
+    const numero = pedidoNumero.toString();
     firebaseStore
       .collection('pedidos')
-      .add({
-        pedido: pedido,
+      .doc(numero)
+      .set({
+        pedido: pedidoNumero,
         order: props.newPedido,
         status: 'Aberto',
         mesa: mesa,
         cliente: cliente,
-        timestamp: new Date().toLocaleTimeString(),
+        timestamp: new Date(),
       })
       .then(() => {
         alert('Pedido enviado com sucesso');
