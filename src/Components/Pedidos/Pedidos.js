@@ -23,16 +23,18 @@ const Pedidos = (props) => {
     setCliente('');
   }};
 
-  const novoPedido = (pedido, mesa, cliente) => {
+  const novoPedido = (pedidoNumero, mesa, cliente) => {
+    const numero = pedidoNumero.toString();
     firebaseStore
       .collection('pedidos')
-      .add({
-        pedido: pedido,
+      .doc(numero)
+      .set({
+        pedido: pedidoNumero,
         order: props.newPedido,
         status: 'Aberto',
         mesa: mesa,
         cliente: cliente,
-        timestamp: new Date().toLocaleTimeString(),
+        timestamp: new Date(),
       })
       .then(() => {
         alert('Pedido enviado com sucesso');
@@ -66,7 +68,6 @@ const Pedidos = (props) => {
             onChange={(e) => setMesa(e.currentTarget.value)}
             min="0"
             max="1000"
-            required={mesa === true}
           />
         </label>
         <label className="label-input">
@@ -95,10 +96,10 @@ const Pedidos = (props) => {
               item={element.nameItem}
               quantidade={element.quantidade}
               handleClickMenos={() => {
-                props.subtrair(props.newPedido, element.nameItem);
+                props.subtrair(props.newPedido, element.nameItem, index);
               }}
               handleClickMais={() => {
-                props.soma(props.newPedido, element.nameItem);
+                props.soma(props.newPedido, element.nameItem, index);
               }}
               handleClickDelete={() => {
                 props.delete(props.newPedido, element.nameItem, index);

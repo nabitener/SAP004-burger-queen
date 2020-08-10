@@ -43,7 +43,7 @@ input.tabs + .label + .div-conteudo {
     width: 100%;
     opacity: 0;
     position: absolute;
-    background: #153243;
+    background: #660000;
     border-radius: 0 15px 15px 15px;
     top: 40px;
     left: 0;
@@ -72,7 +72,7 @@ input.tabs + .label {
     line-height: 40px;
     padding: 0 20px;
     float: left;
-    background: #ffc857;
+    background: #153243;
     color: black;
     font-weight: bold;
     font-size: 1.2em;
@@ -80,9 +80,9 @@ input.tabs + .label {
     transition: background .2s;
 }
 input.tabs:checked + .label {
-    color: white;
+    color: black;
     font-weight: bold;
-    background: #153243;
+    background: #ffc857;
 }
 .label{
     border-radius: 15px 15px 0 0 ;
