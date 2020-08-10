@@ -96,13 +96,13 @@ const Pedidos = (props) => {
               item={element.nameItem}
               quantidade={element.quantidade}
               handleClickMenos={() => {
-                props.subtrair(props.newPedido, element.nameItem, index);
+                props.subtrair(props.newPedido, element.nameItem);
               }}
               handleClickMais={() => {
-                props.soma(props.newPedido, element.nameItem, index);
+                props.soma(props.newPedido, element.nameItem);
               }}
               handleClickDelete={() => {
-                props.delete(props.newPedido, element.nameItem, index);
+                props.delete(props.newPedido, element.nameItem);
               }}
               price={element.priceItem * element.quantidade}
             />

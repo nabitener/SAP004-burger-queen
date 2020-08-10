@@ -12,7 +12,7 @@ const CardCozinha = (props) => {
       <br></br>
       <ul className="lista">
         <li>
-          {/* {props.quantidade} X {props.item} */}
+          {/*`${props.dadosPedido.quantidade} X ${props.dadosPedidos.item}`*/}
         </li>
       </ul>
       <br></br>
