@@ -5,7 +5,7 @@ import '../../reset.css';
 import Header from '../../Components/Header/Header';
 import Input from '../../Components/Inputs';
 import Card from '../../Components/Cards/Cards';
-import PedidosProntos from '../../Components/PedidosProntos/PedidosProntos'
+import PedidosProntos from '../../Components/PedidosProntos/PedidosProntos';
 import { firebaseStore } from '../../firebaseUtils';
 
 const Hall = () => {
@@ -53,7 +53,20 @@ const Hall = () => {
   };
 
   const formarPedido = (e) => {
+    let name = e.currentTarget.id;
     e.preventDefault();
+    console.log("clicou")
+    pedidos.filter((element) => {
+      if (element.nameItem !== name) {
+        return novoPedido();
+      } else {
+        return mais(pedidos, name);
+      }
+    });
+    console.log(pedidos)
+  };
+
+  const novoPedido = (e) => {
     let arrayItem = {
       nameItem: e.currentTarget.id,
       priceItem: parseInt(e.currentTarget.value),
@@ -66,7 +79,7 @@ const Hall = () => {
   const excluir = (item, name) => {
     let dados = item.filter((element) => element.nameItem !== name);
     setPedidos(dados);
-    resultadoTotal(dados);
+    resultadoTotal(pedidos);
   };
 
   const menos = (item, name) => {
@@ -79,7 +92,7 @@ const Hall = () => {
         }
       })
     );
-    resultadoTotal(item);
+    resultadoTotal(pedidos);
   };
 
   const mais = (item, name) => {
@@ -88,7 +101,7 @@ const Hall = () => {
         element.nameItem === name ? element.quantidade++ : element.quantidade
       )
     );
-    resultadoTotal(item);
+    resultadoTotal(pedidos);
   };
 
   const resultadoTotal = (pedidos) => {
@@ -99,7 +112,7 @@ const Hall = () => {
     setTotal(totalPedido);
   };
 
- return (
+  return (
     <main className="main-hall">
       <Header />
       <div className="div-hall">
