@@ -1,6 +1,7 @@
 import React from 'react';
 import './style.css';
 
+
 const SmallCard = (props) => {
   
   function converTimeStamp() {

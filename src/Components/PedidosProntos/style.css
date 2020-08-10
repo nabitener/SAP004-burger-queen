@@ -1,0 +1,4 @@
+.card-pedido-pronto{
+    display: flex;
+    flex-direction: column;
+}
