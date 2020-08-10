@@ -99,22 +99,7 @@ const Hall = () => {
     setTotal(totalPedido);
   };
 
-  const opcao = (item,name) => {
-    if (item !== null) {
-      item.forEach((element) => {
-        return `${(
-          <label>
-            {element}
-            <Input type="radio" name={name} value={element} />
-          </label>
-        )}`;
-      });
-    }else{
-      return "";
-    }
-  };
-
-  return (
+ return (
     <main className="main-hall">
       <Header />
       <div className="div-hall">
@@ -140,7 +125,6 @@ const Hall = () => {
                 value={element.priceItem}
                 price={element.price}
                 options={element.subItem}
-                subItens={opcao}
                 handleclick={formarPedido}
               />
             ))}
@@ -166,7 +150,6 @@ const Hall = () => {
                 value={element.priceItem}
                 price={element.price}
                 options={element.subItem}
-                subItens={opcao}
                 handleclick={formarPedido}
               />
             ))}

@@ -1,11 +1,10 @@
 .classCard {
-  width: 40%;
-  height: 80px;
+  width: 45%;
+  height: 90px;
   border: 1px solid black;
   border-radius: 10px;
   background-color: rgba(253, 252, 252, 0.411);
   color: black;
-  font-family: 'Prata', serif;
   font-size: 0.9em;
   font-weight: bolder;
   padding: 10px;
@@ -95,4 +94,12 @@
   width: 50px;
   height: 85%;
   font-size: larger;
+}
+
+.select{
+  background-color: #153243;
+  color: white;
+  padding: 2px;
+  font-size: 16px;
+  border-radius: 5px;
 }
