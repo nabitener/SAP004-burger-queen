@@ -3,10 +3,11 @@
   height: 80px;
   border: 1px solid black;
   border-radius: 10px;
-  background-color: #660000;
-  color: rgb(255, 240, 240);
+  background-color: rgba(253, 252, 252, 0.411);
+  color: black;
   font-family: 'Prata', serif;
   font-size: 0.9em;
+  font-weight: bolder;
   padding: 10px;
   margin: 10px;
   display: flex;

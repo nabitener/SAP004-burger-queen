@@ -5,6 +5,7 @@ import '../../reset.css';
 import Header from '../../Components/Header/Header';
 import Input from '../../Components/Inputs';
 import Card from '../../Components/Cards/Cards';
+import PedidosProntos from '../../Components/PedidosProntos/PedidosProntos'
 import { firebaseStore } from '../../firebaseUtils';
 
 const Hall = () => {
@@ -183,7 +184,7 @@ const Hall = () => {
             Pedidos Prontos
           </label>
           <div className="div-conteudo">
-            Pedidos Prontos
+            <PedidosProntos />
           </div>
         </div>
         <Pedidos
