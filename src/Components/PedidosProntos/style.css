@@ -2,3 +2,41 @@
     display: flex;
     flex-direction: column;
 }
+
+/* Order Card */
+
+.order-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 15px;    
+    margin-top: 30px;
+}
+
+.order-card-title {
+    width: 100%;
+    font-weight: bold;
+    align-items: center;
+    border-radius: 15px 15px 0px 0px;
+    padding: 8px;
+    background-color: antiquewhite;
+    text-align: center;
+}
+
+.order-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(253, 252, 252, 0.411);
+    width: 100%;
+    padding: 5px;
+}
+
+.finalizar {
+    display: none;
+}
+
+.btn-finalizar {
+    border-radius: 0px 0px 15px 15px;
+}
