@@ -1,6 +1,3 @@
-4- Modal com as opções;
-
 5- Limpar os campos do pedido quando ele for enviado;
 
-6- Nomes iguais de itens da bugg no delete e mais e menos
-
+6- Responsividade;
