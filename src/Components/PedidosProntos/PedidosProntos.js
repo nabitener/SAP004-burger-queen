@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { firebaseStore } from '../../firebaseUtils';
-import SmallCard from '../../Components/CardCozinha/SmallCard.js';
+import OrderCard from './CardPedidoPronto.js';
 import Button from '../Buttons/index'
-//import CardCozinha from '../../Components/CardCozinha/CardCozinha';
 import '../../reset.css';
 import './style.css';
 
@@ -36,8 +35,8 @@ const PedidosProntos = () => {
         const pedidosArray = filteredDocs.map((doc) => {
           return( 
           <div className="card-pedido-pronto" key={doc.pedido}>
-          <SmallCard obj={doc} ></SmallCard>
-          <Button name="Finalizar" id={doc.pedido} onClick={prevent}/>
+          <OrderCard obj={doc} ></OrderCard>
+          <Button name="Finalizar" className="btn-finalizar" id={doc.pedido} onClick={prevent}/>
           </div>
         )});
         setPedidosProntos(pedidosArray);
