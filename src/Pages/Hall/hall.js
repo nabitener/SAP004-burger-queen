@@ -17,7 +17,7 @@ const Hall = () => {
   const [pedidos, setPedidos] = useState([]);
   const [total, setTotal] = useState(0);
 
-  useEffect(() => {}, [menuCafe, menuTarde, pedidos]);
+  useEffect(() => {}, [menuCafe, menuTarde, pedidos, total]);
 
   useEffect(() => {
     createMenuCafe();
@@ -71,16 +71,18 @@ const Hall = () => {
       priceItem: parseInt(e.currentTarget.value),
       quantidade: parseInt(1),
     };
-    let verificar = pedidos.includes((arrayItem.nameItem));
-    console.log(verificar)
-    if(verificar === false){
-      return novoPedido(arrayItem);
-    }else{
+    console.log(pedidos)
+    const filtro = pedidos.some((element) => {
+      return element.nameItem === arrayItem.nameItem;
+    });
+    if(filtro){
       return mais(pedidos, arrayItem.nameItem);
-    }  
+    }else{
+      return novoPedido(pedidos, arrayItem);      
+    }
   }
 
-  const novoPedido = (arrayItem) => {
+  const novoPedido = (pedidos, arrayItem) => {
     setPedidos([...pedidos, arrayItem]);
     resultadoTotal([...pedidos, arrayItem]);
   };
@@ -88,20 +90,17 @@ const Hall = () => {
   const excluir = (item, name) => {
     let dados = item.filter((element) => element.nameItem !== name);
     setPedidos(dados);
-    resultadoTotal(pedidos);
+    resultadoTotal(dados);
   };
 
-  const menos = (item, name) => {
-    setPedidos(
-      item.filter((element) => {
-        if (element.nameItem === name && element.quantidade > 0) {
-          return element.quantidade--;
-        } else {
-          return (element.quantidade = 0);
-        }
-      })
-    );
-    resultadoTotal(pedidos);
+  const menos = (item, index) => {	
+    if (item[index].quantidade > 0) {	
+      item[index].quantidade--;	
+    } else {	
+      excluir(item, item.nameItem);	
+    }
+    setPedidos([...pedidos]);
+    resultadoTotal([...pedidos]);	
   };
 
   const mais = (item, name) => {
@@ -110,13 +109,13 @@ const Hall = () => {
         element.nameItem === name ? element.quantidade++ : element.quantidade
       )
     );
-    resultadoTotal(pedidos);
+    resultadoTotal([...pedidos]);
   };
 
   const resultadoTotal = (pedidos) => {
     let totalPedido = parseInt(0);
     pedidos.map((element) => {
-      return (totalPedido += parseInt(element.priceItem));
+      totalPedido += parseInt(element.priceItem)*parseInt(element.quantidade)
     });
     setTotal(totalPedido);
   };

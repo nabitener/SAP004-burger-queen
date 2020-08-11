@@ -96,7 +96,7 @@ const Pedidos = (props) => {
               item={element.nameItem}
               quantidade={element.quantidade}
               handleClickMenos={() => {
-                props.subtrair(props.newPedido, element.nameItem);
+                props.subtrair(props.newPedido, index);
               }}
               handleClickMais={() => {
                 props.soma(props.newPedido, element.nameItem);
