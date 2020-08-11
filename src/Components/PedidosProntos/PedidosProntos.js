@@ -48,7 +48,7 @@ const PedidosProntos = () => {
       console.log('clicou')
       const id = e.currentTarget.id.toString();
       changeStatus(id);
-      importarPedidosProntos();
+      importarPedidosProntos()
     }
 
     const changeStatus = (id) => {

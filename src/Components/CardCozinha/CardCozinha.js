@@ -21,7 +21,9 @@ const CardCozinha = (props) => {
       <br></br>
       <ul className="lista">
         <li>
+
           {`${props.obj.order[0].quantidade} - ${props.obj.order[0].nameItem}`}
+
         </li>
       </ul>
       <br></br>
