@@ -53,25 +53,22 @@ const Hall = () => {
   };
 
   const formarPedido = (e) => {
-    let name = e.currentTarget.id;
     e.preventDefault();
-    console.log("clicou")
-    pedidos.filter((element) => {
-      if (element.nameItem !== name) {
-        return novoPedido();
-      } else {
-        return mais(pedidos, name);
-      }
-    });
-    console.log(pedidos)
-  };
-
-  const novoPedido = (e) => {
     let arrayItem = {
       nameItem: e.currentTarget.id,
       priceItem: parseInt(e.currentTarget.value),
       quantidade: parseInt(1),
     };
+    let verificar = pedidos.includes((arrayItem.nameItem));
+    console.log(verificar)
+    if(verificar === false){
+      return novoPedido(arrayItem);
+    }else{
+      return mais(pedidos, arrayItem.nameItem);
+    }  
+  }
+
+  const novoPedido = (arrayItem) => {
     setPedidos([...pedidos, arrayItem]);
     resultadoTotal([...pedidos, arrayItem]);
   };
