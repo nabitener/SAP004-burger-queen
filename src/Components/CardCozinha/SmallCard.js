@@ -11,7 +11,7 @@ const SmallCard = (props) => {
   };
   
   return(
-    <div  key= {props.obj.pedido} value={JSON.stringify(props.obj)} onClick={props.func} className='small-card'>
+    <div  key= {props.obj.pedido} value={JSON.stringify(props.obj)} className='small-card'>
       <div className='small-card-title'>
         <p>Número do Pedido: {props.obj.pedido} </p>
       </div>
