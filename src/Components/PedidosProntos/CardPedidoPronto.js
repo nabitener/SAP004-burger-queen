@@ -1,8 +1,9 @@
 import React from 'react';
 import './style.css';
+// import Buttom from '../Buttons/index';
 
 
-const SmallCard = (props) => {
+const OrderCard = (props) => {
   
   function converTimeStamp() {
     let time = props.obj.timestamp.toDate();
@@ -11,11 +12,11 @@ const SmallCard = (props) => {
   };
   
   return(
-    <div  key= {props.obj.pedido} value={JSON.stringify(props.obj)} className='small-card'>
-      <div className='small-card-title'>
+    <div  key= {props.obj.pedido} value={JSON.stringify(props.obj)} onClick={props.func} className='order-card'>
+      <div className='order-card-title'>
         <p>Número do Pedido: {props.obj.pedido} </p>
       </div>
-      <div className='small-card-content'>
+      <div className='order-card-content'>
         <p>Horário: {converTimeStamp()}</p>
         <p>Mesa: {props.obj.mesa}</p>
         <p>Cliente: {props.obj.cliente}</p>
@@ -24,4 +25,4 @@ const SmallCard = (props) => {
   )
 };
 
-export default SmallCard;
+export default OrderCard;

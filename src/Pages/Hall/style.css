@@ -62,6 +62,7 @@ input.tabs + .label + .div-conteudo {
     align-items: center;
     width: auto;
     border: 1px solid black;
+    min-height: 100%;
 }
 
 input.tabs:checked + .label + .div-conteudo {
@@ -97,10 +98,11 @@ input.tabs:checked + .label {
     position: absolute;
 }
 
-@media screen and (min-width: 1025px){
-.div-conteudo{
-    height: auto;
-    display: flex;
-    flex-direction: row-reverse;
-}
+@media screen and (min-width: 1075px){
+
+    .div-conteudo{
+        height: auto;
+        display: flex;
+        flex-direction: row-reverse;
+    }
 }

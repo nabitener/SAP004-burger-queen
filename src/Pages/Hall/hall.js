@@ -46,10 +46,22 @@ const Hall = () => {
       });
   };
 
-  const callAba = () => {
-    setTarde(!tarde);
-    setCafe(!cafe);
-    setPronto(!pronto);
+  const abaCafe = () => {
+    setTarde(false);
+    setCafe(true);
+    setPronto(false);
+  };
+
+  const abaTarde = () => {
+    setTarde(true);
+    setCafe(false);
+    setPronto(false);
+  };
+
+  const abaPronto = () => {
+    setTarde(false);
+    setCafe(false);
+    setPronto(true);
   };
 
   const formarPedido = (e) => {
@@ -121,7 +133,7 @@ const Hall = () => {
             id="tab1"
             value="cafe"
             checked={cafe === true}
-            onChange={() => callAba()}
+            onChange={() => abaCafe()}
           />
           <label className="label" htmlFor="tab1">
             Café da Manhã
@@ -146,7 +158,7 @@ const Hall = () => {
             id="tab2"
             value="tarde"
             checked={tarde === true}
-            onChange={() => callAba()}
+            onChange={() => abaTarde()}
           />
           <label className="label" htmlFor="tab2">
             Almoço e Jantar
@@ -171,7 +183,7 @@ const Hall = () => {
             id="tab3"
             value="pronto"
             checked={pronto === true}
-            onChange={() => callAba()}
+            onChange={() => abaPronto()}
           />
           <label className="label" htmlFor="tab3">
             Pedidos Prontos

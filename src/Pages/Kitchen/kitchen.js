@@ -8,19 +8,15 @@ import CardCozinha from '../../Components/CardCozinha/CardCozinha';
 import SmallCard from '../../Components/CardCozinha/SmallCard.js';
 
 const Kitchen = () => {
-  const [pedidosAbertos, setPedidosAbertos] = useState([]);
-  const [pedidoDetalhado, setPedidoDetalhado] = useState({
-    cliente: '',
-    mesa: '',
-    order: [],
-    pedido: '',
-    status: '',
-    timestamp: '',
-  });
+  const [smallCards, setSmallCards] = useState([]);
+  const [cards, setCards] = useState([])
 
   useEffect(() => {
     importarPedidosAbertos();
   }, []);
+
+  // firebaseStore.collection('pedidos')
+  //   .onSnapshot(() => importarPedidosAbertos());
 
   function selecionarPedido(e) {
     const dadosDoPedido = JSON.parse(e.currentTarget.getAttribute('value'));
@@ -28,21 +24,33 @@ const Kitchen = () => {
   }
 
   function importarPedidosAbertos() {
-    firebaseStore
-      .collection('pedidos')
-      .orderBy('timestamp', 'asc')
-      .get()
+    firebaseStore.collection('pedidos').orderBy('timestamp', 'asc').get()
       .then((resp) => {
         const filteredDocs = [];
+        let docWithId = {};
+
         resp.docs.forEach((x) => {
           if (x.data().status === 'Aberto') {
-            filteredDocs.push(x.data());
+            docWithId = x.data();
+            docWithId = {...docWithId, ...{id: x.id}};
+            filteredDocs.push(docWithId);
           }
         });
-        const pedidosArray = filteredDocs.map((doc) => {
-          return <SmallCard func={selecionarPedido} obj={doc}></SmallCard>;
-        });
-        setPedidosAbertos(pedidosArray);
+
+        const smallCardsArray=[];
+        const cardsArray=[];
+
+        filteredDocs.forEach((item,index) => {
+          if (index <3) {
+            cardsArray.push(<CardCozinha key={index} obj={item}></CardCozinha>)
+          }
+          else if(index >=3) {
+            smallCardsArray.push(<SmallCard key={index} obj={item}></SmallCard>)
+          }
+        })
+
+        setSmallCards(smallCardsArray);
+        setCards(cardsArray);
       });
   }
 
@@ -54,7 +62,7 @@ const Kitchen = () => {
           <div className="sub-header-container">
             <span className="sub-header-list">Lista de Pedidos</span>
           </div>
-          <div className="container-small-cards">{pedidosAbertos}</div>
+          <div className="container-small-cards">{smallCards}</div>
         </div>
 
         <div className="opened-order">
@@ -65,8 +73,7 @@ const Kitchen = () => {
 
           <div className="order">
             <div className="container-big-card">
-              <CardCozinha dadosPedido={pedidoDetalhado} />
-              {/* <CardCozinha /> */}
+              {cards}
             </div>
           </div>
         </div>
