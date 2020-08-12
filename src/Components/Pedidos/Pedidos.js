@@ -40,6 +40,10 @@ const Pedidos = (props) => {
       .then(() => {
         Swal.fire('Pedido enviado com sucesso');
       })
+      .then(() => {
+        setMesa(" ");
+        setCliente(" ");
+      })
       .catch((error) => {
         Swal.fire(error.message);
       });
@@ -63,7 +67,7 @@ const Pedidos = (props) => {
         <label className="label-input">
           Mesa:
           <Input
-            className="input-pedido"
+            className="input-pedido-mesa"
             type="number"
             name={mesa}
             onChange={(e) => setMesa(e.currentTarget.value)}
@@ -74,7 +78,7 @@ const Pedidos = (props) => {
         <label className="label-input">
           Cliente:
           <Input
-            className="input-pedido cliente"
+            className="input-pedido-cliente"
             type="text"
             value={cliente}
             onChange={(e) => setCliente(e.currentTarget.value)}

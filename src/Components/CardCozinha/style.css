@@ -95,3 +95,23 @@
     display: none;
   }
   
+.a-cancelado {
+  color: white;
+  border-radius: 50%;
+  font-weight: bold;
+  text-align: center;
+  background-color: rgb(136, 28, 28);
+  align-self: flex-end;
+  height: 26px;
+  width: 10%;
+}
+
+.p-pedido{
+  width: 90%;
+}
+
+.div-pedido-cancelar{
+  display: flex;
+
+}
+

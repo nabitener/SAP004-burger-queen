@@ -15,6 +15,12 @@ const CardCozinha = (props) => {
     .then(console.log('Pedido ' + props.obj.pedido + ' está pronto!'))
   }
   
+  const pedidoCancelado = () => {
+    firebaseStore.collection('pedidos').doc(props.obj.id).update({
+      status: "Cancelado"
+    })
+  } 
+
   function getOrders(){
     const orders = [];
     props.obj.order.forEach((orderItem, index) => {
@@ -30,8 +36,11 @@ const CardCozinha = (props) => {
 
   return (
     <div className="div-cozinha">
-      <p key={0} className="numero-pedido">Pedido n° {props.obj.pedido}</p>
-      
+      <div className="div-pedido-cancelar numero-pedido">
+      <p key={0} className="p-pedido">Pedido n° {props.obj.pedido}</p>
+      <Button className="a-cancelado" name="X" value="Cancelado" onClick={pedidoCancelado}/>
+      </div>
+            
       <span key={1} className="mesa">Mesa: {props.obj.mesa}</span><br></br>
       <span key={2} className="cliente">Cliente: {props.obj.cliente}</span>
       <br></br><br></br>
