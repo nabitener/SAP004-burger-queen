@@ -14,7 +14,7 @@ const OrderCard = (props) => {
   return(
     <div  key= {props.obj.pedido} value={JSON.stringify(props.obj)} onClick={props.func} className='order-card'>
       <div className='order-card-title'>
-        <p>Número do Pedido: {props.obj.pedido} </p>
+        <p>Pedido n° {props.obj.pedido} </p>
       </div>
       <div className='order-card-content'>
         <p>Horário: {converTimeStamp()}</p>

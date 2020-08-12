@@ -7,6 +7,7 @@ import Input from '../../Components/Inputs/index';
 import Button from '../../Components/Buttons/index';
 import { firebaseAuth, firebaseStore } from '../../firebaseUtils';
 import Logo from '../../Components/Logo/Logo';
+import Swal from 'sweetalert2';
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -46,7 +47,7 @@ const Register = () => {
         }
       })
       .catch((error) => {
-        alert(error.message);
+        Swal.fire(error.message);
       });
   };
 

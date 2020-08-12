@@ -10,10 +10,6 @@
   margin-right: 30px;
 }
 
-.form-login:hover {
-  border: 3px solid black;
-}
-
 .main-login {
   display: flex;
   flex-direction: row;
@@ -41,7 +37,7 @@
 }
 
 .welcome-message {
-  font-size: 1.2em;
+  font-size: 1.4em;
   color: rgb(255, 240, 240);
   margin-bottom: 15px;
 }
@@ -79,6 +75,7 @@
   position: absolute;
   right: 5%;
   width: 7%;
+  opacity: 0.5;
 }
 
 @media screen and (min-width: 1025px) {
