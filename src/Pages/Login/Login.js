@@ -8,6 +8,7 @@ import { useHistory, Link } from 'react-router-dom';
 import { urls } from '../../urlsUtils';
 import './style.css';
 import '../../reset.css';
+import Swal from 'sweetalert2';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -29,7 +30,7 @@ function Login() {
         }
       })
       .catch((error) => {
-        alert(error.message);
+        Swal.fire(error.message);
       });
   }
 
@@ -45,7 +46,7 @@ function Login() {
         userStatus();
       })
       .catch((error) => {
-        alert(error.message);
+        Swal.fire(error.message);
       });
   }
 

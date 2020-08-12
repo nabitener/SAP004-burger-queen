@@ -7,7 +7,7 @@ import './style.css';
 
 const PedidosProntos = () => {
   const [pedidosProntos, setPedidosProntos] = useState('');
- 
+
   useEffect(() => {
     importarPedidosProntos();
   }, []);

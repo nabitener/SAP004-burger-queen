@@ -1,10 +1,12 @@
 .div-cozinha{
-    width: 100%;
     border: 2px solid black;
     border-radius: 15px;
     background-color: rgba(253, 252, 252, 0.411);
-}
-.numero-pedido{
+    min-width: 15em;
+    max-width: 18em;
+    margin: 10px;
+  }
+  .numero-pedido{
     width: 100%;
     text-align: center;
     border-bottom: 2px solid black;
@@ -14,38 +16,62 @@
     padding: 10px;
     font-size: 16px;
     font-weight: bold;
-}
-.mesa, .cliente{
+  }
+  .mesa, .cliente{
     padding: 5px;
+    margin: 7px;
     font-weight: bold;
-}
-.btn-pronto{
+    width: 100%;
+  }
+  .btn-pronto{
     width: 70%;
     margin: 10px;
     height: 40px;
     font-size: 16px;
-}
-.div-btn{
+  }
+  .div-btn{
     display: flex;
     align-self: center;
     justify-content: center;
-}
-.lista{
+  }
+  .lista{
     text-align: center;
-}
-
-/* Small Card */
-
-.small-card {
+  }
+  
+  .table-header {
+    font-weight: bold;
+  }
+  
+  .table-rowEven {
+    padding: 30px;
+    text-align: center;
+  }
+  .table-rowOdd {
+    padding: 30px;
+  }
+  
+  .table-cell-qtd {
+    text-align: center;
+    min-width: 3em;
+  }
+  
+  .table-cell-item {
+    text-align: left;
+    min-width: 10em;
+  }
+  
+  /* Small Card */
+  
+  .small-card {
     display: flex;
     flex-direction: column;
     align-items: center;
     border: 1px solid black;
-    border-radius: 15px;    
-    margin-top: 30px;
-}
-
-.small-card-title {
+    border-radius: 15px;
+    margin-top: 15px;  
+  }
+  
+  .small-card-title {
     width: 100%;
     font-weight: bold;
     align-items: center;
@@ -53,9 +79,9 @@
     padding: 8px;
     background-color: antiquewhite;
     text-align: center;
-}
-
-.small-card-content {
+  }
+  
+  .small-card-content {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -63,8 +89,9 @@
     width: 100%;
     border-radius: 0px 0px 15px 15px;
     padding: 5px;
-}
-
-.finalizar {
+  }
+  
+  .finalizar {
     display: none;
-}
+  }
+  

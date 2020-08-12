@@ -6,10 +6,14 @@ import '../../reset.css';
 import Button from '../../Components/Buttons/index.js';
 import CardCozinha from '../../Components/CardCozinha/CardCozinha';
 import SmallCard from '../../Components/CardCozinha/SmallCard.js';
+import { useHistory, Link } from 'react-router-dom';
+import { urls } from '../../urlsUtils';
 
 const Kitchen = () => {
   const [smallCards, setSmallCards] = useState([]);
   const [cards, setCards] = useState([])
+
+  const history = useHistory();
 
   useEffect(() => {
     importarPedidosAbertos();
@@ -17,11 +21,6 @@ const Kitchen = () => {
 
   // firebaseStore.collection('pedidos')
   //   .onSnapshot(() => importarPedidosAbertos());
-
-  function selecionarPedido(e) {
-    const dadosDoPedido = JSON.parse(e.currentTarget.getAttribute('value'));
-    alert(JSON.stringify(dadosDoPedido));
-  }
 
   function importarPedidosAbertos() {
     firebaseStore.collection('pedidos').orderBy('timestamp', 'asc').get()
@@ -36,10 +35,8 @@ const Kitchen = () => {
             filteredDocs.push(docWithId);
           }
         });
-
         const smallCardsArray=[];
         const cardsArray=[];
-
         filteredDocs.forEach((item,index) => {
           if (index <3) {
             cardsArray.push(<CardCozinha key={index} obj={item}></CardCozinha>)
@@ -48,7 +45,6 @@ const Kitchen = () => {
             smallCardsArray.push(<SmallCard key={index} obj={item}></SmallCard>)
           }
         })
-
         setSmallCards(smallCardsArray);
         setCards(cardsArray);
       });
@@ -60,15 +56,20 @@ const Kitchen = () => {
       <div className="all-area">
         <div className="list-orders">
           <div className="sub-header-container">
-            <span className="sub-header-list">Lista de Pedidos</span>
+            <span className="sub-header-list">Próximos Pedidos</span>
           </div>
           <div className="container-small-cards">{smallCards}</div>
         </div>
 
         <div className="opened-order">
-          <div className="sub-header">
-            <span className="sub-header-title">Pedidos em Aberto</span>
-            <Button className="btn-history" name="Histórico" />
+
+          <div className="sub-header-orders">
+            <div className="sub-header">
+              <span className="sub-header-title">Pedidos em Aberto</span>
+            </div>
+            <div>
+              <Button className="btn-history" name="Histórico" onClick = {() => history.push(urls.history.path)}/>
+            </div>
           </div>
 
           <div className="order">
@@ -76,6 +77,7 @@ const Kitchen = () => {
               {cards}
             </div>
           </div>
+
         </div>
       </div>
     </main>
