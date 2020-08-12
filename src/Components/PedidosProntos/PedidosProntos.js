@@ -27,7 +27,7 @@ const PedidosProntos = () => {
         const pedidosArray = filteredDocs.map((doc) => {
           return( 
           <div className="card-pedido-pronto" key={doc.pedido}>
-          <OrderCard obj={doc} ></OrderCard>
+          <OrderCard obj={doc} cancelar={preventCancelar} idPedido={doc.pedido} ></OrderCard>
           <Button name="Finalizar" className="btn-finalizar" id={doc.pedido} onClick={prevent}/>
           </div>
         )});
@@ -37,18 +37,29 @@ const PedidosProntos = () => {
 
     const prevent = (e) => {
       e.preventDefault();
-      console.log('clicou')
       const id = e.currentTarget.id.toString();
-      changeStatus(id);
+      changeStatusFinalizado(id);
       importarPedidosProntos()
     }
 
-    const changeStatus = (id) => {
+    const preventCancelar = (e) => {
+      e.preventDefault();
+      const id = e.currentTarget.id.toString();
+      changeStatusCancelado(id);
+      importarPedidosProntos()
+    }
+    const changeStatusFinalizado = (id) => {
       firebaseStore.collection('pedidos').doc(id).update({
         status: 'Finalizado',
       });
     }
     
+    const changeStatusCancelado = (id) => {
+      firebaseStore.collection('pedidos').doc(id).update({
+        status: 'Cancelado',
+      });
+    }
+
   return (
     <div className="div-container-prontos">
       {pedidosProntos}

@@ -71,7 +71,6 @@ const Hall = () => {
       priceItem: parseInt(e.currentTarget.value),
       quantidade: parseInt(1),
     };
-    console.log(pedidos)
     const filtro = pedidos.some((element) => {
       return element.nameItem === arrayItem.nameItem;
     });

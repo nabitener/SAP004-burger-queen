@@ -6,7 +6,7 @@ import '../../reset.css';
 import Button from '../../Components/Buttons/index.js';
 import CardCozinha from '../../Components/CardCozinha/CardCozinha';
 import SmallCard from '../../Components/CardCozinha/SmallCard.js';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { urls } from '../../urlsUtils';
 
 const Kitchen = () => {

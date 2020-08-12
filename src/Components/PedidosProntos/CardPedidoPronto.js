@@ -1,5 +1,6 @@
 import React from 'react';
 import './style.css';
+import Button from '../Buttons';
 // import Buttom from '../Buttons/index';
 
 
@@ -14,7 +15,8 @@ const OrderCard = (props) => {
   return(
     <div  key= {props.obj.pedido} value={JSON.stringify(props.obj)} onClick={props.func} className='order-card'>
       <div className='order-card-title'>
-        <p>Pedido n° {props.obj.pedido} </p>
+        <p className="p-hall">Pedido n° {props.obj.pedido} </p>
+        <Button className="a-cancelado-hall" name="X" value="Cancelado" id={props.idPedido} onClick={props.cancelar}/>
       </div>
       <div className='order-card-content'>
         <p>Horário: {converTimeStamp()}</p>
