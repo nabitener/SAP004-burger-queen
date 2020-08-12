@@ -15,9 +15,16 @@
   align-self: center;
   font-weight: bold;
   font-size: 1.1em;
+  margin-bottom: 10px;
 }
-.input-pedido {
-  width: 25%;
+.input-pedido-mesa {
+  width: 40%;
+  height: 40px;
+  text-align: center;
+  margin-left: 22px;
+}
+.input-pedido-cliente{
+  width: 80%;
   height: 40px;
   text-align: center;
 }
@@ -25,11 +32,9 @@
     color: black;
     font-weight: bold;
 }
-.cliente {
-  width: 60%;
-}
 .div-mesa-cliente {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
 }
 .total{

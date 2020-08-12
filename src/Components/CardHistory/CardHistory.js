@@ -30,9 +30,11 @@ const CardHistory = (props) => {
   return (
     <div className="div-card">
       <p key={0} className="numero-pedido">Pedido n° {props.obj.pedido}</p>
+      <br></br>
       <span key={1} className="mesa">Horário: {converTimeStamp()}</span><br></br>
       <span key={2} className="mesa">Mesa: {props.obj.mesa}</span><br></br>
-      <span key={3} className="cliente">Cliente: {props.obj.cliente}</span>
+      <span key={3} className="cliente">Cliente: {props.obj.cliente}</span><br></br>
+      <span key={4} className="status cliente">Status: {props.obj.status}</span>
       <br></br><br></br>
       <table>
         <thead>
