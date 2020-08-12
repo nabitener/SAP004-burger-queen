@@ -7,15 +7,7 @@ import './style.css';
 
 const PedidosProntos = () => {
   const [pedidosProntos, setPedidosProntos] = useState('');
-  /*const [pedidoDetalhado, setPedidoDetalhado] = useState({
-    cliente: '',
-    mesa: '',
-    order: [],
-    pedido: '',
-    status: '',
-    timestamp: '',
-  });*/
-
+ 
   useEffect(() => {
     importarPedidosProntos();
   }, []);
@@ -23,7 +15,7 @@ const PedidosProntos = () => {
   const importarPedidosProntos = () => {
     firebaseStore
       .collection('pedidos')
-      .orderBy('timestamp', 'desc')
+      .orderBy('timestamp', 'asc')
       .get()
       .then((resp) => {
         const filteredDocs = [];
@@ -57,22 +49,8 @@ const PedidosProntos = () => {
       });
     }
     
-  /*const mostrarItens = () => {
-    let array =[];
-    pedidosProntos.map((doc) => {[
-    pedidoDetalhado.cliente= doc.cliente,
-    pedidoDetalhado.mesa= doc.mesa,
-    pedidoDetalhado.order= doc.order,
-    pedidoDetalhado.pedido= doc.pedido,
-    pedidoDetalhado.status= doc.status,
-    pedidoDetalhado.timestamp= doc.timestamp,
-    ]}
-    );
-    return setPedidoDetalhado(array);
-}*/
-
   return (
-    <div>
+    <div className="div-container-prontos">
       {pedidosProntos}
     </div>
   );
