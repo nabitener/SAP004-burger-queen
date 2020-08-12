@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { firebaseStore } from '../../firebaseUtils';
 import OrderCard from './CardPedidoPronto.js';
 import Button from '../Buttons/index'
+import Swal from 'sweetalert2';
 import '../../reset.css';
 import './style.css';
 
@@ -57,7 +58,8 @@ const PedidosProntos = () => {
     const changeStatusCancelado = (id) => {
       firebaseStore.collection('pedidos').doc(id).update({
         status: 'Cancelado',
-      });
+      })
+      .then(Swal.fire("Pedido Cancelado"))
     }
 
   return (

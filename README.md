@@ -1,101 +1,57 @@
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 # Burger Queen
 
 ## Índice
 
-- [1. Preâmbulo](#1-preâmbulo)
-- [2. Resumo do projeto](#2-resumo-do-projeto)
-- [3. Objetivos de aprendizagem](#3-objetivos-de-aprendizagem)
-- [4. Considerações gerais](#4-considerações-gerais)
-- [5. Critérios de aceitação mínimos do
-  projeto](#5-critérios-de-aceitação-mínimos-do-projeto)
-- [6. Hacker Edition](#6-hacker-edition)
-- [7. Dicas e leituras complementares](#7-dicas-e-leituras-complementares)
+- [1. Resumo do projeto](#1-resumo-do-projeto)
+- [2. Fluxograma da Aplicação](#2-fluxograma-da-aplicação)
+- [3. Tecnologias usadas](#3-tecnologias-usadas)
 
 ---
 
-## 1. Preâmbulo
+## 1. Resumo do Projeto
 
-[React](https://reactjs.org/), [Angular](https://angular.io/) e
-[Vue](https://vuejs.org/) são alguns dos _frameworks_ e _bibliotecas_ de
-JavaScript mais usados na área de desenvolvimento ao redor do mundo e existe uma
-razão para isso. No contexto do navegador, [_manter a interface sincronizada com
-o estado é difícil_](https://medium.com/dailyjs/the-deepest-reason-why-modern-javascript-frameworks-exist-933b86ebc445).
+O Burger Queen é um app desenvolvido para ser usado como organizador de toda a logística dos pedidos de uma hamburgueria, desde a criação do pedido, até o histórico de todos os pedidos realizados. Ele foi projetado para ser usado especificamente em tablets na horizontal, mas que também de adapta para telas maiores.
 
-Ao eleger um _framework_ ou _biblioteca_ para nossa interface, nos apoiamos em
-uma série de convenções e implementações _testadas_ e _documentadas_ para
-resolver um problema comum a toda interface web. Isto nos permite concentrar
-melhor (dedicar mais tempo) nas características _específicas_ de nossa
-aplicação.
+Cada funcionário é direcionado para a sua tela específica de trabalho, que pode ser a cozinha ou o salão:
 
+![Tela de login](src/image/login.png)
 
-## Available Scripts
+Na tela do salão é onde fica o menu café da manhã/Almoço e jantar, uma aba com os pedidos prontos para serem entregues e o formulário para criação de pedido:
 
-In the project directory, you can run:
+![Tela do salão](src/image/hall.png)
 
-### `npm start`
+Após clicar no botão de enviar na cozinha, o novo pedido é enviado para a cozinha para serem preparados, e quando o preparo foi finalizado e apertarem no botão de pronto, esse pedido volta para o salão para ser entregue ao cliente. Na tela da cozinha também encontramos um botão de histórico que mostrará todos os pedidos criados:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![Tela da cozinha](src/image/cozinha1.png)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+![Tela do Histórico](src/image/historico.png)
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+** Tanto na tela da cozinha quanto do salão é possível cancelar pedidos.
 
 
+### 2. Fluxograma da Aplicação
+
+Abaixo temos um fluxograma que ilustra todo o fluxo da aplicação:
+
+- Fluxograma do login até a cozinha
+
+![Fluxograma do login até ao hall](src/image/Fluxograma_-_Burger_Queen_-_Login_-_Cozinha.png)
+
+- Fluxograma da cozinha até o histórico
+
+![Fluxograma da cozinha até o histórico](src/image/Fluxograma_-_Burger_Queen_-_Cozinha_-_Histórico.png)
+
+### 3. Tecnologias usadas
+
+Este projeto foi desenvolvido para ser uma *Single Page App*, além disso foram usadas as seguintes ferramentas:
+
+- React
+- React Hooks
+- React Router
+- Firebase
+- SweetAlert2
+
+Como também Javascript, CSS e HTML.
+
+*** Projeto desenvolvido por [Ana Carolina Ramos](https://github.com/ana-ramos09) e [Nathalia Bitener](https://github.com/nabitener) ***
