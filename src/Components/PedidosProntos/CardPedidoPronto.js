@@ -1,8 +1,6 @@
 import React from 'react';
 import './style.css';
 import Button from '../Buttons';
-// import Buttom from '../Buttons/index';
-
 
 const OrderCard = (props) => {
   

@@ -2,6 +2,7 @@ import React, { useState , useEffect} from 'react';
 import './style.css';
 import Button from '../Buttons';
 import { firebaseStore } from '../../firebaseUtils';
+import Swal from 'sweetalert2';
 
 const CardCozinha = (props) => {
   const [items, setItems] = useState([]);
@@ -19,6 +20,7 @@ const CardCozinha = (props) => {
     firebaseStore.collection('pedidos').doc(props.obj.id).update({
       status: "Cancelado"
     })
+    .then(Swal.fire("Pedido Cancelado"));
   } 
 
   function getOrders(){

@@ -1,3 +1,0 @@
-5- Limpar os campos do pedido quando ele for enviado;
-
-6- Responsividade;
