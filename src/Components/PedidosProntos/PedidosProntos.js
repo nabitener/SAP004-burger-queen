@@ -14,7 +14,9 @@ const PedidosProntos = () => {
 
   const importarPedidosProntos = () => {
     firebaseStore
-      .collection('pedidos').orderBy('timestamp', 'desc').get()
+      .collection('pedidos')
+      .orderBy('timestamp', 'asc')
+      .get()
       .then((resp) => {
         const filteredDocs = [];
         resp.docs.forEach((x) => {
@@ -47,8 +49,8 @@ const PedidosProntos = () => {
       });
     }
     
-    return (
-    <div className='container-pedidos-prontos'>
+  return (
+    <div className="div-container-prontos">
       {pedidosProntos}
     </div>
   );
