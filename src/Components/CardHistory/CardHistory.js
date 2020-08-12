@@ -1,25 +1,24 @@
 import React, { useState , useEffect} from 'react';
 import './style.css';
-import Button from '../Buttons';
 import { firebaseStore } from '../../firebaseUtils';
 
-const CardCozinha = (props) => {
+const CardHistory = (props) => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {getOrders()}, []);
 
-  function pedidoPronto() {
-    firebaseStore.collection('pedidos').doc(props.obj.id).update({
-      status: "Pronto"
-    })
-    .then(console.log('Pedido ' + props.obj.pedido + ' está pronto!'))
-  }
-  
+  function converTimeStamp() {
+    let time = props.obj.timestamp.toDate();
+    let dateConverted = `${time.getDate()}/${time.getMonth()}/${time.getFullYear()}`;
+    let timeConverted = `${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}`;
+    return dateConverted + ' - ' + timeConverted;
+  };
+ 
   function getOrders(){
     const orders = [];
     props.obj.order.forEach((orderItem, index) => {
       orders.push(
-      <tr key={index} className='table-rowEven'> 
+      <tr key={index} className='table-row'> 
         <td key={0} className='table-cell-qtd'>{orderItem.quantidade} </td>
         <td key={1} className='table-cell-item'>{orderItem.nameItem} </td>
       </tr>
@@ -29,11 +28,11 @@ const CardCozinha = (props) => {
   }
 
   return (
-    <div className="div-cozinha">
+    <div className="div-card">
       <p key={0} className="numero-pedido">Pedido n° {props.obj.pedido}</p>
-      
-      <span key={1} className="mesa">Mesa: {props.obj.mesa}</span><br></br>
-      <span key={2} className="cliente">Cliente: {props.obj.cliente}</span>
+      <span key={1} className="mesa">Horário: {converTimeStamp()}</span><br></br>
+      <span key={2} className="mesa">Mesa: {props.obj.mesa}</span><br></br>
+      <span key={3} className="cliente">Cliente: {props.obj.cliente}</span>
       <br></br><br></br>
       <table>
         <thead>
@@ -47,11 +46,8 @@ const CardCozinha = (props) => {
         </tbody>
       </table>
       <br></br>
-      <div className="div-btn">
-        <Button className="btn-pronto" name="Pronto" value="Pronto" onClick={pedidoPronto}/>
-      </div>
     </div>
   );
 };
 
-export default CardCozinha;
+export default CardHistory;

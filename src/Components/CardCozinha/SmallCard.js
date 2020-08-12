@@ -13,7 +13,7 @@ const SmallCard = (props) => {
   return(
     <div  key= {props.obj.pedido} value={JSON.stringify(props.obj)} className='small-card'>
       <div className='small-card-title'>
-        <p>Número do Pedido: {props.obj.pedido} </p>
+        <p>Pedido n° {props.obj.pedido} </p>
       </div>
       <div className='small-card-content'>
         <p>Horário: {converTimeStamp()}</p>

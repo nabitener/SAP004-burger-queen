@@ -5,6 +5,7 @@ import { firebaseStore } from '../../firebaseUtils';
 import Table from '../Table/Table';
 import '../../reset.css';
 import './style.css';
+import Swal from 'sweetalert2';
 
 const Pedidos = (props) => {
   const [mesa, setMesa] = useState('');
@@ -16,7 +17,7 @@ const Pedidos = (props) => {
   const prevent = (event) => {
     event.preventDefault();
     if(mesa === ""){
-      alert("Preencha o número da mesa")
+      Swal.fire('Preencha o número da mesa');
     }else{
     registrarPedido();
     setMesa(0);
@@ -37,10 +38,10 @@ const Pedidos = (props) => {
         timestamp: new Date(),
       })
       .then(() => {
-        alert('Pedido enviado com sucesso');
+        Swal.fire('Pedido enviado com sucesso');
       })
       .catch((error) => {
-          alert(error.message)
+        Swal.fire(error.message);
       });
   };
   const registrarPedido = () => {
