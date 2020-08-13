@@ -15,17 +15,17 @@ O Burger Queen é um app desenvolvido para ser usado como organizador de toda a 
 
 Cada funcionário é direcionado para a sua tela específica de trabalho, que pode ser a cozinha ou o salão:
 
-![Tela de login](src/image/login.png)
+![Tela de login](C:\Ana\Programação\Laboratoria\Projetos\SAP004-burger-queen\src\Image\login.png)
 
 Na tela do salão é onde fica o menu café da manhã/Almoço e jantar, uma aba com os pedidos prontos para serem entregues e o formulário para criação de pedido:
 
-![Tela do salão](src/image/hall.png)
+![Tela do salão](C:\Ana\Programação\Laboratoria\Projetos\SAP004-burger-queen\src\Image\hall.png)
 
 Após clicar no botão de enviar na cozinha, o novo pedido é enviado para a cozinha para serem preparados, e quando o preparo foi finalizado e apertarem no botão de pronto, esse pedido volta para o salão para ser entregue ao cliente. Na tela da cozinha também encontramos um botão de histórico que mostrará todos os pedidos criados:
 
-![Tela da cozinha](src/image/cozinha1.png)
+![Tela da cozinha](C:\Ana\Programação\Laboratoria\Projetos\SAP004-burger-queen\src\Image\hall.png)
 
-![Tela do Histórico](src/image/historico.png)
+![Tela do Histórico](C:\Ana\Programação\Laboratoria\Projetos\SAP004-burger-queen\src\Image\historico.png)
 
 ** Tanto na tela da cozinha quanto do salão é possível cancelar pedidos.
 
@@ -36,11 +36,11 @@ Abaixo temos um fluxograma que ilustra todo o fluxo da aplicação:
 
 - Fluxograma do login até a cozinha
 
-![Fluxograma do login até ao hall](src/image/Fluxograma_-_Burger_Queen_-_Login_-_Cozinha.png)
+![Fluxograma do login até ao hall](C:\Ana\Programação\Laboratoria\Projetos\SAP004-burger-queen\src\Image\Fluxograma_-_Burger_Queen_-_Login_-_Cozinha.png)
 
 - Fluxograma da cozinha até o histórico
 
-![Fluxograma da cozinha até o histórico](src/image/Fluxograma_-_Burger_Queen_-_Cozinha_-_Histórico.png)
+![Fluxograma da cozinha até o histórico](C:\Ana\Programação\Laboratoria\Projetos\SAP004-burger-queen\src\Image\Fluxograma_-_Burger_Queen_-_Cozinha_-_Histórico.png)
 
 ### 3. Tecnologias usadas
 
