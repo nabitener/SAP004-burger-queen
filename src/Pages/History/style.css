@@ -90,7 +90,7 @@
   width: 100%;
   flex-wrap: wrap;
   flex-direction: row;
-  /* justify-content: space-evenly; */
+  justify-content: space-evenly;
   overflow: auto;
   padding-top: 10px;
   }
