@@ -13,14 +13,17 @@ const CardCozinha = (props) => {
     firebaseStore.collection('pedidos').doc(props.obj.id).update({
       status: "Pronto"
     })
-    .then(console.log('Pedido ' + props.obj.pedido + ' está pronto!'))
+    .then(props.func)
   }
   
   const pedidoCancelado = () => {
+
     firebaseStore.collection('pedidos').doc(props.obj.id).update({
       status: "Cancelado"
     })
-    .then(Swal.fire("Pedido Cancelado"));
+    .then(props.func)
+    .then(Swal.fire("Pedido Cancelado")
+    );
   } 
 
   function getOrders(){
