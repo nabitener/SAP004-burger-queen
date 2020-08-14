@@ -19,8 +19,6 @@ const Hall = () => {
 
   useEffect(() => {}, [menuCafe, menuTarde, pedidos, total]);
 
-  
-
   useEffect(() => {
     createMenuCafe();
     createMenuTarde();
@@ -76,12 +74,12 @@ const Hall = () => {
     const filtro = pedidos.some((element) => {
       return element.nameItem === arrayItem.nameItem;
     });
-    if(filtro){
+    if (filtro) {
       return mais(pedidos, arrayItem.nameItem);
-    }else{
-      return novoPedido(pedidos, arrayItem);      
+    } else {
+      return novoPedido(pedidos, arrayItem);
     }
-  }
+  };
 
   const novoPedido = (pedidos, arrayItem) => {
     setPedidos([...pedidos, arrayItem]);
@@ -94,14 +92,14 @@ const Hall = () => {
     resultadoTotal(dados);
   };
 
-  const menos = (item, index) => {	
-    if (item[index].quantidade > 0) {	
-      item[index].quantidade--;	
-    } else {	
-      excluir(item, item.nameItem);	
+  const menos = (item, index) => {
+    if (item[index].quantidade > 0) {
+      item[index].quantidade--;
+    } else {
+      excluir(item, item.nameItem);
     }
     setPedidos([...pedidos]);
-    resultadoTotal([...pedidos]);	
+    resultadoTotal([...pedidos]);
   };
 
   const mais = (item, name) => {
@@ -116,7 +114,7 @@ const Hall = () => {
   const resultadoTotal = (pedidos) => {
     let totalPedido = parseInt(0);
     pedidos.map((element) => {
-      totalPedido += parseInt(element.priceItem)*parseInt(element.quantidade)
+      totalPedido += parseInt(element.priceItem) * parseInt(element.quantidade);
     });
     setTotal(totalPedido);
   };

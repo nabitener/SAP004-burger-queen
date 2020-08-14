@@ -86,13 +86,13 @@ function Login() {
               onChange={(e) => setPass(e.currentTarget.value)}
               required
             />
-              <img
-                src="http://i.stack.imgur.com/H9Sb2.png"
-                className="eyes"
-                alt="Olho"
-                onClick={showPass}
-              ></img>
-           </div>
+            <img
+              src="http://i.stack.imgur.com/H9Sb2.png"
+              className="eyes"
+              alt="Olho"
+              onClick={showPass}
+            ></img>
+          </div>
         </div>
         <Button
           id="submit-button"

@@ -62,7 +62,7 @@ const Register = () => {
 
   return (
     <main className="main-register">
-      <Logo/>
+      <Logo />
       <form className="form-register">
         <p className="p-cadastro">Registre-se</p>
         <section className="section-input">
@@ -101,7 +101,7 @@ const Register = () => {
               onClick={showPass}
             ></img>
           </div>
-          <p className='area'>Selecione sua área de trabalho:</p>
+          <p className="area">Selecione sua área de trabalho:</p>
           <div className="div-input">
             <label htmlFor="input-area-cozinha">Cozinha</label>
             <Input

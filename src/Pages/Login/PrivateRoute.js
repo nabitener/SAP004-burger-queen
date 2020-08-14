@@ -2,7 +2,6 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import AuthProvider from './Auth';
 
-
 const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
   return (
     <Route
@@ -17,6 +16,5 @@ const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
     />
   );
 };
-
 
 export default PrivateRoute;
