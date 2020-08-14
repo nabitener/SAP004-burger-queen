@@ -6,7 +6,6 @@
   }
   
   .all-area {
-    /* border: 3px solid green; */
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -15,7 +14,6 @@
   }
   
   .list-orders {
-    /* border: 1px solid yellow; */
     width: 100%;
     height: 100%;
     max-width: 15em;
@@ -74,7 +72,6 @@
   }
   
   .opened-order {
-    /* border: 1px solid pink; */
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -99,7 +96,6 @@
   }
   
 .container-big-card {
-    /* border: 1px solid orangered; */
     display: flex;
     align-items: flex-start;
     width: 100%;
