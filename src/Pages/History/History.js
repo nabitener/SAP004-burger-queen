@@ -13,31 +13,43 @@ const History = () => {
   const history = useHistory();
 
   useEffect(() => {
-    getHistory();
+    getHistoryFilters ("Todos");
   }, []);
 
-  // firebaseStore.collection('pedidos')
-  //   .onSnapshot(() => importarPedidosAbertos());
-
-  function getHistory() {
+  function getHistoryFilters (options) {
     firebaseStore.collection('pedidos').orderBy('timestamp', 'desc').get()
-      .then((resp) => {
-        const filteredDocs = [];
-        let docWithId = {};
-        resp.docs.forEach((x) => {
+    .then((resp) => {
+      console.log("xxxxx");
+      const filteredDocs = [];
+      resp.docs.forEach((x) => {
+        if (options == "Finalizado") {
           if (x.data().status === 'Finalizado') {
-            docWithId = x.data();
-            docWithId = {...docWithId, ...{id: x.id}};
-            filteredDocs.push(docWithId);
+            filteredDocs.push(x.data());
           }
-        });
-        const cardsArray=[];
-        filteredDocs.forEach((item,index) => {
-          cardsArray.push(<CardHistory key={index} obj={item}></CardHistory>)
-        })
-        setCards(cardsArray);
+        }
+        else if (options == "Cancelado") {
+          if (x.data().status === 'Cancelado') {
+            filteredDocs.push(x.data());
+          }
+        }
+        else if (options == "Todos") {
+          if (x.data().status === 'Cancelado' || x.data().status === 'Finalizado') {
+            filteredDocs.push(x.data());
+          }
+        }
       });
+      const cardsArray=[];
+      filteredDocs.forEach((item,index) => {
+        cardsArray.push(<CardHistory key={index} obj={item}></CardHistory>)
+      })
+      setCards(cardsArray);
+    });
   }
+
+  const prevent = (event) => {
+    event.preventDefault();
+    getHistoryFilters(event.currentTarget.value);
+  };
 
   return (
     <main className='main-history'>
@@ -62,18 +74,12 @@ const History = () => {
               </div>
 
             </div>
-            <div className='filters-area'>
-              <select className='filter-by-day'>
-                <option className='d-type' selected-disabled>Filtro por Dia</option>
-                <option className='d-type'>Todos</option>
-                <option className='d-type'>Hoje</option>
-                <option className='d-type'>Essa Semana</option>
-              </select>
-              <select className='filter-by-type'>
-                <option className='f-type' selected-disabled>Tipo de Filtro</option>
-                <option className='f-type'>Todos</option>
-                <option className='f-type'>Finalizados</option>
-                <option className='f-type'>Cancelados</option>
+            <div className='filter-area'>
+              <select className='filter-by-type' onChange={prevent}>
+                <option className='f-type' selected-disabled>Filtros</option>
+                <option value='Todos' className='f-type'>Todos</option>
+                <option value='Finalizado' className='f-type'>Finalizados</option>
+                <option value='Cancelado' className='f-type'>Cancelados</option>
               </select>
             </div>
           </div>

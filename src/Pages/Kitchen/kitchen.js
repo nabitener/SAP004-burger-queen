@@ -19,9 +19,6 @@ const Kitchen = () => {
     importarPedidosAbertos();
   }, []);
 
-  // firebaseStore.collection('pedidos')
-  //   .onSnapshot(() => importarPedidosAbertos());
-
   function importarPedidosAbertos() {
     firebaseStore.collection('pedidos').orderBy('timestamp', 'asc').get()
       .then((resp) => {
@@ -39,7 +36,7 @@ const Kitchen = () => {
         const cardsArray=[];
         filteredDocs.forEach((item,index) => {
           if (index <3) {
-            cardsArray.push(<CardCozinha key={index} obj={item}></CardCozinha>)
+            cardsArray.push(<CardCozinha key={index} obj={item} func={importarPedidosAbertos}></CardCozinha>)
           }
           else if(index >=3) {
             smallCardsArray.push(<SmallCard key={index} obj={item}></SmallCard>)

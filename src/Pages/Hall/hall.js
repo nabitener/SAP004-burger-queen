@@ -19,6 +19,8 @@ const Hall = () => {
 
   useEffect(() => {}, [menuCafe, menuTarde, pedidos, total]);
 
+  
+
   useEffect(() => {
     createMenuCafe();
     createMenuTarde();
@@ -119,6 +121,12 @@ const Hall = () => {
     setTotal(totalPedido);
   };
 
+  const limparPedido = (e) => {
+    e.preventDefault();
+    setTotal(0);
+    setPedidos([]);
+  };
+
   return (
     <main className="main-hall">
       <Header />
@@ -196,6 +204,7 @@ const Hall = () => {
           subtrair={menos}
           total={total}
           newPedido={pedidos}
+          limpar={limparPedido}
         />
       </div>
     </main>

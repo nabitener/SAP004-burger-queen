@@ -76,7 +76,6 @@ input.tabs + .label {
     float: left;
     background: #153243;
     color: antiquewhite;
-    /* font-weight: bold; */
     font-size: 1.2em;
     cursor: pointer;
     transition: background .2s;

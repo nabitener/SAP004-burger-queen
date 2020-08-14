@@ -39,11 +39,11 @@ const Pedidos = (props) => {
         timestamp: new Date(),
       })
       .then(() => {
-        Swal.fire('Pedido enviado com sucesso');
+        setMesa('');
+        setCliente(" ");
       })
       .then(() => {
-        setMesa(" ");
-        setCliente(" ");
+        Swal.fire('Pedido enviado com sucesso');
       })
       .catch((error) => {
         Swal.fire(error.message);
@@ -61,6 +61,16 @@ const Pedidos = (props) => {
    })
  };
 
+  const limparPedido = () => {
+    setMesa(0);
+    setCliente('');
+  };
+ 
+ function atualizarMesa(e) {
+  e.preventDefault('');
+  setMesa(0);
+  } 
+
   return (
     <form className="form-pedidos">
       <p className="p-pedidos">Pedido</p>
@@ -70,7 +80,7 @@ const Pedidos = (props) => {
           <Input
             className="input-pedido-mesa"
             type="number"
-            name={mesa}
+            value={mesa}
             onChange={(e) => setMesa(e.currentTarget.value)}
             min="0"
             max="1000"
@@ -120,6 +130,7 @@ const Pedidos = (props) => {
       <br></br>
       <Button className="btn-pedido" name="Enviar" onClick={prevent} />
     </form>
+    
   );
 };
 
