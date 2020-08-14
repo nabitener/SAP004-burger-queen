@@ -5,23 +5,26 @@ import '../../reset.css';
 import Header from '../../Components/Header/Header';
 import Input from '../../Components/Inputs';
 import Card from '../../Components/Cards/Cards';
+import PedidosProntos from '../../Components/PedidosProntos/PedidosProntos';
 import { firebaseStore } from '../../firebaseUtils';
 
 const Hall = () => {
   const [cafe, setCafe] = useState(true);
   const [tarde, setTarde] = useState(false);
+  const [pronto, setPronto] = useState(false);
   const [menuCafe, setMenuCafe] = useState([]);
   const [menuTarde, setMenuTarde] = useState([]);
   const [pedidos, setPedidos] = useState([]);
+  const [total, setTotal] = useState(0);
 
-  useEffect(() => {
-  }, [menuCafe, menuTarde, pedidos]);
+  useEffect(() => {}, [menuCafe, menuTarde, pedidos, total]);
+
+  
 
   useEffect(() => {
     createMenuCafe();
     createMenuTarde();
   }, []);
-
 
   const createMenuCafe = () => {
     firebaseStore
@@ -44,27 +47,85 @@ const Hall = () => {
         setMenuTarde(newArray);
       });
   };
- 
-  const callCafe = () => {
-    setCafe(!cafe);
-    setTarde(!tarde);
+
+  const abaCafe = () => {
+    setTarde(false);
+    setCafe(true);
+    setPronto(false);
   };
 
-  const callTarde = () => {
-    setTarde(!tarde);
-    setCafe(!cafe);
+  const abaTarde = () => {
+    setTarde(true);
+    setCafe(false);
+    setPronto(false);
   };
 
-  
+  const abaPronto = () => {
+    setTarde(false);
+    setCafe(false);
+    setPronto(true);
+  };
+
   const formarPedido = (e) => {
     e.preventDefault();
     let arrayItem = {
       nameItem: e.currentTarget.id,
       priceItem: parseInt(e.currentTarget.value),
-      quantidade: 1,
+      quantidade: parseInt(1),
     };
-    setPedidos([...pedidos, arrayItem]);
+    const filtro = pedidos.some((element) => {
+      return element.nameItem === arrayItem.nameItem;
+    });
+    if(filtro){
+      return mais(pedidos, arrayItem.nameItem);
+    }else{
+      return novoPedido(pedidos, arrayItem);      
+    }
   }
+
+  const novoPedido = (pedidos, arrayItem) => {
+    setPedidos([...pedidos, arrayItem]);
+    resultadoTotal([...pedidos, arrayItem]);
+  };
+
+  const excluir = (item, name) => {
+    let dados = item.filter((element) => element.nameItem !== name);
+    setPedidos(dados);
+    resultadoTotal(dados);
+  };
+
+  const menos = (item, index) => {	
+    if (item[index].quantidade > 0) {	
+      item[index].quantidade--;	
+    } else {	
+      excluir(item, item.nameItem);	
+    }
+    setPedidos([...pedidos]);
+    resultadoTotal([...pedidos]);	
+  };
+
+  const mais = (item, name) => {
+    setPedidos(
+      item.filter((element) =>
+        element.nameItem === name ? element.quantidade++ : element.quantidade
+      )
+    );
+    resultadoTotal([...pedidos]);
+  };
+
+  const resultadoTotal = (pedidos) => {
+    let totalPedido = parseInt(0);
+    pedidos.map((element) => {
+      totalPedido += parseInt(element.priceItem)*parseInt(element.quantidade)
+    });
+    setTotal(totalPedido);
+  };
+
+  const limparPedido = (e) => {
+    e.preventDefault();
+    setTotal(0);
+    setPedidos([]);
+  };
 
   return (
     <main className="main-hall">
@@ -78,7 +139,7 @@ const Hall = () => {
             id="tab1"
             value="cafe"
             checked={cafe === true}
-            onChange={() => callCafe()}
+            onChange={() => abaCafe()}
           />
           <label className="label" htmlFor="tab1">
             Café da Manhã
@@ -86,12 +147,13 @@ const Hall = () => {
           <div className="div-conteudo">
             {menuCafe.map((element) => (
               <Card
-              idCard={element.item}
-              name={element.item}
-              value={element.priceItem}
-              item_name={element.item}
-              price={element.price}
-              handleclick={formarPedido}
+                key={element.item}
+                idCard={element.item}
+                name={element.item}
+                value={element.priceItem}
+                price={element.price}
+                options={element.subItem}
+                handleclick={formarPedido}
               />
             ))}
           </div>
@@ -102,7 +164,7 @@ const Hall = () => {
             id="tab2"
             value="tarde"
             checked={tarde === true}
-            onChange={() => callTarde()}
+            onChange={() => abaTarde()}
           />
           <label className="label" htmlFor="tab2">
             Almoço e Jantar
@@ -114,14 +176,36 @@ const Hall = () => {
                 idCard={element.item}
                 name={element.item}
                 value={element.priceItem}
-                item_name={element.item}
                 price={element.price}
+                options={element.subItem}
                 handleclick={formarPedido}
               />
             ))}
           </div>
+          <Input
+            type="radio"
+            name="menu"
+            className="tabs"
+            id="tab3"
+            value="pronto"
+            checked={pronto === true}
+            onChange={() => abaPronto()}
+          />
+          <label className="label" htmlFor="tab3">
+            Pedidos Prontos
+          </label>
+          <div className="div-conteudo">
+            <PedidosProntos />
+          </div>
         </div>
-        <Pedidos newPedido={pedidos}/>
+        <Pedidos
+          delete={excluir}
+          soma={mais}
+          subtrair={menos}
+          total={total}
+          newPedido={pedidos}
+          limpar={limparPedido}
+        />
       </div>
     </main>
   );

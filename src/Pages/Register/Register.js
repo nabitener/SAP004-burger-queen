@@ -7,6 +7,7 @@ import Input from '../../Components/Inputs/index';
 import Button from '../../Components/Buttons/index';
 import { firebaseAuth, firebaseStore } from '../../firebaseUtils';
 import Logo from '../../Components/Logo/Logo';
+import Swal from 'sweetalert2';
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -46,7 +47,7 @@ const Register = () => {
         }
       })
       .catch((error) => {
-        alert(error.message);
+        Swal.fire(error.message);
       });
   };
 
@@ -100,6 +101,7 @@ const Register = () => {
               onClick={showPass}
             ></img>
           </div>
+          <p className='area'>Selecione sua área de trabalho:</p>
           <div className="div-input">
             <label htmlFor="input-area-cozinha">Cozinha</label>
             <Input

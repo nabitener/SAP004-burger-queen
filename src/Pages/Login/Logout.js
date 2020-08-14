@@ -1,12 +1,12 @@
 import { firebaseAuth } from '../../firebaseUtils';
-
+import Swal from 'sweetalert2';
 const Logout = () => {
 
   return (
     firebaseAuth
     .signOut()
     .then(() => {
-    alert('Volte Sempre')
+      Swal.fire('Volte Sempre')
   })
   )
 };

@@ -3,14 +3,14 @@
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-around;
 }
 .p-cadastro {
   font-size: 1.2em;
   font-weight: bold;
   color: rgb(255, 240, 240);
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   margin-top: 10px;
 }
 
@@ -21,14 +21,10 @@
   align-items: center;
   padding: 15px;
   border-radius: 5%;
-  width: 70%;
-  height: 100%;
   background-color: #660000;
-  margin-bottom: 30px;
-}
-
-.form-register:hover {
-  border: 3px solid black;
+  width: 40%;
+  height: 70%;
+  margin-right: 30px;
 }
 
 .section-input {
@@ -41,14 +37,16 @@
 .input-register {
   width: 90%;
 }
+
 .div-input {
   display: flex;
-  width: 100%;
+  width: 70%;
   align-items: center;
   justify-content: center;
   font-size: 1.1em;
   color: rgb(255, 240, 240);
 }
+
 .input-register-radio {
   width: 20px;
 }
@@ -57,12 +55,12 @@
   width: 100%;
   height: 40px;
   font-size: 1.2em;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 13px;
+  margin-bottom: 13px;
 }
 .p-voltar-login {
   font-size: 1em;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   color: rgb(255, 240, 240);
 }
 
@@ -75,6 +73,7 @@
 .link-login:hover{
   font-weight: bold;
 }
+
 .div-password{
   display: flex;
   align-items: center;
@@ -82,6 +81,7 @@
   position: relative;
   width: 100%;
 }
+
 .eyes{
   cursor: pointer;
   position: absolute;
@@ -89,14 +89,15 @@
   width: 7%;
 }
 
+.area{
+  color: white;
+  font-size: 18px;
+  margin: 10px;
+}
+
 @media screen and (min-width: 1025px) {
-  .form-register {
-    width: 40%;
-    height: 70%;
-    margin-right: 30px;
-  }
   .main-register {
-    flex-direction: row;
     justify-content: center;
   }
+  
 }

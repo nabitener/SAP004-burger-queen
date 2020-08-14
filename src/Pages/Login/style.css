@@ -5,20 +5,16 @@
   align-items: center;
   background-color: #660000;
   border-radius: 5%;
-  width: 70%;
-  height: 100%;
-  margin-bottom: 30px;
-}
-
-.form-login:hover {
-  border: 3px solid black;
+  height: 70%;
+  width: 40%;
+  margin-right: 30px;
 }
 
 .main-login {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-around;
   align-items: center;
-  justify-content: space-between;
   width: 100%;
   height: 100%;
 }
@@ -41,7 +37,7 @@
 }
 
 .welcome-message {
-  font-size: 1.2em;
+  font-size: 1.4em;
   color: rgb(255, 240, 240);
   margin-bottom: 15px;
 }
@@ -64,31 +60,27 @@
   text-decoration-line: underline;
 }
 
-.link-register:hover{
+.link-register:hover {
   font-weight: bold;
 }
-.div-password{
+.div-password {
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   width: 100%;
 }
-.eyes{
+.eyes {
   cursor: pointer;
   position: absolute;
   right: 5%;
   width: 7%;
+  opacity: 0.5;
 }
 
 @media screen and (min-width: 1025px) {
   .main-login {
-    flex-direction: row;
     justify-content: center;
-  } 
-  .form-login {
-    height: 70%;
-    width: 40%;
-    margin-right: 30px;
-  }  
+  }
+  
 }

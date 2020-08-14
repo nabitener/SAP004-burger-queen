@@ -5,103 +5,91 @@ import { firebaseStore } from '../../firebaseUtils';
 import Table from '../Table/Table';
 import '../../reset.css';
 import './style.css';
+import Swal from 'sweetalert2';
 
 const Pedidos = (props) => {
-  //const [pedido, setPedido] = useState(100);
   const [mesa, setMesa] = useState('');
   const [cliente, setCliente] = useState('');
-  const [total, setTotal] = useState('');
 
   useEffect(() => {
-  }, [mesa, cliente, total]);
-  useEffect(() => {
-    console.log(props.newPedido);
-    resultadoTotal(props.newPedido);
-  }, [props.newPedido]);
+  }, [mesa, cliente, props.newPedido]);
 
   const prevent = (event) => {
     event.preventDefault();
-    novoPedido(mesa, cliente);
-  };
+    if(mesa === ""){
+      Swal.fire('Preencha o número da mesa');
+    }else{
+    registrarPedido();
+    setMesa('');
+    setCliente('');
+    props.newPedido = "";
+  }};
 
-  const novoPedido = (mesa, cliente) => {
+  const novoPedido = (pedidoNumero, mesa, cliente) => {
+    const numero = pedidoNumero.toString();
     firebaseStore
       .collection('pedidos')
-      .add({
+      .doc(numero)
+      .set({
+        pedido: pedidoNumero,
         order: props.newPedido,
         status: 'Aberto',
         mesa: mesa,
         cliente: cliente,
-        timestamp: new Date().toLocaleTimeString(),
+        timestamp: new Date(),
       })
       .then(() => {
-        alert('Pedido enviado com sucesso');
+        setMesa('');
+        setCliente(" ");
+      })
+      .then(() => {
+        Swal.fire('Pedido enviado com sucesso');
       })
       .catch((error) => {
-          alert(error.message)
+        Swal.fire(error.message);
       });
   };
-  /*function registrarPedido(){
-    firebaseStore.collection('configurações').doc('último pedido').get()
-    .then((resp) => { 
-      setPedido(resp.data().número +1)
-      firebaseStore.collection('configurações').doc('último pedido').update({
-        'número': pedido
-      })
-      // .then(novoPedido(pedido, mesa,cliente))
-    })
-  }*/
+  const registrarPedido = () => {
+    let pedidoNumero = 100;
+   firebaseStore.collection('configurações').doc('último pedido').get()
+   .then((resp) => { 
+     pedidoNumero = resp.data().número +1
+     firebaseStore.collection('configurações').doc('último pedido').update({
+       'número': pedidoNumero
+     })
+     .then(novoPedido(pedidoNumero, mesa, cliente))
+   })
+ };
 
-  // registrarPedido();
-  const menos = (item, index) => {
-    if (item[index].quantidade > 0) {
-      item[index].quantidade--;
-      console.log(item[index]);
-    } else {
-      item[index].quantidade = 0;
-      excluir(item, index);
-    }
+  const limparPedido = () => {
+    setMesa(0);
+    setCliente('');
   };
-
-  const mais = (item, index) => {
-    item[index].quantidade++;
-    console.log(item[index]);
-  };
-
-  const excluir = (item, index) => {
-    console.log('deletar');
-    console.log(item.splice(index, 1));
-    item.splice(index, 1);
-  };
-
-  const resultadoTotal = (order) => {
-    let totalPedido = parseInt(0);
-    order.map((element) => {
-      return (totalPedido += parseInt(element.priceItem));
-    });
-    setTotal(totalPedido);
-  };
+ 
+ function atualizarMesa(e) {
+  e.preventDefault('');
+  setMesa(0);
+  } 
 
   return (
     <form className="form-pedidos">
       <p className="p-pedidos">Pedido</p>
-      <div className="div-input">
+      <div className="div-mesa-cliente">
         <label className="label-input">
           Mesa:
           <Input
-            className="input-pedido"
+            className="input-pedido-mesa"
             type="number"
-            name={mesa}
+            value={mesa}
             onChange={(e) => setMesa(e.currentTarget.value)}
             min="0"
             max="1000"
-            required={mesa === true}
           />
         </label>
         <label className="label-input">
           Cliente:
           <Input
-            className="input-pedido cliente"
+            className="input-pedido-cliente"
             type="text"
             value={cliente}
             onChange={(e) => setCliente(e.currentTarget.value)}
@@ -113,11 +101,9 @@ const Pedidos = (props) => {
         <thead>
           <tr>
             <th>Item</th>
-            <th>Adicional</th>
             <th>Quantidade</th>
             <th>Preço</th>
           </tr>
-          <br></br>
         </thead>
         <tbody>
           {props.newPedido.map((element, index) => (
@@ -126,13 +112,13 @@ const Pedidos = (props) => {
               item={element.nameItem}
               quantidade={element.quantidade}
               handleClickMenos={() => {
-                menos(props.newPedido, index);
+                props.subtrair(props.newPedido, index);
               }}
               handleClickMais={() => {
-                mais(props.newPedido, index);
+                props.soma(props.newPedido, element.nameItem);
               }}
               handleClickDelete={() => {
-                excluir(props.newPedido, index);
+                props.delete(props.newPedido, element.nameItem);
               }}
               price={element.priceItem * element.quantidade}
             />
@@ -140,10 +126,11 @@ const Pedidos = (props) => {
         </tbody>
       </table>
       <br></br>
-      <p className="total">Total  R$ {total}</p>
+      <p className="total">Total  R$ {props.total}</p>
       <br></br>
       <Button className="btn-pedido" name="Enviar" onClick={prevent} />
     </form>
+    
   );
 };
 
