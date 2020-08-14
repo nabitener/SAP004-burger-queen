@@ -11,7 +11,7 @@ import { urls } from '../../urlsUtils';
 
 const Kitchen = () => {
   const [smallCards, setSmallCards] = useState([]);
-  const [cards, setCards] = useState([])
+  const [cards, setCards] = useState([]);
 
   const history = useHistory();
 
@@ -20,7 +20,10 @@ const Kitchen = () => {
   }, []);
 
   function importarPedidosAbertos() {
-    firebaseStore.collection('pedidos').orderBy('timestamp', 'asc').get()
+    firebaseStore
+      .collection('pedidos')
+      .orderBy('timestamp', 'asc')
+      .get()
       .then((resp) => {
         const filteredDocs = [];
         let docWithId = {};
@@ -28,20 +31,27 @@ const Kitchen = () => {
         resp.docs.forEach((x) => {
           if (x.data().status === 'Aberto') {
             docWithId = x.data();
-            docWithId = {...docWithId, ...{id: x.id}};
+            docWithId = { ...docWithId, ...{ id: x.id } };
             filteredDocs.push(docWithId);
           }
         });
-        const smallCardsArray=[];
-        const cardsArray=[];
-        filteredDocs.forEach((item,index) => {
-          if (index <3) {
-            cardsArray.push(<CardCozinha key={index} obj={item} func={importarPedidosAbertos}></CardCozinha>)
+        const smallCardsArray = [];
+        const cardsArray = [];
+        filteredDocs.forEach((item, index) => {
+          if (index < 3) {
+            cardsArray.push(
+              <CardCozinha
+                key={index}
+                obj={item}
+                func={importarPedidosAbertos}
+              ></CardCozinha>
+            );
+          } else if (index >= 3) {
+            smallCardsArray.push(
+              <SmallCard key={index} obj={item}></SmallCard>
+            );
           }
-          else if(index >=3) {
-            smallCardsArray.push(<SmallCard key={index} obj={item}></SmallCard>)
-          }
-        })
+        });
         setSmallCards(smallCardsArray);
         setCards(cardsArray);
       });
@@ -59,22 +69,22 @@ const Kitchen = () => {
         </div>
 
         <div className="opened-order">
-
           <div className="sub-header-orders">
             <div className="sub-header">
               <span className="sub-header-title">Pedidos em Aberto</span>
             </div>
             <div>
-              <Button className="btn-history" name="Histórico" onClick = {() => history.push(urls.history.path)}/>
+              <Button
+                className="btn-history"
+                name="Histórico"
+                onClick={() => history.push(urls.history.path)}
+              />
             </div>
           </div>
 
           <div className="order">
-            <div className="container-big-card">
-              {cards}
-            </div>
+            <div className="container-big-card">{cards}</div>
           </div>
-
         </div>
       </div>
     </main>
