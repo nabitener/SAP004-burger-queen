@@ -5,7 +5,7 @@ import './style.css';
 import '../../reset.css';
 import Button from '../../Components/Buttons/index.js';
 import CardHistory from '../../Components/CardHistory/CardHistory';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory} from 'react-router-dom';
 import { urls } from '../../urlsUtils';
 
 const History = () => {

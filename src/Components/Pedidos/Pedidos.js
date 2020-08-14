@@ -20,8 +20,9 @@ const Pedidos = (props) => {
       Swal.fire('Preencha o número da mesa');
     }else{
     registrarPedido();
-    setMesa(0);
+    setMesa('');
     setCliente('');
+    props.newPedido = "";
   }};
 
   const novoPedido = (pedidoNumero, mesa, cliente) => {
