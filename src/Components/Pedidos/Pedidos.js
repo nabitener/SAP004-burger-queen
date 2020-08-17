@@ -22,7 +22,6 @@ const Pedidos = (props) => {
     registrarPedido();
     setMesa('');
     setCliente('');
-    props.newPedido = "";
   }};
 
   const novoPedido = (pedidoNumero, mesa, cliente) => {
