@@ -68,7 +68,7 @@
 
 .filter-by-type {
   width: 8em;
-  height: 8vh;
+  padding: 5px;
   margin-left: 30px;
   margin-right: 30px;
   background: #153243;
