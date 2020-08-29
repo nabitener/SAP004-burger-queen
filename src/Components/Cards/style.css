@@ -89,7 +89,7 @@
   background-color: #153243;
   color: white;
   padding: 2px;
-  font-size: 1 em;
+  font-size: 1.1 em;
   border-radius: 5px;
   margin: 5px;
 }
@@ -102,7 +102,7 @@
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .container-options-value-extra{
