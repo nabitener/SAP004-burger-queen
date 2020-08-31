@@ -4,6 +4,7 @@ import Button from '../Buttons';
 
 const Card = (props) => {
   const [opcao, setOpcao] = useState('');
+  const [priceExtra, setPriceExtra] = useState('');
 
   return (
     <div id={props.idCard} className="classCard">
