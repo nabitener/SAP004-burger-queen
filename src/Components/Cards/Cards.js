@@ -6,6 +6,7 @@ import Input from "../Inputs";
 const Card = (props) => {
   const [opcao, setOpcao] = useState("");
   const [adicional, setAdicional] = useState("");
+  const [priceExtra, setPriceExtra] = useState('');
 
   return (
     <div id={props.idCard} className="classCard">
