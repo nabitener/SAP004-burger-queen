@@ -176,6 +176,7 @@ const Hall = () => {
                 value={element.priceItem}
                 price={element.price}
                 options={element.subItem}
+                extra={element.extra}
                 handleclick={formarPedido}
               />
             ))}
