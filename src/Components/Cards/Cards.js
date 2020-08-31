@@ -8,6 +8,16 @@ const Card = (props) => {
   const [adicional, setAdicional] = useState("");
   const [priceExtra, setPriceExtra] = useState('');
 
+  const addExtra = (e) => {
+    if(adicional !== ""){
+      setAdicional(`${adicional} ${e.currentTarget.value}`);
+      setPriceExtra(2);
+    }else{
+      setAdicional(e.currentTarget.value);
+      setPriceExtra(1);
+    }
+  }
+
   return (
     <div id={props.idCard} className="classCard">
       <div className="container-item">
@@ -27,8 +37,8 @@ const Card = (props) => {
           <div className="add-button-container">
             <Button
               name="Add"
-              id={`${props.name}  ${opcao} ${adicional}`}
-              value={props.price}
+              id={`${props.name} ${opcao} ${adicional}`}
+              value={props.price + priceExtra}
               className="add-button"
               onClick={props.handleclick}
             />
@@ -60,7 +70,7 @@ const Card = (props) => {
             props.extra.map((element) => (
               <label key={props.name + element}>
                 {element}
-                <Input type="checkbox" name={element} value ={element} onChange={(e) => setAdicional(e.currentTarget.value)}></Input>
+                <Input type="checkbox" name={element} value ={element} onChange={addExtra}></Input>
               </label>
             ))}
         </div>
