@@ -68,7 +68,7 @@ const Card = (props) => {
         <div className="container-options-value-extra">
           {props.extra &&
             props.extra.map((element) => (
-              <label key={props.name + element}>
+              <label key={props.name + element} className="label-extra">
                 {element}
                 <Input type="checkbox" name={element} value ={element} onChange={addExtra}></Input>
               </label>

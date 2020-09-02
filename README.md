@@ -6,6 +6,7 @@
 - [1. Resumo do projeto](#1-resumo-do-projeto)
 - [2. Fluxograma da Aplicação](#2-fluxograma-da-aplicação)
 - [3. Tecnologias usadas](#3-tecnologias-usadas)
+- [4. Conheça nosso app](#4-conheça-nosso-app)
 
 ---
 
@@ -55,5 +56,11 @@ Este projeto foi desenvolvido para ser uma *Single Page App*, além disso foram 
 - SweetAlert2
 
 Como também Javascript, CSS e HTML.
+
+### 4. Conheça nosso app
+
+Visite e conheça um pouco mais sobre as funcionalidades do nosso app Burger Queen:
+
+https://burger-queen-react-97.web.app
 
 *** Projeto desenvolvido por [Ana Carolina Ramos](https://github.com/ana-ramos09) e [Nathalia Bitener](https://github.com/nabitener) ***
