@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "burger-queen-react-97",
     "public": "build",
     "ignore": [
       "firebase.json",
